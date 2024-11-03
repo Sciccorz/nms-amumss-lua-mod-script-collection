@@ -2,13 +2,13 @@
 -- "MaxIsSuperRare" > "MaxIsRare" > "MaxIsUncommon" > "NoWeighting" > "MinIsUncommon" > "MinIsRare" > "MinIsSuperRare"
 -- How will each rarity be replaced
 -- NO_WEIGHT may be best to be kept intact as most (I believe all) of the values have no range
-MAX_SUPER_RARE = "MinIsRare"
-MAX_RARE = "MinIsRare"
+MAX_SUPER_RARE = "MinIsSuperRare"
+MAX_RARE = "MinIsSuperRare"
 MAX_UNCOMMON = "MinIsSuperRare"
 NO_WEIGHT = "NoWeighting"
-MIN_UNCOMMON = "MinIsSuperRare"
-MIN_RARE = "MinIsSuperRare"
-MIN_SUPER_RARE = "MinIsSuperRare"
+MIN_UNCOMMON = "MaxIsSuperRare"
+MIN_RARE = "MaxIsSuperRare"
+MIN_SUPER_RARE = "MaxIsSuperRare"
 
 NMS_MOD_DEFINITION_CONTAINER = 
 {
@@ -53,6 +53,13 @@ NMS_MOD_DEFINITION_CONTAINER =
 							["VALUE_CHANGE_TABLE"] =
 							{
 								{"WeightingCurve", "NO_WEIGHT_TARGET"}
+							}},
+						{
+							["VALUE_MATCH"] = "MinIsUncommon",
+							["REPLACE_TYPE"] = "ALL",
+							["VALUE_CHANGE_TABLE"] =
+							{
+								{"WeightingCurve", "MIN_UNCOMMON_TARGET"}
 							}},
 						{
 							["VALUE_MATCH"] = "MinIsRare",

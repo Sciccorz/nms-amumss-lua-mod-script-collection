@@ -2,7 +2,7 @@ Author = "Gumsk"
 ModName = "gNoClip"
 ModNameSub = "Terrain Objects Plus"
 BaseDescription = "Enables NoClip mode for terrain objects"
-GameVersion = "470"
+GameVersion = "5.2.0.0"
 ModVersion = "a"
 FileSource1 = {
 "METADATA\SIMULATION\SOLARSYSTEM\BIOMES\BARREN\BARRENBIGPROPSOBJECTSFULL.MBIN",
@@ -280,7 +280,7 @@ NMS_MOD_DEFINITION_CONTAINER = {
 					MBIN_FILE_SOURCE = FileSource1,
 					EXML_CHANGE_TABLE = {
 						{
-							["INTEGER_TO_FLOAT"] = "FORCE",
+							INTEGER_TO_FLOAT = "FORCE",
 							VALUE_CHANGE_TABLE = {
 								{"MinScale",0.01},
 								{"MaxScale",0.01},

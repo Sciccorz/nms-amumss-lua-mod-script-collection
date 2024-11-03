@@ -1,5 +1,5 @@
 ModName = "PTSd Stronger Environmental Hazards"
-GameVersion = "4_41"
+GameVersion = "5_03"
 Description = "Makes hazards (toxic, cold, hot, radiation) harsher. Also increases chances for special weather events (Tornadoes) and adjusts their properties."
 
 --TODO:
@@ -12,17 +12,17 @@ EventMult = 1												--Global Multiplier to apply to the chances for all the
 FreighterAbandonedHazardTimeMultiplier = 0.15				--0.15			(Seems to stack in some way with HardModeHazardTimeMultiplier ?)
 AbandonedFreighterRechargeMod = 0.33						--0.33			I assume this applies a multiplier to the normal HazardRechargeUnderground rate, i.e. Cold protection recharges at 1/3 of the normal rate next to a heater on a derelict freighter
 
-NormalModeHazardTimeMultiplier = 0.15						--0.9	(0.30)	This appears deprecated as of NMS v4.0, make changes in GCGAMEPLAYGLOBALS.MBIN instead
+NormalModeHazardTimeMultiplier = 0.15						--0.9	(0.30)	This appears deprecated as of NMS v4.0, changes made in "PTSd Other Difficulty Settings.lua" instead
 NormalModeHazardDamageRateMultiplier = 0.1					--0.8	(0.3)	How often your shield takes damage after hazard protection runs out
 NormalModeHazardDamageWoundRateMultiplier = 0.3				--0.8	(0.6)	How often your health takes damage after both hazard protection & your shield runs out
 NormalModeHazardRechargeUnderground = 3.5					--1.5	(1.5)	Lower value recharges faster when underground / indoors
 
-HardModeHazardTimeMultiplier = 0.15							--0.3			This appears deprecated as of NMS v4.0, make changes in GCGAMEPLAYGLOBALS.MBIN instead
+HardModeHazardTimeMultiplier = 0.15							--0.3			This appears deprecated as of NMS v4.0, changes made in "PTSd Other Difficulty Settings.lua" instead
 HardModeHazardDamageRateMultiplier = 0.1					--0.3
 HardModeHazardDamageWoundRateMultiplier = 0.3				--0.5
 HardModeHazardRechargeUnderground = 3.5						--3.5			Lower value recharges faster when underground / indoors
 
---Some settings related to Hazard times, untested
+--Some settings related to Hazard times
 StartHazardTimeMultiplier =		3							--10			Applies a temporary bonus multiplier to NormalModeHazardTimeMultiplier at the start of a new game (as long as you have no scanner tech installed on any multi-tool)
 EarlyHazardTimeMultiplier =		1.5							--1.6			Applies a temporary bonus multiplier to NormalModeHazardTimeMultiplier from the time you have a scanner installed in a multi-tool, until you first reach your starship.
 
@@ -42,7 +42,7 @@ JetpackFillRate = 0.2										--0.5			Was 0.2 in the Deprecated "HardMode" vers
 
 --Gravity storms seem to be possible on True Exotic Planets based on videos, but for some reason never randomly occur, only the scripted storms as part of certain missions...
 	--Also seems like the lowered gravity may just be the normal effect of the storm, not a special event like tornados
-	--As of NMS v4.x, garvity storms now occur on Dissonant planets
+	--As of NMS v4.x, gravity storms now occur on Dissonant planets
 
  --"weird" weathertype points to GRAVITYSTORMWEATHER.MBIN, so all these changes to WEIRDWEATHER.MBIN may be pointless as no weather seems to point to it...
 
@@ -68,8 +68,8 @@ SpecialWeatherHazards =
 			{"SpawnChancePerSecondExtreme",		-1},								--	-1		(-1 to disable on extreme planets???) Or maybe to use a different value set elsewhere in game memory instead of the value here?
 			{"MinSpawnDistance",				0},									--0			Distance from the player the hazard spawns at
 			{"MaxSpawnDistance",				0},									--0
-			{"MinLifetime",						15},								--15
-			{"MaxLifetime",						15},								--15
+			{"MinLifetime",						23},								--15
+			{"MaxLifetime",						23},								--15
 			{"ClusterSpawnChance",				"5E-05"},							--"5E-05"	???
 			{"ClusterMinLifetime",				30},								--30		???
 			{"ClusterMaxLifetime",				52},								--52		???
@@ -79,13 +79,17 @@ SpecialWeatherHazards =
 			{"PatchMaxSpawns",					10},								--10		???
 			{"MinRadius",						18},								--18
 			{"MaxRadius",						28},								--28
-			{"StormDuration",					14},								--14		???
-			{"MinMeteors",						4},									--4
-			{"MaxMeteors",						8},									--8
+			{"StormDuration",					22},								--14		???
+			{"MinMeteors",						6},									--4
+			{"MaxMeteors",						9},									--6
+			{"ImpactGiftChance",				0.05},								--0.05
+			{"DamageRadius",					3},									--3
+			{"FullDamageRadius",				3},									--3
+			
 		}
 	},
 	{
-		{"LIGHTNING"},			--NOTE, as of NMS v3.89, there seems to be a bug that can causes crashes whenever a damaging lightning strike occurs
+		{"LIGHTNING"},			--NOTE, as of NMS v3.89, there seems to be a vanilla bug that can causes crashes whenever a damaging lightning strike occurs
 		{
 			{"SpawnConditions",					"DuringStorm"},						--"DuringStorm"
 			{"MaxHazardsOfThisTypeActive",		1},									--1
@@ -97,7 +101,7 @@ SpecialWeatherHazards =
 			{"MaxSpawnDistance",				0},									--0
 			{"MinLifetime",						11},								--11
 			{"MaxLifetime",						11},								--11
-			{"ClusterSpawnChance",				0.0003},							--0.0003	???
+			{"ClusterSpawnChance",				0.0006},							--0.0006	???
 			{"ClusterMinLifetime",				30},								--30		???
 			{"ClusterMaxLifetime",				60},								--60		???
 			{"PatchMinRadius",					10},								--10		???
@@ -109,6 +113,9 @@ SpecialWeatherHazards =
 			{"StormDuration",					10},								--10		???
 			{"MinStrikes",						4},									--4
 			{"MaxStrikes",						8},									--8
+			{"ImpactGiftChance",				0.1},								--0.1
+			{"DamageRadius",					2.5},								--2.5
+			{"FullDamageRadius",				2.5},								--2.5
 		}
 	},
 	{
@@ -117,16 +124,16 @@ SpecialWeatherHazards =
 			{"SpawnConditions",					"DuringStorm"},						--"DuringStorm"
 			{"MaxHazardsOfThisTypeActive",		5},									--5
 			{"SpawnAttemptsPerRegion",			1},									--1
-			{"SpawnChancePerSecondPerAttempt",	0.0006*EventMult},					--0.0001	The game appears to use this value on both "regular" and "Extreme" weather planets, at least in some cases?
+			{"SpawnChancePerSecondPerAttempt",	0.0006*EventMult},					--0.0003	The game appears to use this value on both "regular" and "Extreme" weather planets, at least in some cases?
 			{"ChanceOfPlanetBeingExtreme",		0.15},								--0.15		???
-			{"SpawnChancePerSecondExtreme",		0.18*EventMult},					--0.1		The game doesn't appear to actually use this value, at least in some cases? 
+			{"SpawnChancePerSecondExtreme",		0.2*EventMult},						--0.2		The game doesn't appear to actually use this value, at least in some cases? 
 			{"MinSpawnDistance",				50},								--50		Distance from the player the hazard spawns at
 			{"MaxSpawnDistance",				250},								--250
 			{"MinLifetime",						50},								--50
 			{"MaxLifetime",						100},								--100
-			{"ClusterSpawnChance",				0.0003},							--0.0003	???
-			{"ClusterMinLifetime",				30},								--30		???
-			{"ClusterMaxLifetime",				60},								--60		???
+			{"ClusterSpawnChance",				0.1},								--0.5	???
+			{"ClusterMinLifetime",				15},								--10		???
+			{"ClusterMaxLifetime",				15},								--10		???
 			{"PatchMinRadius",					10},								--10		???
 			{"PatchMaxRadius",					10},								--10		???
 			{"PatchMinSpawns",					1},									--1			???
@@ -140,7 +147,7 @@ SpecialWeatherHazards =
 		}
 	},
 	{
-		{"GRAV_HAZ"},		--Doesn't seem to be implemented into any vanilla weather, but activating this causes the purple gravity storm orbs to appear constantly
+		{"GRAV_HAZ"},		--May only function properly on Dissonant planets? In earlier versions activating this on pre-dissonant planets would cause the purple gravity storm orbs to appear constantly
 		{
 			{"SpawnConditions",					"Anytime"},							--"Anytime"
 			{"MaxHazardsOfThisTypeActive",		5},									--5
@@ -150,8 +157,8 @@ SpecialWeatherHazards =
 			{"SpawnChancePerSecondExtreme",		-1},								--	-1		(-1 to disable on extreme planets???) Or maybe to use a different value set elsewhere in game memory instead of the value here?
 			{"MinSpawnDistance",				25},								--25		Distance from the player the hazard spawns at
 			{"MaxSpawnDistance",				200},								--200
-			{"MinLifetime",						20},								--20
-			{"MaxLifetime",						20},								--20
+			{"MinLifetime",						25},								--25
+			{"MaxLifetime",						25},								--25
 			{"ClusterSpawnChance",				0.5},								--0.5		???
 			{"ClusterMinLifetime",				10},								--10		???
 			{"ClusterMaxLifetime",				10},								--10		???
@@ -167,7 +174,7 @@ SpecialWeatherHazards =
 			{"SpawnConditions",					"Anytime"},							--"Anytime"
 			{"MaxHazardsOfThisTypeActive",		400},								--400
 			{"SpawnAttemptsPerRegion",			1},									--1
-			{"SpawnChancePerSecondPerAttempt",	0.01*EventMult},					--0.01
+			{"SpawnChancePerSecondPerAttempt",	0.015*EventMult},					--0.015
 			{"ChanceOfPlanetBeingExtreme",		0.2},								--0.2		???
 			{"SpawnChancePerSecondExtreme",		-1},								--	-1		(-1 to disable on extreme planets???) Or maybe to use a different value set elsewhere in game memory instead of the value here?
 			{"MinSpawnDistance",				10},								--10		Distance from the player the hazard spawns at
@@ -189,11 +196,11 @@ SpecialWeatherHazards =
 			{"SpawnConditions",					"DuringStorm"},						--"DuringStorm"
 			{"MaxHazardsOfThisTypeActive",		400},								--400
 			{"SpawnAttemptsPerRegion",			1},									--1
-			{"SpawnChancePerSecondPerAttempt",	1*EventMult},						--1
+			{"SpawnChancePerSecondPerAttempt",	0.5*EventMult},						--0.5
 			{"ChanceOfPlanetBeingExtreme",		0.2},								--0.2		???
 			{"SpawnChancePerSecondExtreme",		-1},								--	-1		(-1 to disable on extreme planets???) Or maybe to use a different value set elsewhere in game memory instead of the value here?
 			{"MinSpawnDistance",				10},								--10		Distance from the player the hazard spawns at
-			{"MaxSpawnDistance",				200},								--200
+			{"MaxSpawnDistance",				100},								--100
 			{"MinLifetime",						50},								--50
 			{"MaxLifetime",						150},								--150
 			{"ClusterSpawnChance",				0.5},								--0.5		???

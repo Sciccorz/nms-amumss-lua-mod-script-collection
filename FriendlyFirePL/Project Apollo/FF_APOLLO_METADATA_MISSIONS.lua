@@ -5,8 +5,8 @@ METADATA_MOD_NAME       = "ProjectApollo"
 METADATA_MOD_AUTHOR     = "FriendlyFirePL"
 METADATA_LUA_AUTHOR     = "FriendlyFirePL"
 METADATA_MOD_MODULE     = "METADATA_MISSIONS"
-METADATA_NMS_VERSION    = "472"
-METADATA_MOD_DESC       = "Project Apollo: Lost in Time. Module for all mission data. Modifies files in METADATA\\SIMULATION\\MISSIONS."
+METADATA_NMS_VERSION    = "DEV8"
+METADATA_MOD_DESC       = "Project Apollo: Lost in Time. Module for all mission data. Modifies METADATA\\SIMULATION\\MISSIONS\\TABLES\\BASECOMPUTERMISSIONTABLE.MBIN."
 
 
 
@@ -1870,7 +1870,7 @@ PROPERTY_MISSION_ADVANCED =
             <Property name="Cost" value="" />
             <Property name="Rewards">
               <Property value="NMSString0x10.xml">
-                <Property name="Value" value="R_BLUEPRINT" />
+                <Property name="Value" value="R_HESP_TALK" />
               </Property>
             </Property>
             <Property name="Mood" value="GcAlienMood.xml">
@@ -2958,6 +2958,26 @@ PROPERTY_MISSION_ADVANCED =
   <Property name="Rewards">
 
     <Property value="GcGenericRewardTableEntry.xml">
+      <Property name="Id" value="R_HESP_TALK" />
+      <Property name="List" value="GcRewardTableItemList.xml">
+        <Property name="RewardChoice" value="GiveAll" />
+        <Property name="OverrideZeroSeed" value="False" />
+        <Property name="UseInventoryChoiceOverride" value="False" />
+        <Property name="IncrementStat" value="" />
+        <Property name="List">
+          <Property value="GcRewardTableItem.xml">
+            <Property name="PercentageChance" value="100" />
+            <Property name="LabelID" value="" />
+            <Property name="Reward" value="GcRewardMissionMessage.xml">
+              <Property name="MessageID" value="MSG_HESP_TALK" />
+              <Property name="BroadcastInMultiplayer" value="False" />
+            </Property>
+          </Property>
+        </Property>
+      </Property>
+    </Property>
+
+    <Property value="GcGenericRewardTableEntry.xml">
       <Property name="Id" value="R_BLUEPRINT" />
       <Property name="List" value="GcRewardTableItemList.xml">
         <Property name="RewardChoice" value="GiveAll" />
@@ -3462,19 +3482,30 @@ PROPERTY_MISSION_ADVANCED =
                       <Property name="ConditionTest" value="AnyTrue" />
                     </Property>
                     <Property name="Conditions">
-                      <Property value="GcMissionConditionTechnologyKnown.xml">
-                        <Property name="Technology" value="TECH_SCANNER" />
-                        <Property name="DependentOnSeasonMilestone" value="False" />
-                        <Property name="TakeTechFromSeasonData" value="False" />
+                      <Property value="GcMissionConditionMissionMessage.xml">
+                        <Property name="Message" value="MSG_HESP_TALK" />
+                        <Property name="MessageToFormatSeasonalIDInto" value="" />
                       </Property>
                     </Property>
                     <Property name="AllowedToFormatObjectives" value="True" />
-                    <Property name="ForceAllowMissionRestart" value="True" />
-                    <Property name="ForceAllowMissionRestartEvent" value="SE_HESPERUS_1" />
+                    <Property name="ForceAllowMissionRestart" value="False" />
+                    <Property name="ForceAllowMissionRestartEvent" value="" />
                     <Property name="DebugText" value="" />
                     <Property name="StatusMessageMissionMarkup" value="GcStatusMessageMissionMarkup.xml">
                       <Property name="MissionMarkup" value="None" />
                     </Property>
+                  </Property>
+                </Property>
+
+                <Property value="GcGenericMissionStage.xml">
+                  <Property name="Versions" />
+                  <Property name="Stage" value="GcMissionSequenceReward.xml">
+                    <Property name="Message" value="" />
+                    <Property name="Reward" value="R_BLUEPRINT" />
+                    <Property name="DoMissionBoardOverride" value="False" />
+                    <Property name="Silent" value="False" />
+                    <Property name="RewardInventoryOverride" value="None" />
+                    <Property name="DebugText" value="" />
                   </Property>
                 </Property>
                
@@ -3618,7 +3649,7 @@ PROPERTY_MISSION_ADVANCED =
             <Property name="Stage" value="GcMissionSequenceGroup.xml">
               <Property name="Silent" value="True" />
               <Property name="Icon" value="TkTextureResource.xml">
-                <Property name="Filename" value="" />
+                <Property name="Filename" value="TEXTURES/TECH/TOOL_SCANNER.DDS" />
                 <Property name="ResHandle" value="GcResource.xml">
                   <Property name="ResourceID" value="0" />
                 </Property>
@@ -3654,7 +3685,7 @@ PROPERTY_MISSION_ADVANCED =
               </Property>
               <Property name="HideFromLogIfConditionsMet" value="False" />
               <Property name="RepeatLogic" value="None" />
-              <Property name="IconStyle" value="Default" />
+              <Property name="IconStyle" value="Square" />
               <Property name="GalMapPathOverride" value="None" />
               <Property name="SpecialButtonIcon" value="TkInputEnum.xml">
                 <Property name="InputButton" value="None" />
@@ -3949,6 +3980,207 @@ PROPERTY_MISSION_ADVANCED =
               <Property name="Conditions" />
               <Property name="Consequences" />
               <Property name="Stages">
+
+                <Property value="GcGenericMissionStage.xml">
+                  <Property name="Versions" />
+                  <Property name="Stage" value="GcMissionSequenceGroup.xml">
+                    <Property name="Silent" value="True" />
+                    <Property name="Icon" value="TkTextureResource.xml">
+                      <Property name="Filename" value="" />
+                      <Property name="ResHandle" value="GcResource.xml">
+                        <Property name="ResourceID" value="0" />
+                      </Property>
+                    </Property>
+                    <Property name="PageHint" value="GcMissionPageHint.xml">
+                      <Property name="MissionPageHint" value="None" />
+                    </Property>
+                    <Property name="PageDataLocID" value="" />
+                    <Property name="BuildMenuHint" value="" />
+                    <Property name="InventoryHint" value="" />
+                    <Property name="TerrainTarget" value="" />
+                    <Property name="DebugText" value="" />
+                    <Property name="ObjectiveID" value="" />
+                    <Property name="ObjectiveTipID" value="" />
+                    <Property name="HasCategoryOverride" value="False" />
+                    <Property name="OverrideCategory" value="GcMissionCategory.xml">
+                      <Property name="MissionCategory" value="Mission" />
+                    </Property>
+                    <Property name="HasColourOverride" value="False" />
+                    <Property name="ColourOverride" value="Colour.xml">
+                      <Property name="R" value="1" />
+                      <Property name="G" value="1" />
+                      <Property name="B" value="1" />
+                      <Property name="A" value="1" />
+                    </Property>
+                    <Property name="PrefixTitle" value="False" />
+                    <Property name="PrefixTitleText" value="" />
+                    <Property name="BlockPinning" value="False" />
+                    <Property name="AutoPinRepairs" value="False" />
+                    <Property name="BlockSpaceBattles" value="False" />
+                    <Property name="ConditionTest" value="GcMissionConditionTest.xml">
+                      <Property name="ConditionTest" value="AnyTrue" />
+                    </Property>
+                    <Property name="HideFromLogIfConditionsMet" value="False" />
+                    <Property name="DoConsequencesIfNeverActivated" value="True" />
+                    <Property name="RepeatLogic" value="Loop" />
+                    <Property name="IconStyle" value="Default" />
+                    <Property name="GalMapPathOverride" value="None" />
+                    <Property name="SpecialButtonIcon" value="TkInputEnum.xml">
+                      <Property name="InputButton" value="None" />
+                    </Property>
+                    <Property name="ObjectiveFormatting" value="GcObjectiveTextFormatOptions.xml">
+                      <Property name="ObjectivesCanBeFormattedBySequences" value="False" />
+                      <Property name="FormattableObjective" value="" />
+                      <Property name="FormattableObjectiveTip" value="" />
+                    </Property>
+                    <Property name="SeasonalObjectiveOverrides" value="GcSeasonalObjectiveOverrides.xml">
+                      <Property name="ApplicableSeasonNumbers" />
+                      <Property name="OverrideObjective" value="" />
+                      <Property name="OverrideObjectiveTip" value="" />
+                    </Property>
+                    <Property name="SurveyTarget" value="GcTargetMissionSurveyOptions.xml">
+                      <Property name="TargetMissionSurveyId" value="" />
+                      <Property name="TargetMissionSurveyDefinitelyExists" value="False" />
+                      <Property name="SurveyInactiveHint" value="NOTIFY_MISSION_SURVEY_INACTIVE" />
+                      <Property name="SurveySwapHint" value="NOTIFY_MISSION_SURVEY_SWAP" />
+                      <Property name="SurveyHint" value="NOTIFY_MISSION_SURVEY" />
+                      <Property name="SurveyVehicleHint" value="NOTIFY_MISSION_SURVEY_CAR" />
+                    </Property>
+                    <Property name="CustomNotifyTimers" value="GcCustomNotifyTimerOptions.xml">
+                      <Property name="HasCustomNotifyTimer" value="False" />
+                      <Property name="NotifyDisplayTime" value="20" />
+                      <Property name="NotifyPauseTime" value="30" />
+                    </Property>
+                    <Property name="Conditions">
+                      <Property value="GcMissionConditionHasFuel.xml">
+                        <Property name="TargetStat" value="GcStatsTypes.xml">
+                          <Property name="StatsType" value="Weapon_Scan" />
+                        </Property>
+                        <Property name="Amount" value="1" />
+                        <Property name="SpecificTechID" value="TECH_SCANNER" />
+                        <Property name="FormatTextAsPercentage" value="False" />
+                      </Property>
+                    </Property>
+                    <Property name="Consequences" />
+                    <Property name="Stages">
+
+                      <Property value="GcGenericMissionStage.xml">
+                        <Property name="Versions" />
+                        <Property name="Stage" value="GcMissionSequenceGroup.xml">
+                          <Property name="Silent" value="True" />
+                          <Property name="Icon" value="TkTextureResource.xml">
+                            <Property name="Filename" value="TEXTURES/UI/FRONTEND/ICONS/U4PRODUCTS/PRODUCT.STORMCRYSTAL.DDS" />
+                            <Property name="ResHandle" value="GcResource.xml">
+                              <Property name="ResourceID" value="0" />
+                            </Property>
+                          </Property>
+                          <Property name="PageHint" value="GcMissionPageHint.xml">
+                            <Property name="MissionPageHint" value="None" />
+                          </Property>
+                          <Property name="PageDataLocID" value="" />
+                          <Property name="BuildMenuHint" value="" />
+                          <Property name="InventoryHint" value="" />
+                          <Property name="TerrainTarget" value="" />
+                          <Property name="DebugText" value="" />
+                          <Property name="ObjectiveID" value="" />
+                          <Property name="ObjectiveTipID" value="" />
+                          <Property name="HasCategoryOverride" value="False" />
+                          <Property name="OverrideCategory" value="GcMissionCategory.xml">
+                            <Property name="MissionCategory" value="Mission" />
+                          </Property>
+                          <Property name="HasColourOverride" value="False" />
+                          <Property name="ColourOverride" value="Colour.xml">
+                            <Property name="R" value="1" />
+                            <Property name="G" value="1" />
+                            <Property name="B" value="1" />
+                            <Property name="A" value="1" />
+                          </Property>
+                          <Property name="PrefixTitle" value="False" />
+                          <Property name="PrefixTitleText" value="" />
+                          <Property name="BlockPinning" value="False" />
+                          <Property name="AutoPinRepairs" value="False" />
+                          <Property name="BlockSpaceBattles" value="False" />
+                          <Property name="ConditionTest" value="GcMissionConditionTest.xml">
+                            <Property name="ConditionTest" value="AllFalse" />
+                          </Property>
+                          <Property name="HideFromLogIfConditionsMet" value="False" />
+                          <Property name="RepeatLogic" value="None" />
+                          <Property name="IconStyle" value="Square" />
+                          <Property name="GalMapPathOverride" value="None" />
+                          <Property name="SpecialButtonIcon" value="TkInputEnum.xml">
+                            <Property name="InputButton" value="None" />
+                          </Property>
+                          <Property name="ObjectiveFormatting" value="GcObjectiveTextFormatOptions.xml">
+                            <Property name="ObjectivesCanBeFormattedBySequences" value="False" />
+                            <Property name="FormattableObjective" value="" />
+                            <Property name="FormattableObjectiveTip" value="" />
+                          </Property>
+                          <Property name="SeasonalObjectiveOverrides" value="GcSeasonalObjectiveOverrides.xml">
+                            <Property name="ApplicableSeasonNumbers" />
+                            <Property name="OverrideObjective" value="" />
+                            <Property name="OverrideObjectiveTip" value="" />
+                          </Property>
+                          <Property name="SurveyTarget" value="GcTargetMissionSurveyOptions.xml">
+                            <Property name="TargetMissionSurveyId" value="" />
+                            <Property name="TargetMissionSurveyDefinitelyExists" value="False" />
+                            <Property name="SurveyInactiveHint" value="NOTIFY_MISSION_SURVEY_INACTIVE" />
+                            <Property name="SurveySwapHint" value="NOTIFY_MISSION_SURVEY_SWAP" />
+                            <Property name="SurveyHint" value="NOTIFY_MISSION_SURVEY" />
+                            <Property name="SurveyVehicleHint" value="NOTIFY_MISSION_SURVEY" />
+                          </Property>
+                          <Property name="CustomNotifyTimers" value="GcCustomNotifyTimerOptions.xml">
+                            <Property name="HasCustomNotifyTimer" value="False" />
+                            <Property name="NotifyDisplayTime" value="20" />
+                            <Property name="NotifyPauseTime" value="30" />
+                          </Property>
+                          <Property name="Conditions" />
+                          <Property name="Consequences" />
+                          <Property name="Stages">
+        
+                            <Property value="GcGenericMissionStage.xml">
+                              <Property name="Versions" />
+                              <Property name="Stage" value="GcMissionSequenceWaitForConditions.xml">
+                                <Property name="Message" value="TEXT_MAIN_STAGE2_TIP0" />
+                                <Property name="ConditionTest" value="GcMissionConditionTest.xml">
+                                  <Property name="ConditionTest" value="AnyTrue" />
+                                </Property>
+                                <Property name="Conditions">
+                                  <Property value="GcMissionConditionHasFuel.xml">
+                                    <Property name="TargetStat" value="GcStatsTypes.xml">
+                                      <Property name="StatsType" value="Weapon_Scan" />
+                                    </Property>
+                                    <Property name="Amount" value="1" />
+                                    <Property name="SpecificTechID" value="TECH_SCANNER" />
+                                    <Property name="FormatTextAsPercentage" value="False" />
+                                  </Property>
+                                </Property>
+                                <Property name="AllowedToFormatObjectives" value="True" />
+                                <Property name="ForceAllowMissionRestart" value="False" />
+                                <Property name="ForceAllowMissionRestartEvent" value="" />
+                                <Property name="DebugText" value="" />
+                                <Property name="StatusMessageMissionMarkup" value="GcStatusMessageMissionMarkup.xml">
+                                  <Property name="MissionMarkup" value="None" />
+                                </Property>
+                              </Property>
+                            </Property>
+        
+                          </Property>
+                        </Property>
+                      </Property>
+
+                    </Property>
+                  </Property>
+                </Property>
+
+                <Property value="GcGenericMissionStage.xml">
+                  <Property name="Versions" />
+                  <Property name="Stage" value="GcMissionSequenceWait.xml">
+                    <Property name="Time" value="1" />
+                    <Property name="DebugText" value="" />
+                    <Property name="SuppressMessages" value="False" />
+                    <Property name="MultiplyTimeBySeasonValue" value="False" />
+                  </Property>
+                </Property>
 
                 <Property value="GcGenericMissionStage.xml">
                   <Property name="Versions" />
@@ -6065,9 +6297,11 @@ PROPERTY_STAGES_PLATING =
                   <Property name="Conditions">
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_FACT_TALK" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_FACT_DONE" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                   </Property>
                   <Property name="AllowedToFormatObjectives" value="True" />
@@ -6153,6 +6387,7 @@ PROPERTY_STAGES_PLATING =
                   <Property name="Conditions">
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_FACT_DONE" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                   </Property>
                   <Property name="Consequences" />
@@ -6271,6 +6506,7 @@ PROPERTY_STAGES_PLATING =
                         <Property name="Conditions">
                           <Property value="GcMissionConditionMissionMessage.xml">
                             <Property name="Message" value="MSG_FACT_DONE" />
+                            <Property name="MessageToFormatSeasonalIDInto" value="" />
                           </Property>
                         </Property>
                         <Property name="AllowedToFormatObjectives" value="True" />
@@ -7409,9 +7645,11 @@ PROPERTY_STAGES_FRAGMENT =
                   <Property name="Conditions">
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_MONO_TALK" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_MONO_DONE" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                   </Property>
                   <Property name="AllowedToFormatObjectives" value="True" />
@@ -7497,6 +7735,7 @@ PROPERTY_STAGES_FRAGMENT =
                   <Property name="Conditions">
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_MONO_DONE" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                   </Property>
                   <Property name="Consequences" />
@@ -7635,6 +7874,7 @@ PROPERTY_STAGES_FRAGMENT =
                         <Property name="Conditions">
                           <Property value="GcMissionConditionMissionMessage.xml">
                             <Property name="Message" value="MSG_MONO_DONE" />
+                            <Property name="MessageToFormatSeasonalIDInto" value="" />
                           </Property>
                         </Property>
                         <Property name="AllowedToFormatObjectives" value="True" />
@@ -8919,9 +9159,11 @@ PROPERTY_STAGES_CIRCUIT =
                   <Property name="Conditions">
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_CAMP_TALK" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_CAMP_DONE" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                   </Property>
                   <Property name="AllowedToFormatObjectives" value="True" />
@@ -9007,6 +9249,7 @@ PROPERTY_STAGES_CIRCUIT =
                   <Property name="Conditions">
                     <Property value="GcMissionConditionMissionMessage.xml">
                       <Property name="Message" value="MSG_CAMP_DONE" />
+                      <Property name="MessageToFormatSeasonalIDInto" value="" />
                     </Property>
                   </Property>
                   <Property name="Consequences" />
@@ -9145,6 +9388,7 @@ PROPERTY_STAGES_CIRCUIT =
                         <Property name="Conditions">
                           <Property value="GcMissionConditionMissionMessage.xml">
                             <Property name="Message" value="MSG_CAMP_DONE" />
+                            <Property name="MessageToFormatSeasonalIDInto" value="" />
                           </Property>
                         </Property>
                         <Property name="AllowedToFormatObjectives" value="True" />
@@ -14579,7 +14823,7 @@ PROPERTY_MISSION_BOXB = BuildMissionSmallProperty(
 ----------------------------------------------------------------------------------------------------
 
 -- path to mission files
-FILE_MISSIONS = "METADATA\\SIMULATION\\MISSIONS\\BASECOMPUTERMISSIONTABLE.MBIN"
+FILE_MISSIONS = "METADATA\\SIMULATION\\MISSIONS\\TABLES\\BASECOMPUTERMISSIONTABLE.MBIN"
 
 -- list of missions
 LIST_MISSIONS =

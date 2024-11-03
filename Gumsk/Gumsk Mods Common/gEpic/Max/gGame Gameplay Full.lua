@@ -1,6 +1,6 @@
 ModName = "gGame Gameplay"
 ModNameSub = "Full"
-GameVersion = "470"
+GameVersion = "5.2.0.0"
 ModVersion = "a"
 
 --[[ Files Modified:
@@ -113,9 +113,11 @@ NMS_MOD_DEFINITION_CONTAINER = {
 								{"CreatureScanAngle",0.08},							--0.08; 
 								{"CreatureMinScanTime",0.8},						--0.8; 
 								{"ScanAngle",0.04},									--0.04; 
-								{"NewDiscoveryDisplayTime",0.5},					--2; 
+								{"NewDiscoveryDisplayTime",0.5},					--2;
+                {"MissionSurveyMaxGuidanceDistance",3000},  --1500
 								{"SurveyMaxDistance",2000},							--400; How far away the scanner can detect hotspots, in u. Maximum is about 1300, but over 1000 is unreliable.
 								{"SurveySonarMinPulseSpeed",-2.4},					--0.4; Frequency for sweeps or pings of the hotspot scanner. Lower is slower.
+                --{"SurveyBeginScanPercentage",1.0},  --0.01
 
 			--Grouping
 								-- {"TechMustBeInTechInventory", "False"},				--True

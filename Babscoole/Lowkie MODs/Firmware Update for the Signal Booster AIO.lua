@@ -6,8 +6,9 @@ InputCOSTCHOICE = {COSTCHOICE,
     Choose a cost option:
     0 - No cost
     1 - Cost of 1 NAVDATA
-    2 - Cost of 5 NAVDATA
-    3 - Cost of 10 NAVDATA
+    2 - Cost of 3 NAVDATA
+    3 - Cost of 5 NAVDATA
+    4 - Cost of 10 NAVDATA
     Default = 0 | Current = >> ]] .. (COSTCHOICE) .. [[ <<
 ]]}
 
@@ -15,7 +16,7 @@ while COSTCHOICE do
   COSTCHOICE = GUIF(InputCOSTCHOICE,10)
 
   local minChoice = 0
-  local maxChoice = 3
+  local maxChoice = 4
 
   if COSTCHOICE < minChoice or COSTCHOICE > maxChoice then
     print("         >>> ["..COSTCHOICE.."] is NOT a valid choice.  Must be a number between "..minChoice.."-"..maxChoice..".  Please retry! <<<")
@@ -31,9 +32,12 @@ elseif COSTCHOICE == 1 then
   COSTCHOICE = "C_NAVDATA"
   FILENAME = " NiF"
 elseif COSTCHOICE == 2 then
-  COSTCHOICE = "C_NAVDATA5"
+  COSTCHOICE = "C_NAVDATA3"
   FILENAME = " NiF"
 elseif COSTCHOICE == 3 then
+  COSTCHOICE = "C_NAVDATA5"
+  FILENAME = " NiF"
+elseif COSTCHOICE == 4 then
   COSTCHOICE = "C_NAVDATA10"
   FILENAME = " NiF"
 end
@@ -145,9 +149,8 @@ NMS_MOD_DEFINITION_CONTAINER =
 {
   ["MOD_FILENAME"]    = "Firmware Update for the Signal Booster"..FILENAME..".pak",
   ["MOD_DESCRIPTION"] = "Allows the Signal booster to find crashed ships, factories, multi tools, and portals with no inputs",
-  ["MOD_AUTHOR"]      = "Lowkie",
-  ["MOD_MAINTENANCE"] = "Babscoole",
-  ["NMS_VERSION"]     = "4.71",
+  ["MOD_AUTHOR"]      = "Lowkie & Babscoole",
+  ["NMS_VERSION"]     = "5.22",
   ["MODIFICATIONS"]   =
     {
         {
@@ -163,7 +166,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                             ["SEC_SAVE_TO"] = "GetNearScan",
                         },
                         {
-                            ["SPECIAL_KEY_WORDS"] = {"Id", "?FREIGHTER", "Name", "ALL_REQUEST_DECLINE"},
+                            ["SPECIAL_KEY_WORDS"] = {"Id", "%?FREIGHTER", "Name", "ALL_REQUEST_DECLINE"},
                             ["SEC_SAVE_TO"] = "GetOption",
                         },
                         {
@@ -237,6 +240,11 @@ NMS_MOD_DEFINITION_CONTAINER =
                             ["ADD_OPTION"] = "ADDafterSECTION",
                             ["SEC_ADD_NAMED"] = "GetMissionMessageReward",
                         },
+                        {
+                            ["SPECIAL_KEY_WORDS"] = {"Id", "PIRATES_DELAY"},
+                            ["PRECEDING_KEY_WORDS"] = {"GcRewardTableItem.xml"},
+                            ["SEC_SAVE_TO"] = "GetRewardMissionSeeded",
+                        },
                     },
                 },
                 {
@@ -296,19 +304,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     },
                 },
                 {
-                    ["MBIN_FILE_SOURCE"] = "METADATA\SIMULATION\MISSIONS\RECURRINGMISSIONTABLE.MBIN",
-                    ["MBIN_FS_DISCARD"] = "TRUE",
-                    ["EXML_CHANGE_TABLE"] =
-                    {
-                        {
-                            ["SPECIAL_KEY_WORDS"] = {"Id", "R_DM_EXOTUT"},
-                            ["PRECEDING_KEY_WORDS"] = {"GcRewardTableItem.xml"},
-                            ["SEC_SAVE_TO"] = "GetRewardMissionSeeded",
-                        },
-                    },
-                },
-                {
-                    ["MBIN_FILE_SOURCE"] = "METADATA\SIMULATION\MISSIONS\ATLASPATHTABLE.MBIN",
+                    ["MBIN_FILE_SOURCE"] = "METADATA\SIMULATION\MISSIONS\TABLES\ATLASPATHTABLE.MBIN",
                     ["MBIN_FS_DISCARD"] = "TRUE",
                     ["EXML_CHANGE_TABLE"] =
                     {
@@ -356,19 +352,24 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             ["SEC_EDIT"] = "GetMissionSequenceGroup",
                             ["PRECEDING_KEY_WORDS"] = {"Stages"},
-                            ["NOTICE_OFF"] = "TRUE",
                             ["CREATE_HOS"] = "TRUE",
+                        },
+                        {
+                            ["SPECIAL_KEY_WORDS"] = {"Message", "GALAXY_WARP"},
+                            ["SEC_SAVE_TO"] = "GetMissionCondition",
+                        },
+                        {
+                            ["SEC_EDIT"] = "GetMissionCondition",
+                            ["VALUE_CHANGE_TABLE"] =
+                            {
+                                {"Message", "M_GLP_END"},
+                            }
                         },
                         {
                             ["SEC_EDIT"] = "GetMissionSequenceGroup",
                             ["PRECEDING_KEY_WORDS"] = {"Conditions"},
                             ["CREATE_HOS"] = "TRUE",
-                            ["ADD"] =
-[[
-              <Property value="GcMissionConditionMissionMessage.xml">
-                <Property name="Message" value="M_GLP_END" />
-              </Property>
-]]
+                            ["SEC_ADD_NAMED"] = "GetMissionCondition",
                         },
                         {
                             ["SPECIAL_KEY_WORDS"] = {"Stage", "GcMissionSequenceWait.xml"},
@@ -402,13 +403,11 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             ["SEC_EDIT"] = "GetGenericMissionStage",
                             ["PRECEDING_KEY_WORDS"] = {"Stages"},
-                            ["NOTICE_OFF"] = "TRUE",
                             ["CREATE_HOS"] = "TRUE",
                         },
                         {
                             ["SEC_EDIT"] = "GetGenericMissionStage",
                             ["PRECEDING_KEY_WORDS"] = {"Conditions"},
-                            ["NOTICE_OFF"] = "TRUE",
                             ["CREATE_HOS"] = "TRUE",
                         },
                         {
@@ -468,11 +467,11 @@ NMS_MOD_DEFINITION_CONTAINER =
                     },
                 },
                 {
-                    ["MBIN_FILE_SOURCE"] = "METADATA\SIMULATION\MISSIONS\ENABLINGCONDITIONSTABLE.MBIN",
+                    ["MBIN_FILE_SOURCE"] = "METADATA\SIMULATION\MISSIONS\TABLES\ENABLINGCONDITIONSTABLE.MBIN",
                     ["EXML_CHANGE_TABLE"] =
                     {
                         {
-                            ["SPECIAL_KEY_WORDS"] = {"MissionID", "?MIND_ARC"},
+                            ["SPECIAL_KEY_WORDS"] = {"MissionID", "%?MIND_ARC"},
                             ["SEC_SAVE_TO"] = "GetMission",
                         },
                         {
@@ -484,7 +483,6 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             ["SEC_EDIT"] = "GetMission",
                             ["PRECEDING_KEY_WORDS"] = {"Rewards"},
-                            ["NOTICE_OFF"] = "TRUE",
                             ["CREATE_HOS"] = "TRUE",
                         },
                         {
@@ -532,7 +530,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                             }
                         },
                         {
-                            ["SPECIAL_KEY_WORDS"] = {"MissionID", "?MIND_ARC"},
+                            ["SPECIAL_KEY_WORDS"] = {"MissionID", "%?MIND_ARC"},
                             ["SEC_SAVE_TO"] = "GetProxyMission",
                         },
                         {
@@ -627,12 +625,25 @@ NMS_MOD_DEFINITION_CONTAINER =
                     },
                 },
                 {
-                    ["MBIN_FILE_SOURCE"] = "MODELS\PLANETS\BIOMES\COMMON\BUILDINGS\PARTS\BUILDABLEPARTS\TECH\SIGNALSCANNER\ENTITIES\SIGNALSCANNER.ENTITY.MBIN",
+                    ["MBIN_FILE_SOURCE"] = "METADATA\REALITY\TABLES\COSTTABLE.MBIN",
                     ["EXML_CHANGE_TABLE"] =
                     {
                         {
-                            ["SPECIAL_KEY_WORDS"] = {"Mission", "S13_DUMMY"},
-                            ["REMOVE"] = "SECTION"
+                            ["SPECIAL_KEY_WORDS"] = {"Id", "C_NAVDATA5"},
+                            ["SEC_SAVE_TO"] = "GetCost",
+                        },
+                        {
+                            ["SEC_EDIT"] = "GetCost",
+                            ["VALUE_CHANGE_TABLE"] =
+                            {
+                                {"Id",     "C_NAVDATA3"},
+                                {"Amount", "3"},
+                            }
+                        },
+                        {
+                            ["SPECIAL_KEY_WORDS"] = {"Id", "C_NAVDATA" },
+                            ["ADD_OPTION"] = "ADDafterSECTION",
+                            ["SEC_ADD_NAMED"] = "GetCost",
                         },
                     },
                 },
@@ -643,7 +654,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 
 local RewardTable             = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][2]["EXML_CHANGE_TABLE"]
 local ScanEventTablePlanet    = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][3]["EXML_CHANGE_TABLE"]
-local EnablingConditionsTable = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][8]["EXML_CHANGE_TABLE"]
+local EnablingConditionsTable = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][7]["EXML_CHANGE_TABLE"]
 
 --Add ScanEventTablePlanet entries
 for i=1, #ScanDataTable, 1 do

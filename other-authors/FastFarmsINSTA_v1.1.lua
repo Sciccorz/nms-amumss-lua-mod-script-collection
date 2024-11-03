@@ -53,5 +53,12 @@ NMS_MOD_DEFINITION_CONTAINER =
                     {"Time",    "3"},
                 }
             },
+            {
+                ["REPLACE_TYPE"]       = "ALL",
+                ["VALUE_CHANGE_TABLE"]         =
+                {
+                    {"UseMissionClock",    "True"},
+                }
+            },
         }
 }}}}}

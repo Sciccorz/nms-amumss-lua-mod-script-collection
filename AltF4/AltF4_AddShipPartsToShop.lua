@@ -1,4 +1,4 @@
--- Fighter, Hauler, Explorer
+-- Fighter, Hauler, Explorer, Sail
 local ShipPartID = {
     "FIGHT_COCKAA",
     "FIGHT_COCKAB",
@@ -115,8 +115,8 @@ local ShipPartID = {
     "DROPS_WINGACI",
     "DROPS_WINGBA",
     "DROPS_WINGBAA",
-    "DROPS_WINGBAA",
-    "DROPS_WINGBAA",
+    "DROPS_WINGBAB",
+    "DROPS_WINGBAC",
     "DROPS_WINGBAD",
     "DROPS_WINGBAE",
     "DROPS_WINGBAF",
@@ -240,8 +240,67 @@ local ShipPartID = {
     "SCIEN_WINGT_C",
     "SCIEN_WINGT_F",
     "SCIEN_WINGT_G",
-    "SCIEN_WINGT_I"
+    "SCIEN_WINGT_I",
+    "SAIL_BODYA",
+    "SAIL_BODYB",
+    "SAIL_BODYC",
+    "SAIL_BODYD",
+    "SAIL_BODYE",
+    "SAIL_BODYF",
+    "SAIL_WINGAA",
+    "SAIL_WINGAB",
+    "SAIL_WINGAC",
+    "SAIL_WINGAD",
+    "SAIL_WINGAE",
+    "SAIL_WINGBA",
+    "SAIL_WINGBB",
+    "SAIL_WINGBC",
+    "SAIL_WINGBD",
+    "SAIL_WINGBE",
+    "SAIL_WINGCA",
+    "SAIL_WINGCB",
+    "SAIL_WINGCC",
+    "SAIL_WINGCD",
+    "SAIL_WINGCE",
+    "SAIL_WINGDA",
+    "SAIL_WINGDB",
+    "SAIL_WINGDC",
+    "SAIL_WINGDD",
+    "SAIL_WINGDE",
+    "SAIL_WINGEA",
+    "SAIL_WINGEB",
+    "SAIL_WINGEC",
+    "SAIL_WINGED",
+    "SAIL_WINGEE",
+    "SAIL_WINGFA",
+    "SAIL_WINGFB",
+    "SAIL_WINGFC",
+    "SAIL_WINGFD",
+    "SAIL_WINGFE",
+    "SAIL_SAILA",
+    "SAIL_SAILB",
+    "SAIL_SAILC"
 }
+
+local Price = false
+
+inputPrompts = {
+    ChangeScriptSettings = {false,
+[[  Would you like to change the script's settings?
+    The default setting will not change the price of those ship parts. 
+    You can enable this modification through this selection.
+    Press ENTER for default value.
+    Default: N
+]]},
+    ChangePrice = {Price,
+[[  Do you want to change the price of ship parts?
+    Default: N | Current: >> ]] .. (Price and "Y" or "N") .. [[ <<
+]]},
+}
+
+if GUIF(inputPrompts.ChangeScriptSettings,10) then
+    Price = GUIF(inputPrompts.ChangePrice,10)
+end
 
 local function CreateShopID(NewID)
     return [[
@@ -262,7 +321,7 @@ NMS_MOD_DEFINITION_CONTAINER = {
     ["MOD_FILENAME"] = "AltF4_AddShipPartsToShop.pak",
     ["MOD_AUTHOR"] = "AltF4",
     ["LUA_AUTHOR"] = "AltF4",
-    ["NMS_VERSION"] = "4.70",
+    ["NMS_VERSION"] = "5.05",
     ["MOD_DESCRIPTION"] = "Add ship custom parts to space station shop.",
     ["MODIFICATIONS"] = {
         {
@@ -280,3 +339,26 @@ NMS_MOD_DEFINITION_CONTAINER = {
         },
     }
 }
+
+if Price then
+    local PartPrice = 1000000
+
+    local ChangeTable = {}
+    for i = 1, #ShipPartID do
+        local ProductId = ShipPartID[i]
+        ChangeTable[#ChangeTable + 1] =
+            {
+                ["SPECIAL_KEY_WORDS"] = {"ID", ProductId},
+                ["REPLACE_TYPE"] = "ALL",
+                ["VALUE_CHANGE_TABLE"] = {
+                    {"BaseValue", PartPrice}
+                }
+            }
+    end
+
+    local addMBINChangeTable = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"]
+    addMBINChangeTable[#addMBINChangeTable + 1] = {
+                    ["MBIN_FILE_SOURCE"] = "METADATA\REALITY\TABLES\NMS_REALITY_GCPRODUCTTABLE.MBIN",
+                    ["EXML_CHANGE_TABLE"] = ChangeTable,
+                }
+end

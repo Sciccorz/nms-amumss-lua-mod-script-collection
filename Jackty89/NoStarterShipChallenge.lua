@@ -18,7 +18,8 @@ Items_To_Add_To_KnownProducts =
     "BASE_FLAG",
     "BP_ANALYSER",
     "ANTIMATTER",
-    "AM_HOUSING"
+    "AM_HOUSING",
+    "BASE_SWAMP3"
 }
 
 Items_To_Add_To_KnownTech =
@@ -44,7 +45,7 @@ Input_Geobay =
 {
     Want_Garage,
     [[
-        Would you like a Geabay?
+        Would you like a Geobay?
         Default = Y | Current = >> ]] .. (Want_Garage and "Y" or "N") .. [[ <<
     ]]
 }
@@ -56,8 +57,7 @@ if Want_Garage then
     {
         Garage_Choice,
         [[
-            What Effect should the new flamerthower projectile look like?
-            This is optional. Leave on default if you want flames.
+            Which Geobay do you want
             * 1 = "Pilgrim Geobay"
             * 2 = "Nomad Geobay"
             * 3 = "Roamer Geobay"

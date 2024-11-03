@@ -1,9 +1,13 @@
 ModName = "PTSd More Expensive Pilots + Receivers + Ship&Tool slots etc"
-GameVersion = "4_63"
+GameVersion = "5_12"
 Description = "Changes costs for Starship or Multi-Tool inventory slots, Broadcast Receivers, Pilot Slots, etc."
 
 --Allows salvaging Reactor Cores from Shuttle & Exotic starships (Also requires changes in "PTSd Rewards Remixer.lua")
 ReactorSalvage = 		true				--false
+
+--Unlocks the special Discordant Interface terminals at Korvax Monoliths for buying Atlantid Multi-Tools during the "Leap in the Dark" mission instead of after completing "The Purge" and starting the Autophage missions
+AtlantidToolsEarlier =	true				--false
+DiscordantInterfaceCost =	36				--19	The amount of Atlantideum needed to charge the 3 glyph slots on Discordant Interface terminals at Korvax Monoliths. Must be paired with an edit in "PTSd Tech + Upgrade + Recipe + Blueprint cost Rebalance.lua"
 
 --This is the price paid in Nanites to buy a random chart/map or to trade to Travelers for a small gift
 SmallNaniteCost =		20					--15
@@ -23,8 +27,15 @@ MedTradeExpCost =		150000				--75000
 HighTradeExpCost =		300000				--150000
 
 --Adds a cost to opening the containers at crashed freighters
-CrashedContSubstance =	"STELLAR2"			--""			STELLAR2 is Chromatic Metal
+CrashedContSubstance =	"STELLAR2"			--""			Chromatic Metal
 CrashedContAmount =		10					--0
+
+--Adds a cost to using the Scanner Room on freighters
+ScannerRoomSubstance =	"NAV_DATA"			--""			Navigation Data
+ScannerRoomAmount =		3					--0
+
+--Adds a cost to claim a Pirate Dreadnought (cost is paid each time you begin the freighter exchange menu, not when you complete it like with other freighters)
+DreadnoughtFlatCost =	350000000			--0
 
 --WIP
 --Adds a cost to opening the sentinel weapon cabinets at Abandoned Camps
@@ -39,19 +50,20 @@ UpgToolCtoB =			4000				--10000
 UpgToolBtoA =			8000				--25000
 UpgToolAtoS =			16000				--50000
 
---Makes Emergency Broadcast Receivers for finding Derelict Freighters start out a little more expensive and continue increasing in price up until the eleventh daily purchase, instead of stopping at the fourth.
+--Makes Emergency Broadcast Receivers for finding Derelict Freighters start out a little more expensive and continue increasing in price up until the twelfth daily purchase, instead of stopping at the fourth.
 --Receiver prices reset each day
-FirstReceiverCost = 	8000000				--5000000
-SecondReceiverCost = 	16000000			--10000000
-ThirdReceiverCost = 	24000000			--20000000
-FourthReceiverCost = 	32000000			--30000000
-FifthReceiverCost = 	40000000			--30000000
-SixthReceiverCost = 	50000000			--30000000
-SeventhReceiverCost = 	60000000			--30000000
-EigthReceiverCost = 	70000000			--30000000
-NinthReceiverCost = 	80000000			--30000000
-TenthReceiverCost = 	90000000			--30000000
-EleventhReceiverCost = 	100000000			--30000000
+FirstReceiverCost = 	6000000				--5000000
+SecondReceiverCost = 	12000000			--10000000
+ThirdReceiverCost = 	16000000			--20000000
+FourthReceiverCost = 	20000000			--30000000
+FifthReceiverCost = 	25000000			--30000000
+SixthReceiverCost = 	30000000			--30000000
+SeventhReceiverCost = 	35000000			--30000000
+EigthReceiverCost = 	40000000			--30000000
+NinthReceiverCost = 	46000000			--30000000
+TenthReceiverCost = 	52000000			--30000000
+EleventhReceiverCost = 	58000000			--30000000
+TwelfthReceiverCost = 	64000000			--30000000
 --All Receivers after this one will have this same price
 
 --Pilot slot costs
@@ -232,6 +244,7 @@ NewReceiverCosts =
 		  <Property value="]]..NinthReceiverCost..[[" />
 		  <Property value="]]..TenthReceiverCost..[[" />
 		  <Property value="]]..EleventhReceiverCost..[[" />
+		  <Property value="]]..TwelfthReceiverCost..[[" />
         </Property>]]
 
 NewTravellerCost=
@@ -363,6 +376,29 @@ SalvageShuttleCost =
       </Property>
     </Property>]]
 
+AddDreadnoughtFlatCost =
+[[<Property value="GcCostTableEntry.xml">
+      <Property name="Id" value="C_DREAD_FLAT" />
+      <Property name="DisplayCost" value="True" />
+      <Property name="DontCharge" value="False" />
+      <Property name="HideOptionAndDisplayCostOnly" value="False" />
+      <Property name="DisplayOnlyCostIfCantAfford" value="False" />
+      <Property name="HideCostStringIfCanAfford" value="False" />
+      <Property name="RemoveOptionIfCantAfford" value="False" />
+      <Property name="InvertCanAffordOutcome" value="False" />
+      <Property name="MustAffordInCreative" value="True" />
+      <Property name="CommunityContributionValue" value="0" />
+      <Property name="CommunityContributionCapLocID" value="UI_COMMUNITY_CAP_REACHED" />
+      <Property name="CannotAffordOSDMsg" value="" />
+      <Property name="MissionMessageWhenCharged" value="" />
+      <Property name="Cost" value="GcCostMoney.xml">
+        <Property name="Cost" value="]]..DreadnoughtFlatCost..[[" />
+        <Property name="CostCurrency" value="GcCurrency.xml">
+          <Property name="Currency" value="Units" />
+        </Property>
+      </Property>
+    </Property>]]
+
 NMS_MOD_DEFINITION_CONTAINER = {
 ["MOD_FILENAME"]		= ModName..GameVersion..".pak",
 ["MOD_DESCRIPTION"]		= Description,
@@ -381,7 +417,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id","TECHFRAG_SM"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Cost", SmallNaniteCost},
@@ -389,7 +424,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id","TECHFRAG_MD"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Cost", MedNaniteCost},
@@ -397,7 +431,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id","TRADE_M_HIGH"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"MinimumValue", HighUnitCost},
@@ -405,7 +438,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id","C_FLT_TRADE_9",		"Cost", "GcCostMoney.xml"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Cost", LowTradeExpCost},
@@ -413,7 +445,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id","C_FLT_TRADE_10",		"Cost", "GcCostMoney.xml"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Cost", MedTradeExpCost},
@@ -421,7 +452,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id","C_FLT_TRADE_11",		"Cost", "GcCostMoney.xml"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Cost", HighTradeExpCost},
@@ -436,7 +466,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_CLASS_UPGRADE"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			{
@@ -448,7 +477,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_WEAP_UPGRADE"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			{
@@ -460,14 +488,12 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_ABAND_START"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			{
 				--["PRECEDING_FIRST"] = "TRUE",
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
 				["SPECIAL_KEY_WORDS"] = {"Id","C_PILOT_SLOT"},
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{800, FirstPilot},
@@ -485,7 +511,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_PET_SLOT"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			{
@@ -497,7 +522,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_INV_WEAP_C"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			{
@@ -509,7 +533,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_INV_WEAP_CR"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			--Remove the following 4 entries to keep ship inventory slot upgrades at the same price
@@ -522,7 +545,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_INV_SAL_CASH"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
 			{
@@ -534,9 +556,20 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "C_INV_SAL_CASHR"},
 				["PRECEDING_KEY_WORDS"] = {"Costs"},
-				["REPLACE_TYPE"] 		= "",
 				["REMOVE"] = "SECTION",
 			},
+			{
+				["PRECEDING_KEY_WORDS"] = {"GcCostTableEntry.xml"},
+				["ADD"] = AddDreadnoughtFlatCost,
+				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "C_MONO_NUB_OPEN"},
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Amount", DiscordantInterfaceCost},
+				}
+			}
 		}
 	},
 	{
@@ -550,6 +583,21 @@ NMS_MOD_DEFINITION_CONTAINER = {
 				{
 					{"SubstanceId", CrashedContSubstance},
 					{"Cost", CrashedContAmount},
+				}
+			},
+		}
+	},
+	{
+		["MBIN_FILE_SOURCE"] 	= {"MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PARTS/BUILDABLEPARTS/FREIGHTERBASE/ROOMS/SCANROOM/PARTS/FLOOR0/ENTITIES/SCANROOMINTERACTION.ENTITY.MBIN"},
+		["EXML_CHANGE_TABLE"] 	= 
+		{
+			{
+				["SPECIAL_KEY_WORDS"] = {"ActivationCost","GcInteractionActivationCost.xml"},
+				["REPLACE_TYPE"] = "",
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"SubstanceId", ScannerRoomSubstance},
+					{"Cost", ScannerRoomAmount},
 				}
 			},
 		}
@@ -629,6 +677,18 @@ if ReactorSalvage then
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Value", "No"},			--""
+				}
+			}
+end
+
+if AtlantidToolsEarlier then
+			ChangesToCostTable[#ChangesToCostTable+1] =
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id","C_MONO_NUB_ON"},
+				["PRECEDING_KEY_WORDS"] = {"GcCostMissionComplete.xml"},
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Cost", "ACT1_STEP12"},			--"MONO_NUB_DUMMY"
 				}
 			}
 end

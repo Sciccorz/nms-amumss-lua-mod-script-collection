@@ -48,7 +48,15 @@ local source_mbins = {
 	{
 		mbin = {'MODELS/PLANETS/BIOMES/HUGEPROPS/HUGEUW/HUGESTRANDS.SCENE.MBIN'},
 		cat  = 'PLANT',
-		node = { '_Strand_1' }
+		node = {
+			'_Strands_1LOD0',
+			'_Strands_2LOD0',
+			'_Strands_3LOD0',
+			'_Strands_4LOD0',
+			'_Strands_5LOD0',
+			'_Strands_7LOD0',
+			'_Strands_8LOD0'
+		}
 	},
 	{
 		mbin = {'MODELS/PLANETS/BIOMES/HUGEPROPS/HUGEUW/HUGESWIRLPLANT.SCENE.MBIN'},
@@ -85,8 +93,9 @@ local MBIN_CT = {
 		MBIN_FILE_SOURCE	= 'MODELS/PLANETS/BIOMES/COMMON/SHARED/ENTITIES/HUGEPLANT.ENTITY.MBIN',
 		EXML_CHANGE_TABLE	= {
 			{
-				PRECEDING_KEY_WORDS = 'GcDestructableComponentData.xml',
+				SPECIAL_KEY_WORDS	= {'Template', 'GcDestructableComponentData.xml'},
 				VALUE_CHANGE_TABLE 	= {
+					{'GivesReward',			'DE_PLANT_HUGE'},
 					{'DestroyForce',		2},
 					{'DestroyForceRadius',	5},
 					{'DestroyEffectTime',	4},
@@ -94,7 +103,7 @@ local MBIN_CT = {
 				}
 			},
 			{
-				PRECEDING_KEY_WORDS = 'GcShootableComponentData.xml',
+				SPECIAL_KEY_WORDS	= {'Template', 'GcShootableComponentData.xml'},
 				VALUE_CHANGE_TABLE 	= {
 					{'Health',		20000},
 				}
@@ -122,8 +131,9 @@ local MBIN_CT = {
 		MBIN_FILE_SOURCE	= 'MODELS/PLANETS/BIOMES/COMMON/SHARED/ENTITIES/HUGEROCK.ENTITY.MBIN',
 		EXML_CHANGE_TABLE	= {
 			{
-				PRECEDING_KEY_WORDS = 'GcDestructableComponentData.xml',
+				SPECIAL_KEY_WORDS	= {'Template', 'GcDestructableComponentData.xml'},
 				VALUE_CHANGE_TABLE 	= {
+					{'GivesReward',			'DE_ROCK_HUGE'},
 					{'DestroyForce',		2},
 					{'DestroyForceRadius',	5},
 					{'DestroyEffectTime',	4},
@@ -131,7 +141,7 @@ local MBIN_CT = {
 				}
 			},
 			{
-				PRECEDING_KEY_WORDS = 'GcShootableComponentData.xml',
+				SPECIAL_KEY_WORDS	= {'Template', 'GcShootableComponentData.xml'},
 				VALUE_CHANGE_TABLE 	= {
 					{'Health',		24000},
 					{'RequiredTech',''},
@@ -162,7 +172,7 @@ end
 NMS_MOD_DEFINITION_CONTAINER = {
 	MOD_FILENAME 		= '_MOD.lMonk.Huge Props Activated.pak',
 	MOD_AUTHOR			= 'lMonk',
-	NMS_VERSION			= '4.52',
+	NMS_VERSION			= '5.22',
 	MOD_DESCRIPTION		= mod_desc,
 	MODIFICATIONS 		= {{
 	MBIN_CHANGE_TABLE	= MBIN_CT

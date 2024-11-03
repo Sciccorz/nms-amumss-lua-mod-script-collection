@@ -10,7 +10,7 @@ local mod_desc = [[
    ROCKS/MEDIUM/MEDIUMROCK.SCENE.MBIN >> MEDIUM & ROCK
    FOLIAGE/MEDIUMPLANT.SCENE.MBIN     >> FOLIAGE & MEDIUM & PLANT
 
-  - The correct tag can match anything from any scene files across all
+  - A well-chosen tag can match anything from any scene file across all
    biomes (MODEL), to a single instance of one scene (VOLCANO).
   - solar_modifiers.biomes are modifiers for specific source files.
    They can match more than one source: LUSH will be applied to ALL lush biomes,
@@ -23,8 +23,6 @@ local mod_desc = [[
   - Other properties of GcObjectSpawnData.xml can be modded by adding a property's
    name to object_spawn_prop with a unique key, then adding tag modifiers for it.
 ]]-------------------------------------------------------------------------------------
-
-local mod_version = '2.13'
 
 --	Properties of [GcObjectSpawnData.xml] being modified
 local spawn_data = {
@@ -52,7 +50,7 @@ local solar_modifiers = {
 		{
 			biotg = 'LUSH',
 			flora = { -- applied to all LUSH sources
-				TREE		= {n=1.15,	x=2.4,	c=0.9},
+				TREE		= {n=1.15,	x=2.4,	c=0.9,	l=1.25},
 				BUBBLELUSH	= {n=1.15,	x=1.65,	f=2.6}
 			}
 		},
@@ -92,7 +90,8 @@ local solar_modifiers = {
 		{
 			biotg = 'FROZEN',
 			flora = {-- applied to all FROZEN sources
-				TREE 		= {n=1.15,	x=2.45,	c=0.8}
+				TREE 		= {n=1.15,	x=2.45,	c=0.8,	l=1.25},
+				LIVINGSHIP	= {r=-1,	l=1.02}
 			}
 		},
 		{
@@ -165,6 +164,13 @@ local solar_modifiers = {
 			flora = {
 				INTERACTIVE	= {n=0.48,	x=0.01,	c=1.1},
 			}
+		},
+		{
+			biotg = 'WATERCRYSTAL',
+			flora = {
+				CRYSTAL		= {x=0.9,	c=0.65, d=0.8, 	o=true},
+				LARGE		= {x=1.02,	o=true}
+			}
 		}
 	},
 	global_flora = {
@@ -172,15 +178,15 @@ local solar_modifiers = {
 		SPIRE		= {n=1.15,	x=1.3},
 		ROCK		= {n=1.2,	x=1.75},
 		CACTUS		= {n=1.1,	x=1.55},
-		TREE		= {n=1.15,	x=2.4,	l=1.75},
+		TREE		= {n=1.15,	x=2.4,	l=1.8},
 		SHROOM		= {n=1.05,	x=2.5},
 		FOLIAGE		= {n=1.1,	x=1.3},
 		FLOWERS		= {x=1.2,			f=1.4},
-		CROSS		= {n=0.95,	x=1.1,	f=2.0,	d=0.9,	l=1.55},	-- grass   (add fix with maximum value !?!)
-		LBOARD		= {n=0.95,	x=1.1,	f=1.8,	d=0.9,	l=1.55},	-- grass
-		LUSHGRASS	= {x=1.4,			f=1.6,	d=0.9,	l=1.55},	-- grass
-		BUBBLELUSH	= {x=1.15,			f=2.2,			l=1.55},	-- grass
-		TOXICGRASS	= {n=1.2,	x=1.6,	f=1.4,	w=0},				-- shrooms not grass!
+		CROSS		= {n=0.95,	x=1.1,	f=2.0,	d=0.9,	l=1.5},	-- grass   (add fix with maximum value !?!)
+		LBOARD		= {n=0.95,	x=1.1,	f=1.8,	d=0.9,	l=1.5},	-- grass
+		LUSHGRASS	= {x=1.4,			f=1.6,	d=0.9,	l=1.5},	-- grass
+		BUBBLELUSH	= {x=1.15,			f=2.2,			l=1.5},	-- grass
+		TOXICGRASS	= {n=1.2,	x=1.6,	f=1.4,	w=0},			-- shrooms not grass!
 		PLANT		= {n=0.94,	x=1.5},
 		TENDRIL		= {n=1.1,	x=1.55,	f=1.4},
 		BOULDER		= {n=1.1,	x=1.4},
@@ -193,7 +199,7 @@ local solar_modifiers = {
 		FIENDEGG	= {c=0.4},
 
 	--- global lod multiplier
-		SCENE		= {l=1.25},
+		SCENE		= {l=1.2},
 
 	---	skipped
 		LAVA		= {i=true},
@@ -212,15 +218,18 @@ local source_mbins = {
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BARREN/BARRENHQOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BARREN/BARRENINFESTEDOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BARREN/BARRENOBJECTSFULL.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BARREN/BARRENPEACOCKOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BARREN/BARRENROCKYOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BARREN/BARRENROCKYWEIRDOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/BURNT/BURNTOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/DEAD/DEADBIGPROPSOBJECTSFULL.MBIN',
-	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/DEAD/DEADOBJECTSDEAD.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/DEAD/FROZENDEADOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/DEAD/FROZENDEADWEIRDOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/DESOLATE/DESOLATEOBJECTSFULL.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FLORAL/FLORALOBJECTSFULL.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FLORAL/FLORALOBJECTSGRASS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FROZEN/FROZENALIENOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FROZEN/FROZENBIGPROPSOBJECTSFULL.MBIN',
-	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FROZEN/FROZENHQOBJECTSMID.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FROZEN/FROZENOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FROZEN/FROZENPILLAROBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/FROZEN/FROZENROCKYOBJECTS.MBIN',
@@ -231,6 +240,7 @@ local source_mbins = {
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/HUGEPROPS/HUGESCORCHED/HUGESCORCHOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/HUGEPROPS/HUGETOXIC/HUGETOXICOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/HUGEPROPS/HUGEUWPLANT/HUGEUWPLANTOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/IRRADIATED/IRRADIATEDOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/LAVA/LAVAOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/LUSH/LUSHBIGPROPSOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/LUSH/LUSHBUBBLEOBJECTS.MBIN',
@@ -242,6 +252,7 @@ local source_mbins = {
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/LUSH/LUSHROCKYWEIRDOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/LUSH/LUSHROOMAOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/LUSH/LUSHROOMBOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/NOXIOUS/NOXIOUSOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/OBJECTS/PLANT/BARREN.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/OBJECTS/PLANT/BARRENINFESTED.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/OBJECTS/PLANT/FROZEN.MBIN',
@@ -260,11 +271,13 @@ local source_mbins = {
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/RADIOACTIVE/RADIOBIGPROPSOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/RADIOACTIVE/RADIOSPIKECRYSTALSOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/RADIOACTIVE/RADIOSPIKEPOTATOOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/ROCKY/ROCKOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SCORCHED/SCORCHBIGPROPSOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SCORCHED/SCORCHCORALOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SCORCHED/SCORCHEDALIENOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SCORCHED/SCORCHEDOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SCORCHED/SCORCHEDSHIELDTREEOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SUBZERO/SUBZEROOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/SWAMP/SWAMPOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/TOXIC/TOXICBIGPROPSOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/TOXIC/TOXICEGGSMOONOBJECTS.MBIN',
@@ -273,6 +286,7 @@ local source_mbins = {
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/TOXIC/TOXICOBJECTSFULL.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/TOXIC/TOXICSPORESOBJECTS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/TOXIC/TOXICTENTACLESOBJECTS.MBIN',
+	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/UNDERWATER/UNDERWATERCRYSTALS.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/WEIRD/BEAMSTONE/BEAMSOBJECTSDEAD.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/WEIRD/BONESPIRE/BONESPIREOBJECTSDEAD.MBIN',
 	'METADATA/SIMULATION/SOLARSYSTEM/BIOMES/WEIRD/CONTOUR/CONTOUROBJECTSDEAD.MBIN',
@@ -313,7 +327,7 @@ end
 --	When parsing a full file, the header is stripped and a mock template is added
 --	@param exml: requires complete EXML sections in the nomral format
 --	* Does not handle commented lines!
-function ToLua(exml)
+local function ToLua(exml)
 	local function eval(val)
 		if val == 'True' then
 			return true
@@ -337,7 +351,7 @@ function ToLua(exml)
 			if close == '' then
 				-- open new property table
 				table.insert(st_node, parent)
-				node = {META = {att , val}}
+				node = {meta = {att , val}}
 
 				-- is_ord[#is_ord] == true when parent is an ordered (name) section
 				if is_ord[#is_ord] == true or att == 'value' then
@@ -372,7 +386,7 @@ end
 -- A Union All function for an ordered array of tables
 -- Returns a copy by-value. Repeating keys's values are overwritten.
 --	@param arr: A table of tables.
-function UnionTables(arr)
+local function UnionTables(arr)
 	local merged = {}
 	for _, tbl in ipairs(arr) do
 		for k, val in pairs(tbl) do
@@ -388,7 +402,7 @@ function UnionTables(arr)
 end
 --	Generate an EXML-tagged text from a lua table representation of exml class
 --	@param class: a lua2exml formatted table
-function ToExml(class)
+local function ToExml(class)
 	--	replace a boolean with its text equivalent (ignore otherwise)
 	--	@param b: any value
 	function bool(b)
@@ -405,10 +419,10 @@ function ToExml(class)
 			for _,v in ipairs(t) do self[#self+1] = v end
 		end
 		for key, cls in pairs(tlua) do
-			if key ~= 'META' then
+			if key ~= 'meta' then
 				exml[#exml+1] = '<Property '
-				if type(cls) == 'table' and cls.META then
-					local att, val = cls['META'][1], cls['META'][2]
+				if type(cls) == 'table' and cls.meta then
+					local att, val = cls['meta'][1], cls['meta'][2]
 					-- add and recurs for an inner table
 					if att == 'name' or att == 'value' then
 						exml:add({att, '="', val, '">'})
@@ -435,25 +449,25 @@ function ToExml(class)
 	-- check the table level structure and meta placement
 	-- add the needed layer for the recursion and handle multiple tables
 	local klen = len2(class)
-	if klen == 1 and class[1].META then
+	if klen == 1 and class[1].meta then
 		return exml_r(class)
-	elseif class.META and klen > 1 then
+	elseif class.meta and klen > 1 then
 		return exml_r( {class} )
 	-- concatenate unrelated exml sections, instead of nested inside each other
 	elseif type(class[1]) == 'table' and klen > 1 then
 		local T = {}
 		for _, tb in pairs(class) do
-			T[#T+1] = exml_r((tb.META and klen > 1) and {tb} or tb)
+			T[#T+1] = exml_r((tb.meta and klen > 1) and {tb} or tb)
 		end
 		return table.concat(T)
 	end
 end
 
 --	Adds the xml header and data template
---	Uses the contained template META if found (instead of the received variable)
+--	Uses the contained template meta if found (instead of the received variable)
 --	@param data: a lua2exml formatted table
 --	@param template: an nms file template string
-function FileWrapping(data, template)
+local function FileWrapping(data, template)
 	local wrapper = '<Data template="%s">%s</Data>'
 	if type(data) == 'string' then
 		return string.format(wrapper, template, data)
@@ -461,14 +475,16 @@ function FileWrapping(data, template)
 	-- remove the extra table added by ToLua
 	if data.template then data = data.template end
 	-- table loaded from file
-	if data.META[1] == 'template' then
+	if data.meta[1] == 'template' then
 		-- strip mock template
-		local txt_data = ToExml(data):sub(#data.META[2] + 36, -12)
-		return string.format(wrapper, data.META[2], txt_data)
+		local txt_data = ToExml(data):sub(#data.meta[2] + 36, -12)
+		return string.format(wrapper, data.meta[2], txt_data)
 	else
 		return string.format(wrapper, template, ToExml(data))
 	end
 end
+-------------------------------------------------------------------------------
+
 --	sum scale values and counters for averaging
 function spawn_data:addValues(tag)
 	for k, val in pairs(tag) do
@@ -557,18 +573,35 @@ local function HasMod(k)
 end
 
 --	main work.
---	get a merged tags list for a biome and apply modifiers for every spawn
---	* Receives the converted exml file from amumss
-local function ProcessBiome(exml, path)
+--	Receives the converted exml file from amumss
+local function ProcessBiome(exml, mbin)
+	local function getHighVariant(qvars)
+	-- Select the highest GcObjectSpawnDataVariant (between LOW STANDARD ULTRA)
+	-- Add ULTRA section if flagged and return it for editing
+		for _,qv in ipairs(qvars) do
+			qvars.meta[qv.ID] = qv
+		end
+		local qhigh = qvars.meta.STANDARD
+		if qvars.meta.ULTRA then
+			qhigh = qvars.meta.ULTRA
+		end
+		if not qvars.meta.ULTRA and spawn_data.ultra then
+			-- add ultra quality
+			qhigh			= UnionTables({qhigh})
+			qhigh.ID		= 'ULTRA'
+			qvars[#qvars+1] = qhigh
+		end
+		return qhigh
+	end
 	local solar_biome = ToLua(exml)
 
-	local biomeflora, biomeflags = solar_modifiers:getModifiers(path)
+	local biomeflora, biomeflags = solar_modifiers:getModifiers(mbin)
 	-- merged, biome-specific modifiers table
 	local workflora	= UnionTables({solar_modifiers.global_flora, biomeflora})
 	-- merged, biome-specific flags table
 	local workflags	= UnionTables({solar_modifiers.global_flags, biomeflags})
 	for key, objs in pairs(solar_biome.template.Objects) do
-		if key ~= 'SelectableObjects' and key ~= 'META' then
+		if key ~= 'SelectableObjects' and key ~= 'Creatures' and key ~= 'meta' then
 			for _, spn in ipairs(objs) do
 				spawn_data:averageScales(spn.Resource.Filename, workflora)
 				if HasMod('n') then spn.MinScale		  = spn.MinScale * spawn_data.res.n end
@@ -576,33 +609,27 @@ local function ProcessBiome(exml, path)
 				if HasMod('a') then spn.MaxAngle		  = spn.MaxAngle + spawn_data.res.a end
 				if HasMod('w') then spn.ShearWindStrength = spn.ShearWindStrength * spawn_data.res.w end
 
-				-- loop thourgh GcObjectSpawnDataVariant objects
-				for _,qvr in ipairs(spn.QualityVariants) do
-					if HasMod('d') then
-						qvr.FlatDensity  = qvr.FlatDensity * spawn_data.res.d
-						qvr.SlopeDensity = qvr.FlatDensity * 1.1
-					end
-					if HasMod('f') then
-						qvr.FadeOutStartDistance = qvr.FadeOutStartDistance * spawn_data.res.f
-						qvr.FadeOutEndDistance	 = qvr.FadeOutStartDistance + 20
-					end
-					if HasMod('c') then qvr.Coverage = qvr.Coverage * spawn_data.res.c end
-
-					lod = HasMod('l') and spawn_data.res.l or 1.25 -- default overwritten by SCENE global
-					for i=2, #qvr.LodDistances do
-						qvr.LodDistances[i].value = qvr.LodDistances[i].value * lod
-					end
-					if HasMod('r') then
-						qvr.MaxRegionRadius = qvr.MaxRegionRadius + spawn_data.res.r
-					else
-						mr = tonumber(qvr.MaxRegionRadius)
-						qvr.MaxRegionRadius = qvr.MaxRegionRadius + ((mr < 15 and mr > 6) and 1 or 4)
-					end
+				-- edit GcObjectSpawnDataVariant
+				local qvr = getHighVariant(spn.QualityVariants)
+				if HasMod('d') then
+					qvr.FlatDensity  = qvr.FlatDensity * spawn_data.res.d
+					qvr.SlopeDensity = qvr.FlatDensity * 1.1
 				end
-				-- add ultra quality (duplicates standard)
-				if #spn.QualityVariants == 1 and spawn_data.ultra then
-					spn.QualityVariants[2]    = UnionTables({spn.QualityVariants[1]})
-					spn.QualityVariants[2].ID = 'ULTRA'
+				if HasMod('f') then
+					qvr.FadeOutStartDistance = qvr.FadeOutStartDistance * spawn_data.res.f
+					qvr.FadeOutEndDistance	 = qvr.FadeOutStartDistance + 20
+				end
+				if HasMod('c') then qvr.Coverage = qvr.Coverage * spawn_data.res.c end
+
+				lod = HasMod('l') and spawn_data.res.l or 1.2 -- default overwritten by SCENE global
+				for i=2, #qvr.LodDistances do
+					qvr.LodDistances[i].value = qvr.LodDistances[i].value * lod
+				end
+				if HasMod('r') then
+					qvr.MaxRegionRadius = qvr.MaxRegionRadius + spawn_data.res.r
+				else
+					mr = tonumber(qvr.MaxRegionRadius)
+					qvr.MaxRegionRadius = qvr.MaxRegionRadius + ((mr < 15 and mr > 6) and 1 or 4)
 				end
 				--	loop through boolean flags
 				spawn_data:getFlags(spn.Resource.Filename, workflags)
@@ -616,25 +643,26 @@ local function ProcessBiome(exml, path)
 end
 
 -----------------------------------------------------------------------------------------
-ProcessExmlData = nil -- to silence unused_variable
-function ProcessExmlData(arg) -- called by AMUMSS
+ProcessRawExml = nil -- to silence unused_variable
+function ProcessRawExml(the_index) -- called by AMUMSS
 	local T = {}
-	for i, path in ipairs(source_mbins) do
-		T[path] = ProcessBiome(arg[i], path)
+	for _,mbin in ipairs(source_mbins) do
+		local norm_path	= NormalizePath(mbin, true)
+		T[norm_path]	= ProcessBiome(table.concat(the_index.ModdedEXMLs[norm_path]), mbin)
 	end
 	return T
 end
 
 NMS_MOD_DEFINITION_CONTAINER = {
-	MOD_FILENAME 		= '_MOD.lMonk.large flora.'..mod_version..'.pak',
+	MOD_FILENAME 		= '_MOD.lMonk.large flora.pak',
 	MOD_AUTHOR			= 'lMonk',
-	NMS_VERSION			= '4.65',
+	NMS_VERSION			= '5.20',
 	MOD_DESCRIPTION		= mod_desc,
 	AMUMSS_SUPPRESS_MSG	= 'MULTIPLE_STATEMENTS',
 	MODIFICATIONS 		= {{
 	MBIN_CHANGE_TABLE	= {
 	{
 		MBIN_FILE_SOURCE = source_mbins,
-		EXML_DATA		 = { "ProcessExmlData", source_mbins }
+		EXT_FUNC		 = { 'ProcessRawExml' }
 	}
 }}}}

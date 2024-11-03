@@ -1,20 +1,20 @@
 ModName = "PTSd Settlement Rewards"
-GameVersion = "4_41"
+GameVersion = "5_11"
 Description = "Rebalances settlement produced items by race & wealth, Increases cap on stored settlement rewards, and can optionally change settlement timers"
 
 --Multiplier to apply to the Max Production cap and Production StatProductivityContributionModifier
 --MaxProductionCapMult = 					1						--Multiplier to apply to the vanilla cap for Production of 1,000,000 units per day		(Changing this has side effects, avoid for now)
-ExtraDebtMult =							1						--Extra Multiplier to apply to the DailyDebtPaymentModifier, which if left at 1 will result in a DailyDebtPaymentModifier that is 2x whatever the max Production Cap is.
+DebtMult =								1/0.3					--Multiplier to apply to the DailyDebtPaymentModifier, increasing this speeds up how quickly debt is lowered. Multiplied by the inverse of the multiplier applied to ProductionCycleDurationInSeconds to keep the debt repayment rate roughly at vanilla speed.
 
 ProductionCycleMult =					0.3						--Multiplier to apply to the vanilla ProductionCycleDurationInSeconds of 72000 (20 hours), determines how often the settlement outputs its products
-ProductMult = 							1*0.3*1.2				--Multiplier to apply to the vanilla "default" amount of Products made per day of 50.		In practice this seems to vary from around 9 ~ 29 based on Settlement Pop, Happiness, Production.
+ProductMult = 							1*0.3					--Multiplier to apply to the vanilla "default" amount of Products made per day of 50.		In practice this seems to vary from around 9 ~ 29 based on Settlement Pop, Happiness, Production.
 SubstanceMult =							4*0.3					--Multiplier to apply to the vanilla "default" amount of Substances made per day of 500.	In practice this seems to vary from around 90 ~ 290 based on Settlement Pop, Happiness, Production.
 
 --WIP
 --ProductionContributionModifier =		30						--30 Not quite sure how this works, supposedly controls how strongly each settlement stat affects the final item output rate in some way, but changing it gives strange results
 --DebtContributionModifier =				1						--0		Replacer for StatProductivityContributionModifiers for Debt
 
-MaxProductionSlotUnits =				9999					--Vanilla cap is 999, is probably how many items can be "stocked" in the settlement waiting for you to come pick them up
+MaxProductionSlotUnits =				3600					--Vanilla cap is 999, is how many items can be "stocked" in the settlement waiting for you to come pick them up
 
 ConstructionTimeMultiplier = 			1						--Multiplier to apply to all Construction Timers, which typically range from 20min ~ 120min. Use values less than 0 to reduce timers.
 JudgementTimeMultiplier = 				1						--Multiplier to apply to the Min and Max wait time between Settlment decisions, which is normally between 15min ~ 120min. Use values less than 0 to reduce timers.
@@ -30,8 +30,8 @@ ProducedItemChanges =
 		{	--Vanilla item			Replacement item
 			{"PLANT_POOP",			"LAUNCHSUB"},			--Faecium		20 x 10,		Di-Hydrogen		34 x 10
 			{"PLANT_WATER",			"ROCKETSUB"},			--Kelp Sac		41 x 10,		Tritium			6 x 10		(36 x 10)
-			{"PLANT_CAVE",			"FOOD_R_PASTRY"},		--Marrow Bulb	41 x 10,		Pastry			24000
-			{"PLANT_LUSH",			"ALLOY5"},				--Star Bulb		32 x 10,		Magno-Gold		25000
+			{"PLANT_CAVE",			"FOOD_R_CAKEMIX"},		--Marrow Bulb	41 x 10,		Cake Batter		38000		(48260)
+			{"PLANT_LUSH",			"REACTION2"},			--Star Bulb		32 x 10,		Enriched Carbon	50000
 			{"TRA_CURIO2",			"ASTEROID3"}			--Geknip		20625,			Platinum		505 x 10
 		}
 	},
@@ -128,7 +128,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 					{
 						--[[{
 							["PRECEDING_KEY_WORDS"] = {"StatsMaxValues"},
-							["REPLACE_TYPE"] 		= "",
 							["MATH_OPERATION"] = "*", 
 							["VALUE_CHANGE_TABLE"] 	=
 							{
@@ -137,7 +136,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 						},
 						{
 							["PRECEDING_KEY_WORDS"] = {"StatProductivityContributionModifiers"},
-							["REPLACE_TYPE"] 		= "",
 							["MATH_OPERATION"] = "/", 
 							["VALUE_CHANGE_TABLE"] 	=
 							{
@@ -145,13 +143,11 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},]]
 						{
-							["PRECEDING_KEY_WORDS"] = {""},
-							["REPLACE_TYPE"] 		= "",
 							["MATH_OPERATION"] = "*",
 							["INTEGER_TO_FLOAT"] = "PRESERVE",
 							["VALUE_CHANGE_TABLE"] 	=
 							{
-								{"DailyDebtPaymentModifier",	ExtraDebtMult},					--Sometimes this seems like it should be doubled again, to be 4x Production cap in order to closely match expected time?
+								{"DailyDebtPaymentModifier",	DebtMult},					--Sometimes this seems like it should be doubled again, to be 4x Production cap in order to closely match expected time?
 								{"ProductionCycleDurationInSeconds",	ProductionCycleMult},
 								{"ProductUnitsPerCycleRateModifier",	ProductMult},
 								{"SubstanceUnitsPerCycleRateModifier",	SubstanceMult},
@@ -160,9 +156,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = {""},
-							["REPLACE_TYPE"] 		= "",
-							["MATH_OPERATION"] = "", 
 							["VALUE_CHANGE_TABLE"] 	=
 							{
 								{"MaxProductionSlotUnits",	MaxProductionSlotUnits},
@@ -173,8 +166,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 						--[[
 						{
 							["PRECEDING_KEY_WORDS"] = {"StatProductivityContributionModifiers"},
-							["REPLACE_TYPE"] 		= "",
-							["MATH_OPERATION"] = "", 
 							["VALUE_CHANGE_TABLE"] 	=
 							{
 								--{"Production",	ProductionContributionModifier},
@@ -195,7 +186,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 					}
 				},
 				{
-					["MBIN_FILE_SOURCE"] 	= {"METADATA\SIMULATION\MISSIONS\SENTINELSETTLEMENTMISSIONTABLE.MBIN"},
+					["MBIN_FILE_SOURCE"] 	= {"METADATA\SIMULATION\MISSIONS\TABLES\SENTINELSETTLEMENTMISSIONTABLE.MBIN"},
 					["EXML_CHANGE_TABLE"] 	= 
 					{
 						{
@@ -223,8 +214,6 @@ for i = 1, #ProducedItemChanges do
 
 			ChangesToProducedItems[#ChangesToProducedItems+1] =
 			{
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["PRECEDING_KEY_WORDS"] = {SettlementType},
 				["VALUE_MATCH"] 	= OldItem,
 				["VALUE_CHANGE_TABLE"] 	=

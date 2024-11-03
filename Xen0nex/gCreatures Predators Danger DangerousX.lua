@@ -2,20 +2,33 @@ Author = "Gumsk"		--Edited by Xenonex
 ModName = "gCreatures Predators"
 ModNameSub = "Danger DangerousX"
 BaseDescription = "More aggressive and dangerous predators"
-GameVersion = "441"
+GameVersion = "5_12"
 ModVersion = "a"
 FileSource1 = "GCCREATUREGLOBALS.MBIN"
 FileSource2 = "MODELS\PLANETS\CREATURES\SANDWORMMINI\SANDWORMMINI\ENTITIES\DATA.ENTITY.MBIN"
 FileSource3 = "MODELS\PLANETS\CREATURES\FISH\GRABBYPLANT\ENTITIES\GRABBYPLANT.ENTITY.MBIN"
+FileSource4 = "MODELS\COMMON\ROBOTS\WALKING_BUILDING\WALKINGBUILDING.ENTITY.MBIN"
 
 --This section added by Xen0nex
-WormHealthMult = 3							--Multiplier to the Default 2600	(The big "Hungering Tendrils" / "Titan Worms" on infested planets)
 EyeballHealthMult = 6						--Multiplier to the Default 1600	(The underwater Eyeball monster / "Abyssal Horror")
+WormHealthMult = 3							--Multiplier to the Default 2600	(The big "Hungering Tendrils" / "Titan Worms" on infested planets)
+GroundWormSpawnMin = 3						--Default 3		(The same "Hungering Tendrils" as above)
+GroundWormSpawnMax = 5						--Default 3
+
+BugQueenHealth = 64000						--Default 32000		(The Vile Queen boss bug)
+QueenHealthLevelMul = 2						--Default 1.5
+BugQueenSpitCount = 36						--Default 12		How many shots of spit are fired with each attack
+BugQueenSpitRadius = 18						--Default 15		This seems be how closely the shots of spit are grouped together
+BugQueenSpitballSpeed = 8					--Default 8			This is the speed at which they are initially shot upwards into the air, so higher value means it takes longer for it actually hit the ground
+BugQueenSpitballExplosionRadius = 4.2		--Default 2.8
+BugFiendHealth = 2000						--Default 700		(Likely the smaller helpers for the The Vile Queen boss bug)
 
 CreatureSmallHealth = 500					--Default 200
 CreatureMedHealth = 2100					--Default 1400
 CreatureLargeHealth = 3600					--Default 2800
 CreatureHugeHealth = 5400					--Default 3600
+
+WalkBuildingType = "WALKINGBUILDING"		--"CREATURE"		Sets the damage multipliers for various weapons vs this target. PTSd adds a custom "WALKINGBUILDING" type in PTSd Weapons Rebalance.lua
 
 --Original section below
 SharkAttackSpeed = 15						--Default 10
@@ -56,32 +69,33 @@ MiniDroneShotDelay = 0.25					--Default 0.35
 MiniDroneShotMaxAngle = 15					--Default 10
 FiendsCanAttack = "True"					--Default True
 FiendOnscreenMarkers = "False"				--Default True
-FiendHealth = 1500							--Default 1000
+FiendHealth = 2300							--Default 1000
 FiendPerceptionDistance = 80				--Default 60
 FiendAggroTime = 30							--Default 45
-FiendMaxEngaged = 8							--Default 6
-FiendMaxAttackers = 4						--Default 2
+FiendMaxEngaged = 9							--Default 6
+FiendMaxAttackers = 6						--Default 2
 FiendMaxVerticalForPounce = 0.5				--Default 0.3
 FiendZigZagSpeed = 0						--Default 0
 FiendZigZagStrength = 0						--Default 0
 FiendEggsToUnlockSpit = 0					--Default 0
-MaxFiendsToSpawn = 8						--Default 6
+MaxFiendsToSpawn = 9						--Default 6
+MaxFiendsToSpawnCarnage = 12				--Default 10		Added by Xen0nex
 FiendMinSpawnTime = 0.2						--Default 0.25
 FiendMaxSpawnTime = 2.3						--Default 3
 FiendAggroIncreaseDamageEgg = 1				--Default 1
 FiendAggroIncreaseDestroyEgg = 2			--Default 1
-FiendAggroDecreasePerSpawn = 0.1			--Default 0.1
-FiendCritAreaSize = 0.15					--Default 0.15
+FiendAggroDecreasePerSpawn = 0.05			--Default 0.1
+FiendCritAreaSize = 0.1						--Default 0.15
 FiendDistToConsiderTargetSwtich = 10		--Default 10
 FiendDistReduceForBeingShot = 70			--Default 70
 FiendBeingShotMemoryTime = 10				--Default 10
 MaxFishFiends = 14							--Default 10
 FishFiendSmallHealth = 600					--Default 400
-FishFiendBigHealth = 18000					--Default 9000		(12000)
+FishFiendBigHealth = 18000					--Default 9000		(12000)		Added by Xen0nex
 FishFiendSmallBoostStrength = 14			--Default 10
 FishFiendSmallBoostTime = 0.7				--Default 0.5
 FishFiendSmallScale = 0.3					--Default 0.3
-FishFiendBigBoostStrength = 6				--Default 4			(5)
+FishFiendBigBoostStrength = 6				--Default 4			(5)			Added by Xen0nex
 FishFiendBigBoostTime = 2					--Default 1
 FishFiendBigScale = 4						--Default 3
 PredatorSpeedMultiplier = 1.3				--Default 1.1
@@ -99,12 +113,23 @@ NMS_MOD_DEFINITION_CONTAINER = {
 					["EXML_CHANGE_TABLE"] = {
 						{
 							["PRECEDING_KEY_WORDS"] = {""},
+							["INTEGER_TO_FLOAT"] = "FORCE",
 							["VALUE_CHANGE_TABLE"] = {
 								--These added by Xen0nex
+								{"GroundWormSpawnMin", GroundWormSpawnMin},
+								{"GroundWormSpawnMax", GroundWormSpawnMax},
+								{"BugQueenHealth", BugQueenHealth},
+								{"BugQueenSpitCount", BugQueenSpitCount},
+								{"BugQueenSpitRadius", BugQueenSpitRadius},
+								{"BugQueenSpitballSpeed", BugQueenSpitballSpeed},
+								{"BugQueenSpitballExplosionRadius", BugQueenSpitballExplosionRadius},
+								{"BugFiendHealth", BugFiendHealth},
+								{"QueenHealthLevelMul", QueenHealthLevelMul},
 								{"CreatureSmallHealth", CreatureSmallHealth},
 								{"CreatureMedHealth", CreatureMedHealth},
 								{"CreatureLargeHealth", CreatureLargeHealth},
 								{"CreatureHugeHealth", CreatureHugeHealth},
+								{"MaxFiendsToSpawnCarnage", MaxFiendsToSpawnCarnage},
 								{"FishFiendBigHealth", FishFiendBigHealth},
 								{"FishFiendBigBoostTime", FishFiendBigBoostTime},
 								
@@ -200,6 +225,19 @@ NMS_MOD_DEFINITION_CONTAINER = {
 							["VALUE_CHANGE_TABLE"] = {
 								{"Health", EyeballHealthMult},
 							},
+						},
+					},
+				},
+				{
+					["MBIN_FILE_SOURCE"] = FileSource4,
+					["EXML_CHANGE_TABLE"] = {
+						{
+							["REPLACE_TYPE"] 		= "ONCE",
+							["VALUE_MATCH"]         = "CREATURE", 
+							["VALUE_CHANGE_TABLE"] 	=
+							{
+								{"DamageMultiplier", WalkBuildingType},
+							}
 						},
 					},
 				},

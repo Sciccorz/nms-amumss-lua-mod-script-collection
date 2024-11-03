@@ -5,7 +5,7 @@ METADATA_MOD_NAME       = "ProjectApollo"
 METADATA_MOD_AUTHOR     = "FriendlyFirePL"
 METADATA_LUA_AUTHOR     = "FriendlyFirePL"
 METADATA_MOD_MODULE     = "REALITY_REWARDS"
-METADATA_NMS_VERSION    = "465"
+METADATA_NMS_VERSION    = "DEV8"
 METADATA_MOD_DESC       = "Project Apollo: Lost in Time. Module for reward table functionality. Modifies METADATA\\REALITY\\TABLES\\REWARDTABLE.MBIN."
 
 
@@ -22,7 +22,7 @@ NMS_MOD_DEFINITION_CONTAINER =
     ["MOD_AUTHOR"]		    = METADATA_MOD_AUTHOR,
     ["LUA_AUTHOR"]		    = METADATA_LUA_AUTHOR,
     ["NMS_VERSION"]		    = METADATA_NMS_VERSION,
-    ["MOD_DESCRIPTION"]   = METADATA_MOD_DESC,
+    ["MOD_DESCRIPTION"]     = METADATA_MOD_DESC,
     
     ["MODIFICATIONS"]   =
     {
@@ -33,6 +33,11 @@ NMS_MOD_DEFINITION_CONTAINER =
                     ["MBIN_FILE_SOURCE"] = FILE_REALITY_REWARDTABLE,
                     ["EXML_CHANGE_TABLE"] =
                     {
+                        -- reward: multitool scanner blueprint silent
+                        {   ["SKW"] = {"Id","R_BOBBLE_APOLLO",},    ["SEC_SAVE_TO"] = "SEC_REWARD_BPS",                                 },
+                        {   ["SEC_EDIT"] = "SEC_REWARD_BPS",        ["VCT"] = {{"Id","RD_BLUEPRINT",},{"TechId","TECH_SCANNER",},},     },
+                        {   ["PKW"] = "GenericTable",               ["SEC_ADD_NAMED"] = "SEC_REWARD_BPS",                               },
+                        
                         -- reward: open new research tree
                         {   ["SKW"] = {"Id","TREE_BASICS",},        ["SEC_SAVE_TO"] = "SEC_REWARD_TREE",                                },
                         {   ["SEC_EDIT"] = "SEC_REWARD_TREE",       ["VCT"] = {{"Id","R_SHIPTREE",},{"UnlockableItemTree","Test",},},   },

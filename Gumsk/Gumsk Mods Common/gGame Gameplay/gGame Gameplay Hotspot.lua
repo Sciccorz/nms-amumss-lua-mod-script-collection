@@ -2,7 +2,7 @@ Author = "Gumsk"
 ModName = "gGame Gameplay"
 ModNameSub = "Hotspot"
 BaseDescription = "Various modifications to gameplay globals"
-GameVersion = "470"
+GameVersion = "5.2.0.0"
 ModVersion = "a"
 FileSource1 = "GCGAMEPLAYGLOBALS.GLOBAL.MBIN"
 
@@ -20,10 +20,11 @@ NMS_MOD_DEFINITION_CONTAINER = {
 
 				--Scanning
 						{
-							["INTEGER_TO_FLOAT"] = "FORCE",
+							INTEGER_TO_FLOAT = "FORCE",
 							VALUE_CHANGE_TABLE = {
 								{"SurveyMaxDistance",2000},							--400; How far away the scanner can detect hotspots, in u. Maximum is about 1300, but over 1000 is unreliable.
 								{"SurveySonarMinPulseSpeed",-2.4},					--0.4; Frequency for sweeps or pings of the hotspot scanner. Lower is slower.
+                --{"SurveyBeginScanPercentage",1.0},  --0.01
 							},
 						},
 					},

@@ -5,31 +5,114 @@ MaxProductQuantity=99999
 MinSubstanceQuantity=99999
 MaxSubstanceQuantity=99999
 
---DO NOT EDIT THIS SECTION
-
-ProductSection = [[
-<Property name="AlwaysPresentProducts">
-</Property>
-]]
-SubstanceSection = [[
-<Property name="AlwaysPresentSubstances">
-</Property>
-]]
 
 --YOU CAN EDIT THIS SECTION, IF YOU WANT TO UPGRADE PRODUCT & SUBSTANCE LIST
 Products = 
 [[
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="CASING" />
+          <Property name="Value" value="TRA_COMMODITY1" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="NANOTUBES" />
+          <Property name="Value" value="TRA_COMMODITY2" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="CARBON_SEAL" />
+          <Property name="Value" value="TRA_COMMODITY3" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="MICROCHIP" />
+          <Property name="Value" value="TRA_COMMODITY4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_COMMODITY5" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_EXOTICS1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_EXOTICS2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_EXOTICS3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_EXOTICS4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_EXOTICS5" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ALLOY1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ALLOY2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ALLOY3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ALLOY4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ALLOY5" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ENERGY1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ENERGY2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ENERGY3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ENERGY4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_ENERGY5" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_MINERALS1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_MINERALS2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_MINERALS3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_MINERALS4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_MINERALS5" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_COMPONENT1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_COMPONENT2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_COMPONENT3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_COMPONENT4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_COMPONENT5" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_TECH1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_TECH2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_TECH3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_TECH4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="TRA_TECH5" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="PRODFUEL1" />
@@ -53,6 +136,9 @@ Products =
           <Property name="Value" value="MAGNET" />
         </Property>
         <Property value="NMSString0x10.xml">
+          <Property name="Value" value="MECH_PROD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
           <Property name="Value" value="COMPUTER" />
         </Property>
         <Property value="NMSString0x10.xml">
@@ -60,6 +146,18 @@ Products =
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="TECH_COMP" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="CASING" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="NANOTUBES" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="CARBON_SEAL" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="MICROCHIP" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="JELLY" />
@@ -93,6 +191,15 @@ Products =
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="WALKER_PROD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="WALKER_PROD_2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="WALKER_PROD_3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="WALKER_PROD_4" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="BIO" />
@@ -1112,6 +1219,9 @@ Products =
           <Property name="Value" value="DROPS_COCKH" />
         </Property>
         <Property value="NMSString0x10.xml">
+          <Property name="Value" value="DROPS_COCKS13" />
+        </Property>
+        <Property value="NMSString0x10.xml">
           <Property name="Value" value="DROPS_ENGIA" />
         </Property>
         <Property value="NMSString0x10.xml">
@@ -1131,6 +1241,9 @@ Products =
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="DROPS_ENGIC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="DROPS_ENGIS13" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="DROPS_WINGEMP" />
@@ -1493,6 +1606,9 @@ Products =
           <Property name="Value" value="DROPS_WING2" />
         </Property>
         <Property value="NMSString0x10.xml">
+          <Property name="Value" value="DROPS_WINGS13" />
+        </Property>
+        <Property value="NMSString0x10.xml">
           <Property name="Value" value="SCIEN_COCKAA" />
         </Property>
         <Property value="NMSString0x10.xml">
@@ -1614,6 +1730,123 @@ Products =
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="SCIEN_WINGT_I" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_BODYA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_BODYB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_BODYC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_BODYD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_BODYE" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_BODYF" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_SAILA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_SAILB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_SAILC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGAA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGAB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGAC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGAD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGAE" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGBA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGBB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGBC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGBD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGBE" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGCA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGCB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGCC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGCD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGCE" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGDA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGDB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGDC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGDD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGDE" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGEA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGEB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGEC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGED" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGEE" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGFA" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGFB" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGFC" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGFD" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="SAIL_WINGFE" />
         </Property>
 ]]
 Substances = 
@@ -1787,9 +2020,6 @@ Substances =
           <Property name="Value" value="SPACEGUNK5" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="BUI_SCRAP" />
-        </Property>
-        <Property value="NMSString0x10.xml">
           <Property name="Value" value="SPECIAL_POOP" />
         </Property>
         <Property value="NMSString0x10.xml">
@@ -1800,6 +2030,9 @@ Substances =
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="AF_METAL" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="BUI_SCRAP" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="WORMDUST" />
@@ -2360,18 +2593,6 @@ ShipTechSpecialist =
 VehicleTechSpecialist = 
 [[
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXO_ENG1" />
-        </Property>
-        <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXO_ENG2" />
-        </Property>
-        <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXO_ENG3" />
-        </Property>
-        <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXO_ENG4" />
-        </Property>
-        <Property value="NMSString0x10.xml">
           <Property name="Value" value="U_EXOBOOST1" />
         </Property>
         <Property value="NMSString0x10.xml">
@@ -2382,6 +2603,18 @@ VehicleTechSpecialist =
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="U_EXOBOOST4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_EXOGUN1" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_EXOGUN2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_EXOGUN3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_EXOGUN4" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="U_EXOLAS1" />
@@ -2396,16 +2629,16 @@ VehicleTechSpecialist =
           <Property name="Value" value="U_EXOLAS4" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXOGUN1" />
+          <Property name="Value" value="U_EXO_ENG1" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXOGUN2" />
+          <Property name="Value" value="U_EXO_ENG2" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXOGUN3" />
+          <Property name="Value" value="U_EXO_ENG3" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_EXOGUN4" />
+          <Property name="Value" value="U_EXO_ENG4" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="U_EXO_SUB1" />
@@ -2432,13 +2665,22 @@ VehicleTechSpecialist =
           <Property name="Value" value="U_EXO_SUBGUN4" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_MECH_ENG2" />
+          <Property name="Value" value="U_MECHFLAME2" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_MECH_ENG3" />
+          <Property name="Value" value="U_MECHFLAME3" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_MECH_ENG4" />
+          <Property name="Value" value="U_MECHFLAME4" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_MECHGUN2" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_MECHGUN3" />
+        </Property>
+        <Property value="NMSString0x10.xml">
+          <Property name="Value" value="U_MECHGUN4" />
         </Property>
         <Property value="NMSString0x10.xml">
           <Property name="Value" value="U_MECHLAS2" />
@@ -2450,13 +2692,13 @@ VehicleTechSpecialist =
           <Property name="Value" value="U_MECHLAS4" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_MECHGUN2" />
+          <Property name="Value" value="U_MECH_ENG2" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_MECHGUN3" />
+          <Property name="Value" value="U_MECH_ENG3" />
         </Property>
         <Property value="NMSString0x10.xml">
-          <Property name="Value" value="U_MECHGUN4" />
+          <Property name="Value" value="U_MECH_ENG4" />
         </Property>
 ]]
 --EDITABLE SECTION ENDS HERE
@@ -2465,8 +2707,8 @@ NMS_MOD_DEFINITION_CONTAINER =
 {
   ["MOD_FILENAME"] = "NotAnotherTradeMod.pak",
   ["MOD_AUTHOR"] = "MasterNetra & musty123",
-  ["LUA_AUTHOR"] = "MasterNetra & musty123",
-  ["NMS_VERSION"] = "4.71",
+  ["LUA_AUTHOR"] = "Babscoole & MasterNetra",
+  ["NMS_VERSION"] = "5.03",
   ["MOD_DESCRIPTION"] = "This mod adds the most of the items in game to the space station vendors.(Less Food Version)",
   ["MODIFICATIONS"] =
   {
@@ -2480,272 +2722,133 @@ NMS_MOD_DEFINITION_CONTAINER =
           {
             --Remove all optional products & substances found in shops.
             {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist","OptionalProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist","OptionalSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
+              ["PRECEDING_KEY_WORDS"] =
+              {
+                {"TradeSettings","SpaceStation","OptionalProducts"},
+                {"TradeSettings","SpaceStation","OptionalSubstances"},
+                {"TradeSettings","Shop","OptionalProducts"},
+                {"TradeSettings","Shop","OptionalSubstances"},
+                {"TradeSettings","TechShop","OptionalProducts"},
+                {"TradeSettings","ShipTechSpecialist","OptionalProducts"},
+                {"TradeSettings","SuitTechSpecialist","OptionalProducts"},
+                {"TradeSettings","WeapTechSpecialist","OptionalProducts"},
+                {"TradeSettings","VehicleTechSpecialist","OptionalProducts"},
+              },
+              ["CREATE_HOES"] = "TRUE", 
             },
             --Clear all shop lists by removing whole sections.
             {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist","AlwaysPresentProducts"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist","AlwaysPresentSubstances"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
+              ["PRECEDING_KEY_WORDS"] =
+              {
+                {"TradeSettings","SpaceStation","AlwaysPresentProducts"},
+                {"TradeSettings","SpaceStation","AlwaysPresentSubstances"},
+                {"TradeSettings","Shop","AlwaysPresentProducts"},
+                {"TradeSettings","TechShop","AlwaysPresentProducts"},
+                {"TradeSettings","ShipTechSpecialist","AlwaysPresentProducts"},
+                {"TradeSettings","SuitTechSpecialist","AlwaysPresentProducts"},
+                {"TradeSettings","WeapTechSpecialist","AlwaysPresentProducts"},
+              },
+              ["CREATE_HOES"] = "TRUE", 
             },
             --Clear never sellable item table(s).
             {
               ["PRECEDING_KEY_WORDS"] = {"NeverSellableItems"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
+              ["CREATE_HOES"] = "TRUE",
             },
             {
               ["PRECEDING_KEY_WORDS"] = {"NeverOfferedForSale"},
-              ["REPLACE_TYPE"]  = "ALL",
-              ["REMOVE"] = "SECTION",
-            },
-            --Recreate removed sections with blank content.
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation"},
-              ["ADD"] = SubstanceSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop"},
-              ["ADD"] = SubstanceSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop"},
-              ["ADD"] = SubstanceSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist"},
-              ["ADD"] = SubstanceSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist"},
-              ["ADD"] = SubstanceSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist"},
-              ["ADD"] = SubstanceSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist"},
-              ["ADD"] = ProductSection,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist"},
-              ["ADD"] = SubstanceSection,
-            },          
+              ["CREATE_HOES"] = "TRUE",
+            },        
             --Add items & substances to shops.
             {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation","AlwaysPresentProducts"},
+              ["PRECEDING_KEY_WORDS"] =
+              {
+                {"TradeSettings","SpaceStation","AlwaysPresentProducts"},
+                {"TradeSettings","Shop","AlwaysPresentProducts"},
+                {"TradeSettings","TechShop","AlwaysPresentProducts"},
+              },
+              ["CREATE_HOS"] = "TRUE",
               ["ADD"] = Products,
             },
             {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SpaceStation","AlwaysPresentSubstances"},
-              ["ADD"] = Substances,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop","AlwaysPresentProducts"},
-              ["ADD"] = Products,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","Shop","AlwaysPresentSubstances"},
-              ["ADD"] = Substances,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop","AlwaysPresentProducts"},
-              ["ADD"] = Products,
-            },
-            {
-              ["PRECEDING_KEY_WORDS"] = {"TradeSettings","TechShop","AlwaysPresentSubstances"},
+              ["PRECEDING_KEY_WORDS"] =
+              {
+                {"TradeSettings","SpaceStation","AlwaysPresentSubstances"},
+                {"TradeSettings","Shop","AlwaysPresentSubstances"},
+                {"TradeSettings","TechShop","AlwaysPresentSubstances"},
+              },
+              ["CREATE_HOS"] = "TRUE",
               ["ADD"] = Substances,
             },
             -- Ship Tech Specialist --
             {
               ["PRECEDING_KEY_WORDS"] = {"TradeSettings","ShipTechSpecialist", "AlwaysPresentProducts"},
+              ["CREATE_HOS"] = "TRUE",
               ["ADD"] = ShipTechSpecialist
             },
             -- Suit Tech Specialist --
             {
               ["PRECEDING_KEY_WORDS"] = {"TradeSettings","SuitTechSpecialist", "AlwaysPresentProducts"},
+              ["CREATE_HOS"] = "TRUE",
               ["ADD"] = SuitTechSpecialist
             },
             -- Weapon Tech Specialist --
             {
               ["PRECEDING_KEY_WORDS"] = {"TradeSettings","WeapTechSpecialist", "AlwaysPresentProducts"},
+              ["CREATE_HOS"] = "TRUE",
               ["ADD"] = WeapTechSpecialist
             },
             -- Vehicle Tech Specialist --
             {
               ["PRECEDING_KEY_WORDS"] = {"TradeSettings","VehicleTechSpecialist", "AlwaysPresentProducts"},
+              ["CREATE_HOS"] = "TRUE",
               ["ADD"] = VehicleTechSpecialist
             },
             --Amount of Products available
-              {["PRECEDING_KEY_WORDS"]={"MinAmountOfProductAvailable"  },["LINE_OFFSET"]="1",["VALUE_CHANGE_TABLE"]={{"IGNORE",MinProductQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MinAmountOfProductAvailable"  },["LINE_OFFSET"]="2",["VALUE_CHANGE_TABLE"]={{"IGNORE",MinProductQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MinAmountOfProductAvailable"  },["LINE_OFFSET"]="3",["VALUE_CHANGE_TABLE"]={{"IGNORE",MinProductQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MaxAmountOfProductAvailable"  },["LINE_OFFSET"]="1",["VALUE_CHANGE_TABLE"]={{"IGNORE",MaxProductQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MaxAmountOfProductAvailable"  },["LINE_OFFSET"]="2",["VALUE_CHANGE_TABLE"]={{"IGNORE",MaxProductQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MaxAmountOfProductAvailable"  },["LINE_OFFSET"]="3",["VALUE_CHANGE_TABLE"]={{"IGNORE",MaxProductQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MinAmountOfSubstanceAvailable"},["LINE_OFFSET"]="1",["VALUE_CHANGE_TABLE"]={{"IGNORE",MinSubstanceQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MinAmountOfSubstanceAvailable"},["LINE_OFFSET"]="2",["VALUE_CHANGE_TABLE"]={{"IGNORE",MinSubstanceQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MinAmountOfSubstanceAvailable"},["LINE_OFFSET"]="3",["VALUE_CHANGE_TABLE"]={{"IGNORE",MinSubstanceQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MaxAmountOfSubstanceAvailable"},["LINE_OFFSET"]="1",["VALUE_CHANGE_TABLE"]={{"IGNORE",MaxSubstanceQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MaxAmountOfSubstanceAvailable"},["LINE_OFFSET"]="2",["VALUE_CHANGE_TABLE"]={{"IGNORE",MaxSubstanceQuantity}},["REPLACE_TYPE"]="ALL",},
-              {["PRECEDING_KEY_WORDS"]={"MaxAmountOfSubstanceAvailable"},["LINE_OFFSET"]="3",["VALUE_CHANGE_TABLE"]={{"IGNORE",MaxSubstanceQuantity}},["REPLACE_TYPE"]="ALL",},
+            {
+              ["PRECEDING_KEY_WORDS"] = {"MinAmountOfProductAvailable"},
+              ["REPLACE_TYPE"] = "ALL",
+              ["VALUE_CHANGE_TABLE"] =
+              {
+                {"Poor",    MinProductQuantity},
+                {"Average", MinProductQuantity},
+                {"Wealthy", MinProductQuantity},
+                {"Pirate",  MinProductQuantity},
+              }
+            },
+            {
+              ["PRECEDING_KEY_WORDS"] = {"MaxAmountOfProductAvailable"},
+              ["REPLACE_TYPE"] = "ALL",
+              ["VALUE_CHANGE_TABLE"] =
+              {
+                {"Poor",    MaxProductQuantity},
+                {"Average", MaxProductQuantity},
+                {"Wealthy", MaxProductQuantity},
+                {"Pirate",  MaxProductQuantity},
+              }
+            },
+            {
+              ["PRECEDING_KEY_WORDS"] = {"MinAmountOfSubstanceAvailable"},
+              ["REPLACE_TYPE"] = "ALL",
+              ["VALUE_CHANGE_TABLE"] =
+              {
+                {"Poor",    MinSubstanceQuantity},
+                {"Average", MinSubstanceQuantity},
+                {"Wealthy", MinSubstanceQuantity},
+                {"Pirate",  MinSubstanceQuantity},
+              }
+            },
+            {
+              ["PRECEDING_KEY_WORDS"] = {"MaxAmountOfSubstanceAvailable"},
+              ["REPLACE_TYPE"] = "ALL",
+              ["VALUE_CHANGE_TABLE"] =
+              {
+                {"Poor",    MaxSubstanceQuantity},
+                {"Average", MaxSubstanceQuantity},
+                {"Wealthy", MaxSubstanceQuantity},
+                {"Pirate",  MaxSubstanceQuantity},
+              }
+            },
           },
         },
       },

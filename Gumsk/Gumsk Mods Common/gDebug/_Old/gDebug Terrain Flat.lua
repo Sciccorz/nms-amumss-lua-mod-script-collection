@@ -2,7 +2,7 @@ Author = "Gumsk"
 ModName = "gDebug"
 ModNameSub = "Terrain Flat"
 BaseDescription = ""
-GameVersion = "470"
+GameVersion = "5.1.2.0"
 ModVersion = "a"
 
 --[[ Files Modified:

@@ -15,9 +15,14 @@ VEGICON = "TEXTURES/UI/FRONTEND/ICONS/SPECIALSHOP/SPECIAL.RADPLANT02.DDS"
 BUILDABLE_OBJECT_TABLE =
 {
     { ["ID_NAME"]="ANTELOPE",       ["P_NAME"]="ANTELOPE",                 ["PATH"]="MODELS/PLANETS/CREATURES/ANTELOPERIG/",                                      ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="ANTELOPEGLOW",   ["P_NAME"]="ANTELOPEGLOW",             ["PATH"]="MODELS/PLANETS/CREATURES/ANTELOPERIG/",                                      ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="ANTELOPEROBOT",  ["P_NAME"]="ANTELOPEROBOT",            ["PATH"]="MODELS/PLANETS/CREATURES/ANTELOPERIG/",                                      ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="ANTELOPETWOLEGS",["P_NAME"]="ANTELOPETWOLEGS",          ["PATH"]="MODELS/PLANETS/CREATURES/ANTELOPERIG/",                                      ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="ANTELOPEALT01",  ["P_NAME"]="ANTELOPEALT01",            ["PATH"]="MODELS/PLANETS/BIOMES/RAINFOREST/MEDIUMCREATURE/ANTELOPE/",                  ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="ARTHROPOD",      ["P_NAME"]="ARTHROPOD",                ["PATH"]="MODELS/PLANETS/CREATURES/ARTHROPOD/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="ARTHROPODGRUB",  ["P_NAME"]="ARTHROPODGRUB",            ["PATH"]="MODELS/PLANETS/CREATURES/ARTHROPOD/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="ARTHROPODQUEEN", ["P_NAME"]="ARTHROPODQUEEN",           ["PATH"]="MODELS/PLANETS/CREATURES/ARTHROPOD/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="BUGFIEND",       ["P_NAME"]="BUGFIEND",                 ["PATH"]="MODELS/PLANETS/CREATURES/ARTHROPOD/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="BEETLE",         ["P_NAME"]="BEETLE",                   ["PATH"]="MODELS/PLANETS/CREATURES/BEETLERIG/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="BLOB",           ["P_NAME"]="BLOB",                     ["PATH"]="MODELS/PLANETS/CREATURES/BLOBRIG/",                                          ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="BLOBTERRARIUM",  ["P_NAME"]="BLOBTERRARIUM",            ["PATH"]="MODELS/PLANETS/CREATURES/BLOBRIG/",                                          ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
@@ -25,6 +30,7 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="LARGEBUTTERFLY", ["P_NAME"]="LARGEBUTTERFLY",           ["PATH"]="MODELS/PLANETS/CREATURES/BUTTERFLYRIG/",                                     ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="BONECAT",        ["P_NAME"]="BONECAT",                  ["PATH"]="MODELS/PLANETS/CREATURES/CATRIG/",                                           ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="CAT",            ["P_NAME"]="CAT",                      ["PATH"]="MODELS/PLANETS/CREATURES/CATRIG/",                                           ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="PLANTCAT",       ["P_NAME"]="PLANTCAT",                 ["PATH"]="MODELS/PLANETS/CREATURES/CATRIG/",                                           ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="SIXLEGCAT",      ["P_NAME"]="SIXLEGCAT",                ["PATH"]="MODELS/PLANETS/CREATURES/CATRIG/",                                           ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="COW",            ["P_NAME"]="COW",                      ["PATH"]="MODELS/PLANETS/CREATURES/COWRIG/",                                           ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="COWHINDLEGS",    ["P_NAME"]="COWHINDLEGS",              ["PATH"]="MODELS/PLANETS/CREATURES/COWRIG/",                                           ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
@@ -43,8 +49,10 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="SPACEJELLYFISH", ["P_NAME"]="SPACEJELLYFISH",           ["PATH"]="MODELS/PLANETS/CREATURES/FISH/",                                             ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="SPACEJLYFISHPOS",["P_NAME"]="SPACEJELLYFISHPOS",        ["PATH"]="MODELS/PLANETS/CREATURES/FISH/",                                             ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="FLYINGLIZARD",   ["P_NAME"]="FLYINGLIZARD",             ["PATH"]="MODELS/PLANETS/CREATURES/FLYINGLIZARDRIG/",                                  ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="FLYINGLIZGLOW",  ["P_NAME"]="FLYINGLIZARDGLOW",         ["PATH"]="MODELS/PLANETS/CREATURES/FLYINGLIZARDRIG/",                                  ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="FLYINGSNAKE",    ["P_NAME"]="FLYINGSNAKE",              ["PATH"]="MODELS/PLANETS/CREATURES/FLYINGSNAKE/",                                      ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="GRUNT",          ["P_NAME"]="GRUNT",                    ["PATH"]="MODELS/PLANETS/CREATURES/GRUNTRIG/",                                         ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="MANTARAY",       ["P_NAME"]="MANTARAY",                 ["PATH"]="MODELS/PLANETS/CREATURES/MANTARAY/",                                         ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="RODENT",         ["P_NAME"]="RODENT",                   ["PATH"]="MODELS/PLANETS/CREATURES/RODENTRIG/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="RODENTSWIM",     ["P_NAME"]="RODENTSWIM",               ["PATH"]="MODELS/PLANETS/CREATURES/RODENTRIG/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="SEASNAKE",       ["P_NAME"]="SEASNAKE",                 ["PATH"]="MODELS/PLANETS/CREATURES/SEASNAKE/",                                         ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
@@ -58,6 +66,7 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="SPIDER",         ["P_NAME"]="SPIDER",                   ["PATH"]="MODELS/PLANETS/CREATURES/SPIDERRIG/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="SPIDERFLOAT",    ["P_NAME"]="SPIDERFLOAT",              ["PATH"]="MODELS/PLANETS/CREATURES/SPIDERRIG/",                                        ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="STRIDER",        ["P_NAME"]="STRIDER",                  ["PATH"]="MODELS/PLANETS/CREATURES/STRIDERRIG/",                                       ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
+    { ["ID_NAME"]="STRIDERGLOW",    ["P_NAME"]="STRIDERGLOW",              ["PATH"]="MODELS/PLANETS/CREATURES/STRIDERRIG/",                                       ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="TREX",           ["P_NAME"]="TREX",                     ["PATH"]="MODELS/PLANETS/CREATURES/TREXRIG/",                                          ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="TRICERATOPS",    ["P_NAME"]="TRICERATOPS",              ["PATH"]="MODELS/PLANETS/CREATURES/TRICERATOPSRIG/",                                   ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
     { ["ID_NAME"]="TRICE2HD",       ["P_NAME"]="TRICERATOPSTWOHEADS",      ["PATH"]="MODELS/PLANETS/BIOMES/RAINFOREST/LARGECREATURE/TRICERATOPS/",                ["GROUP_NAME"]="UBB-NATURE-I",   ["SUBGROUP_NAME"]="CREATURES",   ["ICON"]=CREAICON },
@@ -592,6 +601,7 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="BIOSHIP_PROC",   ["P_NAME"]="BIOSHIP_PROC",             ["PATH"]="MODELS/COMMON/SPACECRAFT/S-CLASS/BIOPARTS/",                                 ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="SAILSHIP_PROC",  ["P_NAME"]="SAILSHIP_PROC",            ["PATH"]="MODELS/COMMON/SPACECRAFT/SAILSHIP/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="VRSPEEDER",      ["P_NAME"]="VRSPEEDER",                ["PATH"]="MODELS/COMMON/SPACECRAFT/FIGHTERS/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
+    { ["ID_NAME"]="WRACER",         ["P_NAME"]="WRACER",                   ["PATH"]="MODELS/COMMON/SPACECRAFT/FIGHTERS/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="MECH_SUIT",      ["P_NAME"]="MECH_SUIT",                ["PATH"]="MODELS/COMMON/VEHICLES/MECH_SUIT/",                                          ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="BIKE",           ["P_NAME"]="BIKE",                     ["PATH"]="MODELS/COMMON/VEHICLES/BIKE/",                                               ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="BUGGY",          ["P_NAME"]="BUGGY",                    ["PATH"]="MODELS/COMMON/VEHICLES/BUGGY/",                                              ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
@@ -608,6 +618,7 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="DRONESUMMONER",  ["P_NAME"]="DRONESUMMONER",            ["PATH"]="MODELS/COMMON/ROBOTS/",                                                      ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="QUADRUPED",      ["P_NAME"]="QUADRUPED",                ["PATH"]="MODELS/COMMON/ROBOTS/",                                                      ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="WALKER",         ["P_NAME"]="WALKER",                   ["PATH"]="MODELS/COMMON/ROBOTS/",                                                      ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
+    { ["ID_NAME"]="WALKING_BLDG",   ["P_NAME"]="WALKING_BUILDING",         ["PATH"]="MODELS/COMMON/ROBOTS/",                                                      ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="HMDDRONE",       ["P_NAME"]="HMDDRONE",                 ["PATH"]="MODELS/COMMON/HMD/",                                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="VEHICLES",    ["ICON"]=SHIPICON },
     { ["ID_NAME"]="PORTAL",         ["P_NAME"]="PORTAL",                   ["PATH"]="MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PORTAL/",                             ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="BUILDINGS",   ["ICON"]=BLDGICON },
     { ["ID_NAME"]="PORTALTERMINAL", ["P_NAME"]="PORTALTERMINAL",           ["PATH"]="MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PORTAL/",                             ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="BUILDINGS",   ["ICON"]=BLDGICON },
@@ -691,6 +702,7 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="DMGMACHINE_POD", ["P_NAME"]="DAMAGEDMACHINERY_POD",     ["PATH"]="MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/DAMAGEDMACHINERY/",                   ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="BUILDINGS",   ["ICON"]=BLDGICON },
     { ["ID_NAME"]="HEXMONOLITH",    ["P_NAME"]="HEXMONOLITH",              ["PATH"]="MODELS/PLANETS/BIOMES/UNDERWATER/UPDATEPROPS/",                              ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="BUILDINGS",   ["ICON"]=BLDGICON },
     { ["ID_NAME"]="SMALLMONOLITH",  ["P_NAME"]="SMALLMONOLITH",            ["PATH"]="MODELS/PLANETS/BIOMES/UNDERWATER/UPDATEPROPS/",                              ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="BUILDINGS",   ["ICON"]=BLDGICON },
+    { ["ID_NAME"]="WAYPOINT",       ["P_NAME"]="WAYPOINT",                 ["PATH"]="MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PARTS/BUILDABLEPARTS/",               ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="BUILDINGS",   ["ICON"]=BLDGICON },
     { ["ID_NAME"]="ANOMALY",        ["P_NAME"]="ANOMALY",                  ["PATH"]="MODELS/SPACE/ANOMALY/",                                                      ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="ATLASSTATION",   ["P_NAME"]="ATLASSTATION",             ["PATH"]="MODELS/SPACE/ATLASSTATION/",                                                 ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="NEXUS",          ["P_NAME"]="NEXUS",                    ["PATH"]="MODELS/SPACE/NEXUS/",                                                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
@@ -707,9 +719,14 @@ BUILDABLE_OBJECT_TABLE =
     { ["ID_NAME"]="HOLOCOMBAT",     ["P_NAME"]="HOLOCOMBAT",               ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="HOLODIPLOMATIC", ["P_NAME"]="HOLODIPLOMATIC",           ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="HOLOINDUSTRIAL", ["P_NAME"]="HOLOINDUSTRIAL",           ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
+    { ["ID_NAME"]="HOLOLIVING",     ["P_NAME"]="HOLOLIVING",               ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
+    { ["ID_NAME"]="HOLOPIRATE",     ["P_NAME"]="HOLOPIRATE",               ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
+    { ["ID_NAME"]="HOLONORMANDY",   ["P_NAME"]="HOLONORMANDY",             ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="HOLOSCIENCE",    ["P_NAME"]="HOLOSCIENCE",              ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="HOLOSUPPORT",    ["P_NAME"]="HOLOSUPPORT",              ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/HOLOGRAMFRIGATES/",                        ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="SUPPORTFRIGLOD0",["P_NAME"]="SUPPORTFRIGATELOD0",       ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
+    { ["ID_NAME"]="GHOSTFRIGLOD0",  ["P_NAME"]="GHOSTSHIPFRIGATELOD0",     ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
+    { ["ID_NAME"]="NORMANFRIGLOD0", ["P_NAME"]="NORMANDYFRIGATELOD0",      ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="DIPLOMAFRIGLOD0",["P_NAME"]="DIPLOMATICFRIGATELOD0",    ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="INDUSTFRIGLOD0", ["P_NAME"]="INDUSTRIALFRIGATELOD0",    ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
     { ["ID_NAME"]="SCIFRIGLOD0",    ["P_NAME"]="SCIENCEFRIGATELOD0",       ["PATH"]="MODELS/COMMON/SPACECRAFT/FRIGATES/",                                         ["GROUP_NAME"]="UBB-OTHER-I",    ["SUBGROUP_NAME"]="SPACE",       ["ICON"]=SPACEICON },
@@ -1236,45 +1253,76 @@ PLACEMENTDATA_ENTITY =
 [[
 <?xml version="1.0" encoding="utf-8"?>
 <Data template="TkAttachmentData">
+  <Property name="AdditionalData" />
   <Property name="Components">
-    <Property value="TkPhysicsComponentData.xml">
-      <Property name="Data" value="TkPhysicsData.xml">
-        <Property name="Mass" value="0" />
-        <Property name="Friction" value="0.5" />
-        <Property name="RollingFriction" value="0.2" />
-        <Property name="AngularDamping" value="0.2" />
-        <Property name="LinearDamping" value="0.1" />
-        <Property name="Gravity" value="20" />
+    <Property value="LinkableNMSTemplate.xml">
+      <Property name="Template" value="TkPhysicsComponentData.xml">
+        <Property name="Data" value="TkPhysicsData.xml">
+          <Property name="Mass" value="0" />
+          <Property name="Friction" value="0.5" />
+          <Property name="RollingFriction" value="0.2" />
+          <Property name="AngularDamping" value="0.2" />
+          <Property name="LinearDamping" value="0.1" />
+          <Property name="Gravity" value="20" />
+        </Property>
+        <Property name="NavMeshInclusion" value="TkNavMeshInclusionParams.xml">
+          <Property name="InclusionType" value="TkNavMeshInclusionType.xml">
+            <Property name="NavMeshInclusionType" value="Auto" />
+          </Property>
+          <Property name="InclusionMinSize" value="0" />
+          <Property name="AreaType" value="TkNavMeshAreaType.xml">
+            <Property name="NavMeshAreaType" value="Auto" />
+          </Property>
+        </Property>
+        <Property name="TriggerVolume" value="False" />
+        <Property name="TriggerVolumeType" value="TkVolumeTriggerType.xml">
+          <Property name="VolumeTriggerType" value="Open" />
+        </Property>
+        <Property name="SurfaceProperties" value="None" />
+        <Property name="ModelOwnership" value="Model" />
+        <Property name="Climbable" value="False" />
+        <Property name="Walkable" value="True" />
+        <Property name="Floor" value="False" />
+        <Property name="IgnoreModelOwner" value="False" />
+        <Property name="NoVehicleCollide" value="False" />
+        <Property name="NoPlayerCollide" value="False" />
+        <Property name="NoFireCollide" value="False" />
+        <Property name="NoFallDamage" value="False" />
+        <Property name="IgnoreAllCollisions" value="False" />
+        <Property name="BlocksInteract" value="True" />
+        <Property name="CameraInvisible" value="False" />
+        <Property name="InvisibleForInteraction" value="False" />
+        <Property name="AllowTeleporter" value="False" />
+        <Property name="BlockTeleporter" value="False" />
+        <Property name="DisableGravity" value="False" />
+        <Property name="SpinOnCreate" value="0" />
+        <Property name="ScaleAffectsMass" value="False" />
+        <Property name="AllowedDefaultCollision" value="True" />
+        <Property name="Animated" value="False" />
+        <Property name="UseBasePartOptimisation" value="False" />
+        <Property name="IsTransporter" value="False" />
+        <Property name="UseSimpleCharacterCollision" value="False" />
+        <Property name="RotateSimpleCharacterCollisionCapsule" value="False" />
+        <Property name="SimpleCharacterCollisionRadius" value="0.5" />
+        <Property name="SimpleCharacterCollisionHeight" value="2" />
+        <Property name="SimpleCharacterCollisionHeightOffset" value="0" />
+        <Property name="SimpleCharacterCollisionFwdOffset" value="0" />
       </Property>
-      <Property name="TriggerVolumeType" value="TkVolumeTriggerType.xml">
-        <Property name="VolumeTriggerType" value="Open" />
-      </Property>
-      <Property name="SurfaceProperties" value="None" />
-      <Property name="TriggerVolume" value="False" />
-      <Property name="Climbable" value="False" />
-      <Property name="Floor" value="False" />
-      <Property name="IgnoreModelOwner" value="False" />
-      <Property name="NoVehicleCollide" value="False" />
-      <Property name="NoPlayerCollide" value="False" />
-      <Property name="CameraInvisible" value="False" />
-      <Property name="InvisibleForInteraction" value="False" />
-      <Property name="AllowTeleporter" value="False" />
-      <Property name="BlockTeleporter" value="False" />
-      <Property name="DisableGravity" value="False" />
-      <Property name="SpinOnCreate" value="0" />
-      <Property name="UseBasePartOptimisation" value="False" />
-      <Property name="IsTransporter" value="False" />
+      <Property name="Linked" value="" />
     </Property>
-    <Property value="GcBasePlacementComponentData.xml">
-      <Property name="Rules">
-        <Property value="GcBasePlacementRule.xml">
-          <Property name="Conditions" />
-          <Property name="PositionLocator" value="" />
-          <Property name="PartID" value="_]].. ID_NAME ..[[" />
-          <Property name="ORConditions" value="False" />
-          <Property name="TwinCriteria" value="None" />
+    <Property value="LinkableNMSTemplate.xml">
+      <Property name="Template" value="GcBasePlacementComponentData.xml">
+        <Property name="Rules">
+          <Property value="GcBasePlacementRule.xml">
+            <Property name="Conditions" />
+            <Property name="PositionLocator" value="" />
+            <Property name="PartID" value="_]].. ID_NAME ..[[" />
+            <Property name="ORConditions" value="False" />
+            <Property name="TwinCriteria" value="None" />
+          </Property>
         </Property>
       </Property>
+      <Property name="Linked" value="" />
     </Property>
   </Property>
   <Property name="LodDistances">
@@ -1308,6 +1356,7 @@ PLACEMENT_SCENE =
     <Property name="ScaleY" value="1" />
     <Property name="ScaleZ" value="1" />
   </Property>
+  <Property name="PlatformExclusion" value="0" />
   <Property name="Attributes">
     <Property value="TkSceneNodeAttributeData.xml">
       <Property name="Name" value="GEOMETRY" />
@@ -1334,6 +1383,7 @@ PLACEMENT_SCENE =
         <Property name="ScaleY" value="1" />
         <Property name="ScaleZ" value="1" />
       </Property>
+      <Property name="PlatformExclusion" value="0" />
       <Property name="Attributes">
         <Property value="TkSceneNodeAttributeData.xml">
           <Property name="Name" value="ATTACHMENT" />
@@ -1356,6 +1406,7 @@ PLACEMENT_SCENE =
             <Property name="ScaleY" value="1" />
             <Property name="ScaleZ" value="1" />
           </Property>
+          <Property name="PlatformExclusion" value="0" />
           <Property name="Attributes">
             <Property value="TkSceneNodeAttributeData.xml">
               <Property name="Name" value="TYPE" />
@@ -1391,10 +1442,15 @@ PLACEMENT_SCENE =
             <Property name="ScaleY" value="1" />
             <Property name="ScaleZ" value="1" />
           </Property>
+          <Property name="PlatformExclusion" value="0" />
           <Property name="Attributes">
             <Property value="TkSceneNodeAttributeData.xml">
               <Property name="Name" value="SCENEGRAPH" />
               <Property name="Value" value="MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PARTS/BUILDABLEPARTS/CUBEROOM_SNAPPOINT.SCENE.MBIN" />
+            </Property>
+            <Property value="TkSceneNodeAttributeData.xml">
+              <Property name="Name" value="EMBEDGEOMETRY" />
+              <Property name="Value" value="TRUE" />
             </Property>
           </Property>
           <Property name="Children" />
@@ -1499,7 +1555,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 ["MOD_FILENAME"]  = "zzz-UltraBaseBuildingRemover.pak",
 ["MOD_AUTHOR"]    = "Mjjstral and Babscoole",
 ["Contributors"]  = "Ignacio and GhostRick",
-["NMS_VERSION"]   = "4.71",
+["NMS_VERSION"]   = "5.22",
 ["ADD_FILES"]     = ADD_FILES_TABLE,
 ["MODIFICATIONS"] =
     {
@@ -1802,8 +1858,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     {
                         {
                             ["SPECIAL_KEY_WORDS"] = {"Type", "MESH"},
-                            ["VALUE_MATCH"] = "{._imposter}",
-                            ["REPLACE_TYPE"] = "ALL",
+                            ["VALUE_MATCH"] = "{.*_imposter}",
                             ["REMOVE"] = "SECTION",
                         }
                     },

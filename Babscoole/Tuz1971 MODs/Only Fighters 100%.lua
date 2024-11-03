@@ -15,7 +15,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     {
                         {
                             ["PRECEDING_KEY_WORDS"] = {"SpaceshipSpawnFreqMultipliers"},
-                            ["LINE_OFFSET"] = "+1",
+                            ["REPLACE_TYPE"] = "ONCEINSIDE",
                             ["VALUE_CHANGE_TABLE"] =
                             {
                                 {"IGNORE", "20"},
@@ -25,20 +25,16 @@ NMS_MOD_DEFINITION_CONTAINER =
                             }
                         },
                         {
-                            ["SPECIAL_KEY_WORDS"] = {"Dropship", "IGNORE"},
+                            ["PRECEDING_KEY_WORDS"] = {"SpaceshipWeightings"},
                             ["REPLACE_TYPE"] = "ALL",
                             ["VALUE_CHANGE_TABLE"] =
                             {
-                                {"IGNORE", "0"},
-                            }
-                        },
-                        {
-                            ["SPECIAL_KEY_WORDS"] = {"Alien", "IGNORE"},
-                            ["REPLACE_TYPE"] = "ALL",
-                            ["VALUE_CHANGE_TABLE"] =
-                            {
-                                {"Fighter", "10000"},
-                                {"Alien",   "10"},
+                                {"Dropship",   "0"},
+                                {"Scientific", "0"},
+                                {"Shuttle",    "0"},
+                                {"Royal",      "0"},
+                                {"Alien",      "10"},
+                                {"Fighter",    "10000"},
                             }
                         },
                     }

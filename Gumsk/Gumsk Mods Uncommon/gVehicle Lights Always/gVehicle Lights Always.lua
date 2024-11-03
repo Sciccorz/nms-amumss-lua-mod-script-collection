@@ -1,13 +1,13 @@
 Author = "Gumsk"
-ModName = "GVehicle"
-ModNameSub = "24h lights"
+ModName = "gVehicle Lights"
+ModNameSub = "Always"
 BaseDescription = "Turns off exocraft day/night switching"
-GameVersion = "242"
+GameVersion = "5.1.2.0"
 ModVersion = "a"
 FileSource = "GCVEHICLEGLOBALS.GLOBAL.MBIN"
 
 NMS_MOD_DEFINITION_CONTAINER = {
-MOD_FILENAME	= ModName.." "..GameVersion..ModVersion.." "..ModNameSub..".pak",
+MOD_FILENAME	= ModName.." "..ModNameSub.." "..GameVersion..ModVersion..".pak",
 MOD_DESCRIPTION	= BaseDescription,
 MOD_AUTHOR		= Author,
 NMS_VERSION		= GameVersion,
@@ -17,11 +17,11 @@ MBIN_FILE_SOURCE = FileSource,
 EXML_CHANGE_TABLE = {
 	{PRECEDING_KEY_WORDS = {"HeadlightNames"},
 		REPLACE_TYPE = "ALL",
-		["REMOVE"] = "SECTION"
+		REMOVE = "SECTION"
 		},
 	{PRECEDING_KEY_WORDS = {"CockpitHeadlightNames"},
 		REPLACE_TYPE = "ALL",
-		["REMOVE"] = "SECTION"
+		REMOVE = "SECTION"
 		},
 }
 },}},}}

@@ -2,10 +2,8 @@
 local mod_desc = [[
   edit/replace/update/improve technology icons
 
-  * The ADD_FILES section can be safely disabled/ignored if you prefer
-   to add the texture files in a different method.
+  * ADD_FILES will skipped SILENTLY if new files are not found!
 ]]--------------------------------------------------------------------
-local mod_version = '1.29'
 
 local tech_icons = {
 ---	ship
@@ -83,9 +81,9 @@ local tech_icons = {
 }
 
 NMS_MOD_DEFINITION_CONTAINER = {
-	MOD_FILENAME 		= '_MOD.lMonk.Technology Icons.'..mod_version..'.pak',
+	MOD_FILENAME 		= '_MOD.lMonk.Technology Icons.pak',
 	MOD_AUTHOR			= 'lMonk',
-	NMS_VERSION			= '4.70',
+	NMS_VERSION			= '5.20',
 	MOD_DESCRIPTION		= mod_desc,
 	MODIFICATIONS 		= {{
 	MBIN_CHANGE_TABLE	= {
@@ -105,18 +103,26 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		)()
 	}
 }}},
-	ADD_FILES	= {
-		{
-			EXTERNAL_FILE_SOURCE = 'D:/MODZ_stuff/NoMansSky/Sources/_Textures/Icons/Technology/*.DDS',
-			FILE_DESTINATION	 = 'TEXTURES/UI/FRONTEND/ICONS/TECHNOLOGY/*.DDS',
-		},
-		{
-			EXTERNAL_FILE_SOURCE = 'D:/MODZ_stuff/NoMansSky/Sources/_Textures/Icons/Technology/Bio/*.DDS',
-			FILE_DESTINATION	 = 'TEXTURES/UI/FRONTEND/ICONS/TECHNOLOGY/BIO/*.DDS',
-		},
-		{
-			EXTERNAL_FILE_SOURCE = 'D:/MODZ_stuff/NoMansSky/Sources/_Textures/Icons/Technology/Vehicle/*.DDS',
-			FILE_DESTINATION	 = 'TEXTURES/UI/FRONTEND/ICONS/TECHNOLOGY/VEHICLE/*.DDS',
-		},
-	}
+	ADD_FILES	= (
+		function()
+			local tex_path = 'D:/MODZ_stuff/NoMansSky/Sources/_Textures/Icons/Technology/'
+			if lfs.attributes(tex_path) then
+				return {
+					{
+						EXTERNAL_FILE_SOURCE = tex_path..'*.DDS',
+						FILE_DESTINATION	 = 'TEXTURES/UI/FRONTEND/ICONS/TECHNOLOGY/*.DDS',
+					},
+					{
+						EXTERNAL_FILE_SOURCE = tex_path..'Bio/*.DDS',
+						FILE_DESTINATION	 = 'TEXTURES/UI/FRONTEND/ICONS/TECHNOLOGY/BIO/*.DDS',
+					},
+					{
+						EXTERNAL_FILE_SOURCE = tex_path..'Vehicle/*.DDS',
+						FILE_DESTINATION	 = 'TEXTURES/UI/FRONTEND/ICONS/TECHNOLOGY/VEHICLE/*.DDS',
+					},
+				}
+			end
+			return nil
+		end
+	)()
 }

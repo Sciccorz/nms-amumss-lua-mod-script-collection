@@ -1,7 +1,7 @@
 Author = "Xen0nex"
 ModName = "PTSd Procedural Upgrade Adjustment"
 Description = "Adjusts Exocraft & Multi-tool Upgrade Module strength to account for using 5x upgrades instead of 3x. Differentiates the Sentinel & Autophage Exosuit upgrades"
-GameVersion = "441"
+GameVersion = "5_12"
 
 OpticalDrillBonus =				1.33							--1.5		Bonus resource yields that the Optical Drill tech confers in a multi-tool	(Reduced since it stacks with both supercharged tech slots & PTSd's Multitool mining stat)
 
@@ -22,26 +22,58 @@ ScanningUpgradeRadiusMult =		0.5								--Multiplier to apply to the strength of
 	--Additive bonuses
 AllExoWeaponUpDmgMult =			0.5								--Multiplier to apply to the strength of all damage bonuses from all procedural Exocraft Cannon/Mining Laser upgrades.
 AllExoBoostUpMult =				0.5								--Multiplier to apply to the strength of Boost Speed and Boost Tank Size bonuses from all procedural Exocraft Boost upgrades.
+MechFlameUpBDmgMult =			1								--Multiplier to apply to the strength of damage bonuses from B Class procedural Liquidator Mech Flamethrower upgrades (1 ~ 1).
+MechFlameUpADmgMult =			2								--Multiplier to apply to the strength of damage bonuses from A Class procedural Liquidator Mech Flamethrower upgrades (1 ~ 2).
+MechFlameUpSDmgMult =			3								--Multiplier to apply to the strength of damage bonuses from S Class procedural Liquidator Mech Flamethrower upgrades (2 ~ 2).
 
 	--Multiplicative bonuses
-AllExoCannonUpMult =			0.5								--Multiplier to apply to the strength of firerate and heat time from all procedural Exocraft Cannon upgrades.
+AllExoCannonUpMult =			0.5								--Multiplier to apply to the strength of firerate, heat time, and Fire DOT duration from all procedural Exocraft Cannon or Mech Flamethrower upgrades.
 AllExoLaserUpMult =				0.5								--Multiplier to apply to the strength of heat time from all procedural Exocraft Mining Laser upgrades.
 AllExoEngineUpMult =			0.5								--Multiplier to apply to the strength of Top Speed and Fuel Usage bonuses from all procedural Exocraft Engine upgrades.
+
+--Changes to the Min & Max number of bonuses that certain upgrade modules can spawn with, and the weighting % chance to spawn with the Max number of bonuses
+NumStatsChanges =
+{
+	{--Upgrade ID		New Weighting		Old Weighting		Min		Max	number of bonuses
+		"UP_LASERX",	"MaxIsRare",		"MaxIsRare",		"2",	"4"			--"1",	"4"
+	},
+	{
+		"UP_LASER0",	"MaxIsRare",		"MaxIsRare",		"2",	"3"			--"1",	"4"
+	},
+	{
+		"UP_SCAN3",		"MaxIsRare",		"MaxIsRare",		"3",	"4"			--"2",	"4"
+	},
+	{
+		"UP_SCAN4",		"NoWeighting",		"MaxIsUncommon",	"4",	"4"			--"3",	"4"
+	},
+	{
+		"UP_SCAN0",		"MaxIsUncommon",	"MaxIsRare",		"2",	"3"			--"2",	"4"
+	},
+	{
+		"UP_BOLT0",		"MaxIsUncommon",	"MaxIsRare",		"2",	"3"			--"2",	"4"
+	},
+	{
+		"UP_HAZ0",		"MaxIsUncommon",	"NoWeighting",		"2",	"3"			--"4",	"4"
+	},
+	{
+		"UP_JET0",		"MaxIsUncommon",	"MaxIsRare",		"2",	"3"			--"2",	"4"
+	},
+}
 
 --Applying the above multipliers to the relevant stats on the various upgrade modules
 AdditiveUpgradeChanges =
 {
 	{
 		{"Weapon_Scan_Discovery_Creature",	ScanningUpgradeMult},	--Multi-Tool Scanning		
-		{"UP_SCAN1", "UP_SCAN2", "UP_SCAN3", "UP_SCAN4", "UP_SCANX"}
+		{"UP_SCAN0", "UP_SCAN1", "UP_SCAN2", "UP_SCAN3", "UP_SCAN4", "UP_SCANX"}
 	},
 	{
 		{"Weapon_Scan_Discovery_Flora",	ScanningUpgradeMult},		--Multi-Tool Scanning
-		{"UP_SCAN1", "UP_SCAN2", "UP_SCAN3", "UP_SCAN4", "UP_SCANX"}
+		{"UP_SCAN0", "UP_SCAN1", "UP_SCAN2", "UP_SCAN3", "UP_SCAN4", "UP_SCANX"}
 	},
 	{
 		{"Weapon_Scan_Discovery_Mineral",	ScanningUpgradeMult},	--Multi-Tool Scanning
-		{"UP_SCAN1", "UP_SCAN2", "UP_SCAN3", "UP_SCAN4", "UP_SCANX"}
+		{"UP_SCAN0", "UP_SCAN1", "UP_SCAN2", "UP_SCAN3", "UP_SCAN4", "UP_SCANX"}
 	},
 	
 	{
@@ -77,6 +109,18 @@ AdditiveUpgradeChanges =
 		{"UP_MCGUN2", "UP_MCGUN3", "UP_MCGUN4"}
 	},
 	{
+		{"Vehicle_GunDamage",	MechFlameUpBDmgMult},				--Minotaur Liquidator Mech Flamethrower	Class B	
+		{"UP_MFIRE2"}
+	},
+	{
+		{"Vehicle_GunDamage",	MechFlameUpADmgMult},				--Minotaur Liquidator Mech Flamethrower	Class A
+		{"UP_MFIRE3"}
+	},
+	{
+		{"Vehicle_GunDamage",	MechFlameUpSDmgMult},				--Minotaur Liquidator Mech Flamethrower	Class S
+		{"UP_MFIRE4"}
+	},
+	{
 		{"Vehicle_BoostTanks",	AllExoBoostUpMult},					--Minotaur Engine
 		{"UP_MCENG2", "UP_MCENG3", "UP_MCENG4"}
 	},
@@ -87,6 +131,9 @@ MultiplicativeUpgradeChanges =
 	{
 		{"Weapon_Scan_Radius",	ScanningUpgradeRadiusMult},
 		{
+			{--	Upgrade			Min		Max
+				"UP_SCAN0",		1.01,	1.04							--1.01,	1.04
+			},
 			{--	Upgrade			Min		Max
 				"UP_SCAN1",		1.05,	1.1								--1.05,	1.1
 			},
@@ -108,6 +155,9 @@ MultiplicativeUpgradeChanges =
 		{"Weapon_Laser_Mining_Speed",	MiningUpgradeSpeedMult},
 		{
 			{--	Upgrade			Min		Max
+				"UP_LASER0",	0.95,	0.99							--0.95,	0.99
+			},
+			{--	Upgrade			Min		Max
 				"UP_LASER1",	0.9,	0.95							--0.9,	0.95
 			},
 			{--	Upgrade			Min		Max
@@ -127,6 +177,9 @@ MultiplicativeUpgradeChanges =
 	{
 		{"Weapon_Laser_HeatTime",	MiningUpgradeMult},
 		{
+			{--	Upgrade			Min		Max
+				"UP_LASER0",	1.01,	1.02							--1.01,	1.02
+			},
 			{--	Upgrade			Min		Max
 				"UP_LASER1",	1.05,	1.15							--1.05,	1.15
 			},
@@ -148,6 +201,9 @@ MultiplicativeUpgradeChanges =
 		{"Weapon_Laser_Drain",	MiningUpgradeMult},
 		{
 			{--	Upgrade			Min		Max
+				"UP_LASER0",	1.01,	1.02							--1.01,	1.02
+			},
+			{--	Upgrade			Min		Max
 				"UP_LASER1",	1.01,	1.1								--1.01,	1.1
 			},
 			{--	Upgrade			Min		Max
@@ -167,6 +223,9 @@ MultiplicativeUpgradeChanges =
 	{
 		{"Weapon_Laser_ReloadTime",	MiningUpgradeMult},
 		{
+			{--	Upgrade			Min		Max
+				"UP_LASER0",	0.95,	0.99							--0.95,	0.99
+			},
 			{--	Upgrade			Min		Max
 				"UP_LASER1",	0.9,	0.95							--0.9,	0.95
 			},
@@ -363,6 +422,34 @@ MultiplicativeUpgradeChanges =
 		}
 	},
 	{
+		{"Vehicle_GunHeatTime",	AllExoCannonUpMult},		--This is actually the fuel efficiency of the flamethrower
+		{
+			{--	Upgrade			Min		Max
+				"UP_MFIRE2",	0.9,	0.95							--0.9,	0.95
+			},
+			{--	Upgrade			Min		Max
+				"UP_MFIRE3",	0.8,	0.9								--0.8,	0.9
+			},
+			{--	Upgrade			Min		Max
+				"UP_MFIRE4",	0.7,	0.8								--0.7,	0.8	
+			},
+		}
+	},
+	{
+		{"Weapon_FireDOT_Duration",	AllExoCannonUpMult},
+		{
+			{--	Upgrade			Min		Max
+				"UP_MFIRE2",	1.05,	1.1								--1.05,	1.1
+			},
+			{--	Upgrade			Min		Max
+				"UP_MFIRE3",	1.1,	1.2								--1.1,	1.2
+			},
+			{--	Upgrade			Min		Max
+				"UP_MFIRE4",	1.2,	1.35							--1.2,	1.35	
+			},
+		}
+	},
+	{
 		{"Vehicle_EngineFuelUse",	AllExoEngineUpMult},
 		{
 			{--	Upgrade			Min		Max
@@ -460,9 +547,35 @@ NMS_MOD_DEFINITION_CONTAINER = {
 }}}}
 
 
-
 local ChangesToProcTech = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][1]["EXML_CHANGE_TABLE"]
 
+for i = 1, #NumStatsChanges do
+	local UpgradeID = NumStatsChanges[i][1]
+	local NewWeighting = NumStatsChanges[i][2]
+	local OldWeighting = NumStatsChanges[i][3]
+	local NumStatsMin = NumStatsChanges[i][4]
+	local NumStatsMax = NumStatsChanges[i][5]
+
+			ChangesToProcTech[#ChangesToProcTech+1] =
+			{
+				["SPECIAL_KEY_WORDS"] = {"ID", UpgradeID},
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"NumStatsMin", NumStatsMin},
+					{"NumStatsMax", NumStatsMax},
+				}
+			}
+			ChangesToProcTech[#ChangesToProcTech+1] =
+			{
+				["SPECIAL_KEY_WORDS"] = {"ID", UpgradeID},
+				["REPLACE_TYPE"] 		= "ONCE",
+				["VALUE_MATCH"] = OldWeighting,
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"WeightingCurve", NewWeighting}
+				}
+			}
+end
 for i = 1, #AdditiveUpgradeChanges do
 	local StatID = AdditiveUpgradeChanges[i][1][1]
 	local UpgradeMult = AdditiveUpgradeChanges[i][1][2]

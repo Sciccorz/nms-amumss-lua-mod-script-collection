@@ -7,7 +7,8 @@ RECIPE_PYRITE_SYN =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_324" />
-      <Property name="Name" value="RECIPE_PYRITE_SYN" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_PYRITE_SYN" />
       <Property name="TimeToMake" value="45" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -40,7 +41,8 @@ RECIPE_AMMONIA_SYN =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_325" />
-      <Property name="Name" value="RECIPE_AMMONIA_SYN" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_AMMONIA_SYN" />
       <Property name="TimeToMake" value="45" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -73,7 +75,8 @@ RECIPE_DRYICE_SYN =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_326" />
-      <Property name="Name" value="RECIPE_DRYICE_SYN" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_DRYICE_SYN" />
       <Property name="TimeToMake" value="45" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -106,7 +109,8 @@ RECIPE_MAGNETITE_SYN =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_327" />
-      <Property name="Name" value="RECIPE_MAGNETITE_SYN" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_MAGNETITE_SYN" />
       <Property name="TimeToMake" value="50" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -139,7 +143,8 @@ RECIPE_SODIUM_NITRATE_SYN =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_328" />
-      <Property name="Name" value="RECIPE_SODIUM_NITRATE_SYN" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_SODIUM_NITRATE_SYN" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -179,7 +184,8 @@ RECIPE_SALT_SYN =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_329" />
-      <Property name="Name" value="RECIPE_SALT_SYN" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_SALT_SYN" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -213,7 +219,8 @@ RECIPE_PYRITE_DECOMP =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_330" />
-      <Property name="Name" value="RECIPE_PYRITE_DECOMP" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_PYRITE_DECOMP" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -239,7 +246,8 @@ RECIPE_AMMONIA_DECOMP =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_331" />
-      <Property name="Name" value="RECIPE_AMMONIA_DECOMP" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_AMMONIA_DECOMP" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -265,7 +273,8 @@ RECIPE_MAGNETITE_DECOMP =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_332" />
-      <Property name="Name" value="RECIPE_MAGNETITE_DECOMP" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_MAGNETITE_DECOMP" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -291,7 +300,8 @@ RECIPE_SALT_DECOMP =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_333" />
-      <Property name="Name" value="RECIPE_SALT_DECOMP" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_SALT_DECOMP" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -317,7 +327,8 @@ RECIPE_DRYICE_DECOMP =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_334" />
-      <Property name="Name" value="RECIPE_DRYICE_DECOMP" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_DRYICE_DECOMP" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -343,7 +354,8 @@ RECIPE_SODIUM_NITRATE_DECOMP =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_335" />
-      <Property name="Name" value="RECIPE_DRYICE_DECOMP" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_DRYICE_DECOMP" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -370,7 +382,8 @@ RECIPE_FROST_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_336" />
-      <Property name="Name" value="RECIPE_FROST_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_FROST_EXTRACT1" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -403,7 +416,8 @@ RECIPE_FROST_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_337" />
-      <Property name="Name" value="RECIPE_FROST_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_FROST_EXTRACT2" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -436,7 +450,8 @@ RECIPE_GAMMA_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_338" />
-      <Property name="Name" value="RECIPE_GAMMA_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_GAMMA_EXTRACT1" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -469,7 +484,8 @@ RECIPE_GAMMA_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_339" />
-      <Property name="Name" value="RECIPE_GAMMA_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_GAMMA_EXTRACT2" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -502,7 +518,8 @@ RECIPE_POOP_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_340" />
-      <Property name="Name" value="RECIPE_POOP_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_POOP_EXTRACT1" />
       <Property name="TimeToMake" value="15" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -528,7 +545,8 @@ RECIPE_POOP_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_341" />
-      <Property name="Name" value="RECIPE_POOP_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_POOP_EXTRACT2" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -561,7 +579,8 @@ RECIPE_POOP_EXTRACT3 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_342" />
-      <Property name="Name" value="RECIPE_POOP_EXTRACT3" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_POOP_EXTRACT3" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -594,7 +613,8 @@ RECIPE_DUST_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_343" />
-      <Property name="Name" value="RECIPE_DUST_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_DUST_EXTRACT1" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -627,7 +647,8 @@ RECIPE_DUST_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_344" />
-      <Property name="Name" value="RECIPE_DUST_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_DUST_EXTRACT2" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -660,7 +681,8 @@ RECIPE_HOT_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_345" />
-      <Property name="Name" value="RECIPE_HOT_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_HOT_EXTRACT1" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -693,7 +715,8 @@ RECIPE_HOT_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_346" />
-      <Property name="Name" value="RECIPE_HOT_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_HOT_EXTRACT2" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -726,7 +749,8 @@ RECIPE_TOXIC_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_347" />
-      <Property name="Name" value="RECIPE_TOXIC_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_TOXIC_EXTRACT1" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -759,7 +783,8 @@ RECIPE_TOXIC_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_348" />
-      <Property name="Name" value="RECIPE_TOXIC_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_TOXIC_EXTRACT2" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -792,7 +817,8 @@ RECIPE_LUSH_EXTRACT1 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_349" />
-      <Property name="Name" value="RECIPE_LUSH_EXTRACT1" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_LUSH_EXTRACT1" />
       <Property name="TimeToMake" value="30" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -825,7 +851,8 @@ RECIPE_LUSH_EXTRACT2 =
 [[
     <Property value="GcRefinerRecipe.xml">
       <Property name="Id" value="REFINERECIPE_350" />
-      <Property name="Name" value="RECIPE_LUSH_EXTRACT2" />
+      <Property name="RecipeType" value="" />
+      <Property name="RecipeName" value="RECIPE_LUSH_EXTRACT2" />
       <Property name="TimeToMake" value="60" />
       <Property name="Cooking" value="False" />
       <Property name="Result" value="GcRefinerRecipeElement.xml">
@@ -865,42 +892,37 @@ ExtractRecipes = RECIPE_DUST_EXTRACT1..RECIPE_DUST_EXTRACT2..RECIPE_FROST_EXTRAC
                   RECIPE_POOP_EXTRACT3..RECIPE_TOXIC_EXTRACT1..RECIPE_TOXIC_EXTRACT2
 
 --TABLES FOR REMOVE LOOPS (will create REMOVE section inside EXML_CHANGE_TABLE)
-DelRecipe1 = {"RECIPE_ASTEROID2","RECIPE_CATALYST1","RECIPE_CATALYST2","RECIPE_COLD1","RECIPE_CREATURE1","RECIPE_DUSTY1",
-              "RECIPE_GAS1","RECIPE_GAS2","RECIPE_GAS3","RECIPE_HOT1","RECIPE_LAND2","RECIPE_LAND3","RECIPE_LUSH1","RECIPE_OXYGEN",
-              "RECIPE_RADIO1","RECIPE_TOXIC1","RECIPE_WATER1","RECIPE_WATER2"}
+DelRecipe1 = {"R_NAME_ASTEROID2","R_NAME_CATALYST1","R_NAME_CATALYST2","R_NAME_COLD1","R_NAME_CREATURE1","R_NAME_DUSTY1",
+              "R_NAME_GAS1","R_NAME_GAS2","R_NAME_GAS3","R_NAME_HOT1","R_NAME_LAND2","R_NAME_LAND3","R_NAME_LUSH1","R_NAME_OXYGEN",
+              "R_NAME_RADIO1","R_NAME_TOXIC1","R_NAME_WATER1","R_NAME_WATER2"}
 
-DelRecipe2 = {"RECIPE_ASTEROID_MIX","RECIPE_ASTEROID1_OXYGEN","RECIPE_ASTEROID2_OXYGEN","RECIPE_ASTEROID3_OXYGEN",
-              "RECIPE_CATALYST1_CREATURE1","RECIPE_CATALYST1_OXYGEN","RECIPE_CATALYST1_ROBOT1","RECIPE_CATALYST2_CREATURE1",
-              "RECIPE_CATALYST2_OXYGEN","RECIPE_CATALYST2_ROBOT1","RECIPE_CAVE2_OXYGEN","RECIPE_COLD1_LAND1","RECIPE_COLD1_LAND1",
-              "RECIPE_CREATURE1","RECIPE_CREATURE1_ROBOT1","RECIPE_DUSTY1_LAND1","RECIPE_DUSTY1_LAND1","RECIPE_FUEL1_CATALYST1",
-              "RECIPE_FUEL1_CATALYST2","RECIPE_FUEL1_CREATURE1","RECIPE_FUEL1_OXYGEN","RECIPE_FUEL1_ROBOT1",
-              "RECIPE_FUEL2_CATALYST1","RECIPE_FUEL2_CATALYST2","RECIPE_FUEL2_CREATURE1","RECIPE_FUEL2_OXYGEN",
-              "RECIPE_FUEL2_ROBOT1","RECIPE_GAS1_CATALYST1","RECIPE_GAS1_CATALYST1","RECIPE_GAS1_CATALYST1",
-              "RECIPE_GAS1_CATALYST1","RECIPE_GAS1_LAND","RECIPE_GAS1_LAND","RECIPE_GAS1_LAND","RECIPE_GAS1_OXYGEN",
-              "RECIPE_GAS2_CATALYST1","RECIPE_GAS2_CATALYST2","RECIPE_GAS2_LAND","RECIPE_GAS2_LAND","RECIPE_GAS2_LAND",
-              "RECIPE_GAS2_OXYGEN","RECIPE_GAS3_CATALYST1","RECIPE_GAS3_CATALYST2","RECIPE_GAS3_OXYGEN",
-              "RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT",
-              "RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT",
-              "RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT","RECIPE_GROW_PLANT",
-              "RECIPE_HOT1_LAND1","RECIPE_HOT1_LAND1","RECIPE_LAND_FROM_STELLAR","RECIPE_LAND_FROM_STELLAR","RECIPE_LAND_FROM_STELLAR",
-              "RECIPE_LAND_FROM_STELLAR","RECIPE_LAND_FROM_STELLAR","RECIPE_LAND_FROM_STELLAR","RECIPE_LAND_FROM_STELLAR",
-              "RECIPE_LAND_FROM_STELLAR","RECIPE_LAND1_ROBOT1","RECIPE_LAND2_ROBOT1","RECIPE_LAUNCHSUB_GAS1",
-              "RECIPE_LAUNCHSUB_GAS2","RECIPE_LAUNCHSUB_GAS3","RECIPE_LAUNCHSUB_OXYGEN","RECIPE_LAUNCHSUB_RADIO",
-              "RECIPE_LUSH1_LAND1","RECIPE_LUSH1_LAND1","RECIPE_PLANT_CAVE_CATALYST1",
-              "RECIPE_PLANT_CAVE_CAVE1","RECIPE_PLANT_CAVE_CAVE2","RECIPE_PLANT_CAVE_FUEL1","RECIPE_PLANT_CAVE_FUEL2",
-              "RECIPE_PLANT_CAVE_OXYGEN","RECIPE_PLANT_DUST_WATER1","RECIPE_PLANT_HOT_WATER1","RECIPE_PLANT_LUSH_WATER1",
-              "RECIPE_PLANT_POOP","RECIPE_PLANT_POOP_CATALYST1","RECIPE_PLANT_POOP_CATALYST2","RECIPE_PLANT_POOP_ROBOT1",
-              "RECIPE_PLANT_RADIO_WATER1","RECIPE_PLANT_SNOW_WATER1","RECIPE_PLANT_TOXIC_WATER1","RECIPE_PLANT_WATER_CATALYST1",
-              "RECIPE_PLANT_WATER_CATALYST2","RECIPE_PLANT_WATER_FUEL1","RECIPE_PLANT_WATER_FUEL2","RECIPE_PLANT_WATER_OXYGEN",
-              "RECIPE_PLANT_WATER_ROBOT1","RECIPE_PLANT_WATER_WATER1","RECIPE_PLANT_WATER_WATER2","RECIPE_POOP_ALCHEMY",
-              "RECIPE_POOP_ALCHEMY","RECIPE_POOP_ALCHEMY",
-              "RECIPE_RADIO1_LAND1","RECIPE_RADIO1_LAND1","RECIPE_REINFORCE_METAL","RECIPE_REINFORCE_METAL",
-              "RECIPE_REINFORCE_METAL","RECIPE_REINFORCE_METAL","RECIPE_TOXIC1_LAND1","RECIPE_TOXIC1_LAND1",
-              "RECIPE_WATER1_OXYGEN","RECIPE_WATER2_OXYGEN"}
+DelRecipe2 = {"R_NAME_ASTEROID_MIX1","R_NAME_ASTEROID1_OXYGEN","R_NAME_ASTEROID2_OXYGEN","R_NAME_ASTEROID3_OXYGEN",
+              "R_NAME_CATALYST1_CREATURE1","R_NAME_CATALYST1_OXYGEN","R_NAME_CATALYST1_ROBOT1","R_NAME_CATALYST2_CREATURE1",
+              "R_NAME_CATALYST2_OXYGEN","R_NAME_CATALYST2_ROBOT1","R_NAME_CAVE2_OXYGEN","R_NAME_COLD1_LAND1",
+              "R_NAME_CREATURE1_ROBOT1","R_NAME_DUSTY1_LAND1","R_NAME_FUEL1_CATALYST1",
+              "R_NAME_FUEL1_CATALYST2","R_NAME_FUEL1_CREATURE1","R_NAME_FUEL1_OXYGEN","R_NAME_FUEL1_ROBOT1",
+              "R_NAME_FUEL2_CATALYST1","R_NAME_FUEL2_CATALYST2","R_NAME_FUEL2_CREATURE1","R_NAME_FUEL2_OXYGEN",
+              "R_NAME_FUEL2_ROBOT1","R_NAME_GAS3_LAND1",
+              "R_NAME_GAS1_LAND1","R_NAME_GAS1_OXYGEN",
+              "R_NAME_GAS2_LAND1",
+              "R_NAME_GAS2_OXYGEN","R_NAME_GAS3_LAND3","R_NAME_GAS3_OXYGEN",
+              "R_NAME_HOT1_LAND1","R_NAME_LAND_FROM_STELLAR_B",
+              "R_NAME_LAND1_ROBOT1","R_NAME_LAND2_ROBOT1","R_NAME_LAUNCHSUB_GAS1",
+              "R_NAME_LAUNCHSUB_GAS2","R_NAME_LAUNCHSUB_GAS3","R_NAME_LAUNCHSUB_OXYGEN","R_NAME_LAUNCHSUB_RADIO",
+              "R_NAME_LUSH1_LAND1","R_NAME_PLANT_CAVE_CATALYST1",
+              "R_NAME_PLANT_CAVE_CAVE1","R_NAME_PLANT_CAVE_CAVE2","R_NAME_PLANT_CAVE_FUEL1","R_NAME_PLANT_CAVE_FUEL2",
+              "R_NAME_PLANT_CAVE_OXYGEN","R_NAME_PLANT_DUST_WATER1","R_NAME_PLANT_HOT_WATER1","R_NAME_PLANT_LUSH_WATER1",
+              "R_NAME_PLANT_POOP","R_NAME_PLANT_POOP_CATALYST1","R_NAME_PLANT_POOP_CATALYST2","R_NAME_PLANT_POOP_ROBOT1",
+              "R_NAME_PLANT_RADIO_WATER1","R_NAME_PLANT_SNOW_WATER1","R_NAME_PLANT_TOXIC_WATER1","R_NAME_PLANT_WATER_CATALYST1",
+              "R_NAME_PLANT_WATER_CATALYST2","R_NAME_PLANT_WATER_FUEL1","R_NAME_PLANT_WATER_FUEL2","R_NAME_PLANT_WATER_OXYGEN",
+              "R_NAME_PLANT_WATER_ROBOT1","R_NAME_PLANT_WATER_WATER1","R_NAME_PLANT_WATER_WATER2","R_NAME_POOP_ALCHEMY1",
+              "R_NAME_RADIO1_LAND1","R_NAME_REINFORCE_METAL1",
+              "R_NAME_TOXIC1_LAND1",
+              "R_NAME_WATER1_OXYGEN","R_NAME_WATER2_OXYGEN"}
 
-DelRecipe3 = {"RECIPE_3INPUT_ASTEROID1","RECIPE_3INPUT_ASTEROID3","RECIPE_3INPUT_LAND3","RECIPE_3INPUT_LAND3",
-              "RECIPE_3INPUT_LAND3","RECIPE_3INPUT_OXYGEN_1","RECIPE_3INPUT_OXYGEN_2","RECIPE_3INPUT_OXYGEN_3",
-              "RECIPE_3INPUT_OXYGEN_4","RECIPE_3INPUT_OXYGEN_5","RECIPE_3INPUT_OXYGEN_6"}
+DelRecipe3 = {"R_NAME_3INPUT_ASTEROID1","R_NAME_3INPUT_ASTEROID3","R_NAME_3INPUT_LAND3","R_NAME_3INPUT_LAND3_1",
+              "R_NAME_3INPUT_LAND3_2","R_NAME_3INPUT_OXYGEN_1","R_NAME_3INPUT_OXYGEN_2","R_NAME_3INPUT_OXYGEN_3",
+              "R_NAME_3INPUT_OXYGEN_4","R_NAME_3INPUT_OXYGEN_5","R_NAME_3INPUT_OXYGEN_6"}
 
 NMS_MOD_DEFINITION_CONTAINER =
 {
@@ -954,7 +976,7 @@ for i=1,#DelRecipe1 do
   -- local word = "Table"
   local temp_table =
             {
-              ["SPECIAL_KEY_WORDS"] = {"Name",value},
+              ["SPECIAL_KEY_WORDS"] = {"RecipeName",value},
               -- ["PRECEDING_KEY_WORDS"] = {word},
               ["REPLACE_TYPE"]  = "ALL",
               ["REMOVE"]                = "SECTION",
@@ -967,7 +989,7 @@ for i=1,#DelRecipe2 do
   -- local word = "Table"
   local temp_table =
             {
-              ["SPECIAL_KEY_WORDS"] = {"Name",value},
+              ["SPECIAL_KEY_WORDS"] = {"RecipeName",value},
               -- ["PRECEDING_KEY_WORDS"] = {word},
               ["REPLACE_TYPE"]  = "ALL",
               ["REMOVE"]                = "SECTION",
@@ -980,7 +1002,7 @@ for i=1,#DelRecipe3 do
   -- local word = "Table"
   local temp_table =
             {
-              ["SPECIAL_KEY_WORDS"] = {"Name",value},
+              ["SPECIAL_KEY_WORDS"] = {"RecipeName",value},
               -- ["PRECEDING_KEY_WORDS"] = {word},
               --["REPLACE_TYPE"]    = "ALL",
               ["REMOVE"]                = "SECTION",

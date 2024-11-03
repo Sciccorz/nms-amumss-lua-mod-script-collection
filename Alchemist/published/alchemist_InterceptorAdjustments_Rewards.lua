@@ -1,8 +1,8 @@
 Author = "alchemist"
 ModName = "InterceptorAdjustments_Rewards"
 BaseDescription = [[Balance adjustments for rewards added by the Interceptor update.]]
-GameVersion = "4-21"
-ModVersion = "1"
+GameVersion = "5-10"
+ModVersion = "3"
 
 local Config = {
   RobotSubstanceReduction = {
@@ -119,10 +119,6 @@ MODIFICATIONS	= {{
 local Ref = NMS_MOD_DEFINITION_CONTAINER.MODIFICATIONS[1].MBIN_CHANGE_TABLE
 local rewardChangeTable = {}
 
-local function addSpaces(block, x)
-  return block:gsub("<", string.rep(" ", x) .. "<")
-end
-
 local function tableMap(t, fn)
   local res = {}
   for _, v in ipairs(t) do
@@ -157,7 +153,7 @@ local function createRewardList(list, addWrapper)
     return GcRewardSpecificProduct(v)
   end)
 
-  local productListXml = addSpaces(table.concat(productList, "\n"), 2)
+  local productListXml = table.concat(productList, "\n")
 
   if addWrapper == true then
     productListXml = [[<Property name="List">
@@ -165,7 +161,7 @@ local function createRewardList(list, addWrapper)
 </Property>]]
   end
 
-  return addSpaces(productListXml, 8)
+  return productListXml
 end
 
 if Config.RobotSubstanceReduction.Enabled then
@@ -247,7 +243,7 @@ if Config.SmallSpiderDiscreteLoot.Enabled then
       {
         VALUE_CHANGE_TABLE = {
           {"Name", Config.SmallSpiderDiscreteLoot.Source.SceneToName},
-          {"NameHash", Config.SmallSpiderDiscreteLoot.Source.SceneToNameHash},
+          {"NameHash", GNH(Config.SmallSpiderDiscreteLoot.Source.SceneToName)},
         }
       },
       {
@@ -263,15 +259,17 @@ if Config.SmallSpiderDiscreteLoot.Enabled then
     MBIN_FILE_SOURCE = Config.SmallSpiderDiscreteLoot.Source.EntityToFile,
     EXML_CHANGE_TABLE = {
       {
-        PRECEDING_KEY_WORDS = {"GcSimpleInteractionComponentData.xml"},
+        SPECIAL_KEY_WORDS = {"Template","GcSimpleInteractionComponentData.xml"},
+        SECTION_UP = 1,
         VALUE_CHANGE_TABLE = {
           {"Id", "SM_SPIDER_LOOT"},
         }
       },
       {
-        PRECEDING_KEY_WORDS = {"GcDestructableComponentData.xml"},
+        SPECIAL_KEY_WORDS = {"Template","GcDestructableComponentData.xml"},
+        SECTION_UP = 1,
         VALUE_CHANGE_TABLE = {
-          {"GivesREward", "SM_SPIDER_LOOT"},
+          {"GivesReward", "SM_SPIDER_LOOT"},
         }
       }
     },
@@ -281,8 +279,8 @@ if Config.SmallSpiderDiscreteLoot.Enabled then
     MBIN_FILE_SOURCE = "MODELS/COMMON/ROBOTS/SPIDER_SMALLQUAD/ENTITIES/SPIDERSMALLQUAD.ENTITY.MBIN",
     EXML_CHANGE_TABLE = {
       {
+        SPECIAL_KEY_WORDS = {"Template","GcDestructableComponentData.xml"},
         PRECEDING_KEY_WORDS = {
-          "GcDestructableComponentData.xml",
           "DestroyedModel"
         },
         VALUE_CHANGE_TABLE = {

@@ -1,10 +1,9 @@
 NMS_MOD_DEFINITION_CONTAINER =
 {
 ["MOD_FILENAME"]            = "_Exosolar's Invisible Power Wires.pak",
-["MOD_AUTHOR"]              = "Exosolar",
-["LUA_AUTHOR"]              = "Babscoole",
+["MOD_AUTHOR"]              = "Exosolar & Babscoole",
 ["MOD_DESCRIPTION"]         = "Makes powered wires invisible",
-["NMS_VERSION"]             = "4.71",
+["NMS_VERSION"]             = "5.22",
 ["GLOBAL_INTEGER_TO_FLOAT"] = "FORCE",
 ["MODIFICATIONS"]           =
     {
@@ -29,9 +28,10 @@ NMS_MOD_DEFINITION_CONTAINER =
                         {
                             ["VALUE_CHANGE_TABLE"] =
                             {
-                                {"Map",    ""},
-                                {"Shader", ""},
-                                {"Class",  "Transparent"},
+                                {"Map",                ""},
+                                {"Shader",             "SHADERS/HADERMILLUBER.SHADER.BIN"},
+                                {"Class",              "Transparent"},
+                                {"ShaderMillDataHash", "0"},
                             }
                         },
                     },

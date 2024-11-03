@@ -1,7 +1,7 @@
 Author = "Xen0nex"
 ModName = "PTSd Scan + Discovery Rewards + Shop Stock Changes + Misc"
 Description = "Adjusts scan & discovery rewards and items available in shops. Also changes % chance to spawn jellyfish / anglerfish underwater."
-GameVersion = "463"
+GameVersion = "5_03"
 
 --UnderwaterProtectionMultiplier = 2				--Default Range 0 - 310
 
@@ -53,13 +53,11 @@ AnglerfishSpawnChance = 0.45						--0.5		Chance to spawn Anglerfish when collect
 	}
   }
 
-ItemReplacement =			"CAVECUBE"				--Removed shop stock items are replaced with Vortex Cubes
-
 --Removes items from shops
 ShopStockRemoved =
 {
 	{
-		{"NAV_DATA_DROP"},							--Item to be removed/replaced
+		{"NAV_DATA_DROP"},							--Item to be removed
 		{"Shop",}									--Shops to remove it from
 	},
 	{
@@ -106,11 +104,11 @@ GuildShopChanges =
 			{	--Old Item ID		New Item ID			Amount	PriceMult	Currency		Reputation Level
 				{"LAUNCHFUEL",		"BAIT_BASIC",		2,		0,			"Units",		3},				--Starship Launch Fuel		3,		0,		"Units",	3
 				{	--Old Item ID		New Item ID		(Other possible items that can appear in this slot)
-					{"BP_SALVAGE",		"BAIT_BASIC"},														--Salvaged Data
+					{"HYPERFUEL1",		"BAIT_BASIC"},														--Warp Cell
 				},
 			},
 			{	--Old Item ID		New Item ID			Amount	PriceMult	Currency		Reputation Level
-				{"HYPERFUEL2",		"LAUNCHFUEL",		1,		0.3,		"Units",		4},				--Warp Hypercore			1,		0,		"Units",	4
+				{"SCRAP_GOODS",		"LAUNCHFUEL",		1,		0.3,		"Units",		4},				--Suspicious Packet (Goods)			1,		0,		"Units",	4
 				{	--Old Item ID		New Item ID		(Other possible items that can appear in this slot)
 				},
 			},
@@ -155,7 +153,7 @@ GuildShopChanges =
 				},
 			},
 			{	--Old Item ID			New Item ID				Donation Value	Max Donations (unclear if this is per-vist or total for all time)
-				{"HYPERFUEL2",			"TRA_CURIO2",			1,				3},							--Warp Hypercore		1,		3
+				{"FRIGATE_FUEL_3",			"TRA_CURIO2",			1,				3},						--Frigate Fuel (200 Tonnes)		1,		3
 				{	--Old Item ID		New Item ID		(Other possible items that can be used in this slot)
 					{"REPAIRKIT",		"REPAIRKIT"},														--Repair Kit
 				},
@@ -210,8 +208,6 @@ GuildShopChanges =
 			{	--Old Item ID		New Item ID			Amount	PriceMult	Currency		Reputation Level
 				{"GRENFUEL1",		"GRENFUEL1",		1,		0.6,		"Units",		4},				--Unstable Plasma			1,		0,		"Units",	4
 				{	--Old Item ID		New Item ID		(Other possible items that can appear in this slot)
-					{"SPIDER_PROD",		"POLICE_TOKEN"},													--Crystallised Heart
-					{"WALKER_PROD",		"QUAD_PROD"},														--Walker Brain
 				},
 			},
 			{	--Old Item ID		New Item ID			Amount	PriceMult	Currency		Reputation Level
@@ -318,9 +314,9 @@ GuildShopChanges =
 				},
 			},
 			{	--Old Item ID		New Item ID			Amount	PriceMult	Currency		Reputation Level
-				{"STORM_CRYSTAL",	"U_SCANNER3",		1,		0.7,		"Nanites",		6},				--Storm Crystal				1,		0,		"Units",	6
+				{"SACVENOM",		"U_SCANNER3",		1,		0.7,		"Nanites",		6},				--Storm Crystal				1,		0,		"Units",	6
 				{	--Old Item ID		New Item ID		(Other possible items that can appear in this slot)
-					{"FISHCORE",		"U_HYPER3"},														--Hadal Core
+					{"EYEBALL",			"U_HYPER3"},														--Hadal Core
 					{"FIENDCORE",		"U_JETBOOST3"},														--Larval Core
 					{"U_UNW2",			"U_EXO_ENG3"},														--A Class Underwater protection upgrade
 					{"U_RAD2",			"U_EXOBOOST3"},														--A Class Radiation protection upgrade
@@ -366,7 +362,7 @@ GuildShopChanges =
 				},
 			},
 			{	--Old Item ID			New Item ID				Donation Value	Max Donations (unclear if this is per-vist or total for all time)
-				{"CHART_TREASURE",		"U_ROBOSUIT",			1,				3},							--Artifact Chart		1,		3
+				{"NAV_DATA_DROP",		"U_ROBOSUIT",			1,				3},							--Exosuit Upgrade Chart		1,		3
 				{	--Old Item ID		New Item ID		(Other possible items that can be used in this slot)
 				},
 			},
@@ -394,6 +390,11 @@ GuildShopChanges =
 --Adds AltIDs (Other possible items that can be used in this slot) to certain entries in a Guild Shop
 GuildShopAddAlts =
 {		--Guild type		Shop type			New Item to add alts to		First Alt item to add
+	{
+		{"WarriorGuild",	"RepItems",			"GRENFUEL1",				"POLICE_TOKEN"},
+		--Additional Alt items to add
+		{"QUAD_PROD"}
+	},
 	{
 		{"WarriorGuild",	"DonatableItems",	"U_SENTGUN",				"WAR_CURIO2"},
 		--Additional Alt items to add
@@ -453,17 +454,17 @@ RaceRankingLevels =
 
 PirateRankingLevels =
 {	--Ranks (0-10)		Standing required
-	{"PIRATE_PLAYER_RANK_BAD",			-5},		--	-5		Rank 0
-	{"PIRATE_PLAYER_RANK_LOW",			-2},		--	-2
+	{"PIRATE_PLAYER_RANK_BAD",			-10},		--	-5		Rank 0
+	{"PIRATE_PLAYER_RANK_LOW",			-3},		--	-2
 	{"PIRATE_PLAYER_RANK_NORMAL",		0},			--	0
-	{"PIRATE_PLAYER_RANK_IMPROVED",		5},			--	5
-	{"PIRATE_PLAYER_RANK_MEDIUM",		12},		--	12
-	{"PIRATE_PLAYER_RANK_GOOD",			20},		--	20
-	{"PIRATE_PLAYER_RANK_HIGH",			32},		--	32
-	{"PIRATE_PLAYER_RANK_HIGHEST",		50},		--	50
-	{"PIRATE_PLAYER_RANK_HIGHEST1",		75},		--	75
-	{"PIRATE_PLAYER_RANK_HIGHEST2",		100},		--	100
-	{"PIRATE_PLAYER_RANK_HIGHEST3",		150},		--	150		Rank 10
+	{"PIRATE_PLAYER_RANK_IMPROVED",		15},		--	5
+	{"PIRATE_PLAYER_RANK_MEDIUM",		36},		--	12
+	{"PIRATE_PLAYER_RANK_GOOD",			60},		--	20
+	{"PIRATE_PLAYER_RANK_HIGH",			96},		--	32
+	{"PIRATE_PLAYER_RANK_HIGHEST",		150},		--	50
+	{"PIRATE_PLAYER_RANK_HIGHEST1",		225},		--	75
+	{"PIRATE_PLAYER_RANK_HIGHEST2",		300},		--	100
+	{"PIRATE_PLAYER_RANK_HIGHEST3",		450},		--	150		Rank 10
 }
 
 --Changes various enemy spawn amounts so that the "Normal" amount is closer to the old pre-4.0 "Survival" amounts.
@@ -498,10 +499,27 @@ FiendCrimeChanges =
 		}
 	},
 	{
+		{"FishCarnage"},	--The "crime" committed to spawn the enemies	(Unclear what this is, added in NMS v5.0)
+		{
+			{
+				{"FiendFishBig",	4},	--The type of enemy spawned
+			--Number of enemies spawned on:	Off		Slow	Normal	Fast	Difficulty Setting
+				{"MinNum",					0,		1,		3,		4},				--0,	1,	3,	3
+				{"MaxNum",					0,		1,		3,		4},				--0,	1,	3,	3
+			},
+			{
+				{"FiendFishSmall",	5},	--The type of enemy spawned
+			--Number of enemies spawned on:	Off		Slow	Normal	Fast	Difficulty Setting
+				{"MinNum",					0,		3,		10,		12},			--0, 3, 10, 10
+				{"MaxNum",					0,		3,		10,		12},			--0, 3, 10, 10
+			},
+		}
+	},
+	{
 		{"GroundPropDamage"},	--The "crime" committed to spawn the enemies
 		{
 			{
-				{"MiniFiend",	4},	--The type of enemy spawned
+				{"MiniFiend",	6},	--The type of enemy spawned
 			--Number of enemies spawned on:	Off		Slow	Normal	Fast	Difficulty Setting
 				{"MinNum",					0,		2,		3,		4},				--0,	1,	2,	2
 				{"MaxNum",					0,		4,		8,		10},			--0,	1,	2,	7
@@ -545,7 +563,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 ["MBIN_FILE_SOURCE"] = "METADATA\REALITY\DEFAULTREALITY.MBIN",
 ["EXML_CHANGE_TABLE"] = {
 	--[[{
-		["REPLACE_TYPE"] 		= "",
 		["MATH_OPERATION"] 		= "*",
 		["SPECIAL_KEY_WORDS"] = {"StatsType", "Suit_Underwater"},
 		["SECTION_UP"] = 1, 
@@ -555,8 +572,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		}
 	},]]
 	{
-		["REPLACE_TYPE"] 		= "",
-		["MATH_OPERATION"] 		= "",
 		["SPECIAL_KEY_WORDS"] = {"FiendCrime", "UnderwaterPropDamaged"},
 		["SECTION_UP"] = 1, 
 		["VALUE_CHANGE_TABLE"] 	=
@@ -565,14 +580,18 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		}
 	},
 	{
-		["REPLACE_TYPE"] 		= "",
-		["MATH_OPERATION"] 		= "",
 		["SPECIAL_KEY_WORDS"] = {"FiendCrime", "UnderwaterPropCollected"},
 		["SECTION_UP"] = 1, 
 		["VALUE_CHANGE_TABLE"] 	=
 		{
 			{"ResponseRate", AnglerfishSpawnChance}
 		}
+	},
+	{
+		["REPLACE_TYPE"] 		= "ALL",
+		["SPECIAL_KEY_WORDS"] = {"Value", "SHIP_TELEPORT"},
+		["ADD_OPTION"]  = "ADDafterSECTION", 
+		["ADD"] = AddProduct ("UT_QUICKWARP")
 	}
 }},
 {
@@ -623,20 +642,22 @@ for i = 1, #ShopStockRemoved do
 		ShopID = ShopIDs[j]
 			ChangesToDefaultReality[#ChangesToDefaultReality+1] =
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				--["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {ShopID, "GcTradeData.xml"},
 				["PRECEDING_KEY_WORDS"] = {"OptionalProducts"},
-				--["SECTION_UP"] = 1,
 				["VALUE_MATCH"] 	= ItemID,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
-					{"Value", ItemReplacement}
-				}
+					{"Value", "TempItemToDelete"}
+				},
 			}
 	end
 end
+ChangesToDefaultReality[#ChangesToDefaultReality+1] =
+			{
+				["REPLACE_TYPE"] 		= "ALL",
+				["SPECIAL_KEY_WORDS"] = {"Value", "TempItemToDelete"},
+				["REMOVE"] = "SECTION",
+			}
 for i = 1, #ShopAddedProducts do
 	local ItemID = ShopAddedProducts[i][1][1]
 	local ShopIDs = ShopAddedProducts[i][2]
@@ -645,9 +666,6 @@ for i = 1, #ShopAddedProducts do
 		ShopID = ShopIDs[j]
 			ChangesToDefaultReality[#ChangesToDefaultReality+1] =
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				--["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {ShopID, "GcTradeData.xml"},
 				["PRECEDING_KEY_WORDS"] = {"AlwaysPresentProducts",	"NMSString0x10.xml"},
 				["ADD"] = AddProduct(ItemID),
@@ -670,7 +688,6 @@ for i = 1, #FiendCrimeChanges do
 		
 			ChangesToDefaultReality[#ChangesToDefaultReality+1] =
 			{
-				["MATH_OPERATION"] 		= "",
 				--["SPECIAL_KEY_WORDS"] = {"CreatureType", CreatureType},
 				["PRECEDING_KEY_WORDS"] = {"MinNum"},
 				["SECTION_ACTIVE"] = ActiveSection,
@@ -690,7 +707,6 @@ for i = 1, #FiendCrimeChanges do
 		
 			ChangesToDefaultReality[#ChangesToDefaultReality+1] =
 			{
-				["MATH_OPERATION"] 		= "",
 				--["SPECIAL_KEY_WORDS"] = {"CreatureType", CreatureType},
 				["PRECEDING_KEY_WORDS"] = {"MaxNum"},
 				["SECTION_ACTIVE"] = ActiveSection,

@@ -3,16 +3,19 @@ LuaAuthor = "DeathWrench and Babscoole and Xen0nex"
 --ModName = "gExos Challenge"
 ModNameSub = "Space Combat+Larger Space BattlesX"
 BaseDescription = "Adaptation of part(s) of Xaliber's Space Combat Reworked"
-GameVersion = "444"
+GameVersion = "5_12"
 ModVersion = "a"
 
 --Multipliers to apply to the hull & shields of all AI-controlled starships & some freighters (individual ships have additonal multipliers applied)
 	--Note that "SpaceCombatDifficultyMultipliers" values in GCGAMEPLAYGLOBALS.GLOBAL.MBIN control additional (or subtract) Hull & Shields for enemy starships depending on Space Combat difficulty setting
 	--Multiplied by 1.15 to partially account for how additional supercharged weapon upgrades can increase DPS by up to 1.25~1.3x each time
-ShipHull =				2.5*1.15						--Starting AI Hull health for all starships & freighters (except for CIV_LEADER )
-ShipHullPerLevel =		2.5*1.15						--Additional AI Hull health added per level for all starships & freighters (except for CIV_LEADER )
-ShipShield =			2.5*1.15						--Starting AI Shield health for all starships, not freighters
-ShipShieldPerLevel =	2.5*1.15						--Additional AI Shield health added per level for all starships, not freighters
+ShipHull =				2.5*1.15						--Starting AI Hull health for all starships & freighters (except for CIV_LEADER or Dreadnoughts)
+ShipHullPerLevel =		2.5*1.15						--Additional AI Hull health added per level for all starships & freighters (except for CIV_LEADER or Dreadnoughts)
+ShipShield =			2.5*1.15						--Starting AI Shield health for all starships & freighters (except for CIV_LEADER or Sentinel / Pirate Dreadnoughts)
+ShipShieldPerLevel =	2.5*1.15						--Additional AI Shield health added per level for all starships & freighters (except for CIV_LEADER or Sentinel / Pirate Dreadnoughts)
+BossFreighterParts =	2.1*1.15						--Starting AI health for enemy freighter parts (and the Dreadnought hull itself) & Pirate Frigates in "boss" freighter battles (Sentinel or Pirate Dreadnought) during Sentinel 5 star / Pirate Dreadnought encounters
+BossFreighterPartsPerLevel =2.1*1.15					--Additional AI health added per level for enemy freighter parts (and the Dreadnought hull itself) & Pirate Frigates in "boss" freighter battles
+CargoPods =				1								--Both Starting & Additional health for all types of Cargo Pods, both atteched or standalone near freighters
 
 --Adds additional Squadrons to appear at each Wanted Level, for all multiplayer group sizes
 AddedSquadrons =
@@ -30,6 +33,96 @@ WantedSquadron2 =		1								--1 Interceptor per Squadron
 WantedSquadron3 =		1								--1 Interceptor per Squadron
 WantedSquadron4 =		1								--1 Interceptor per Squadron
 WantedSquadron5 =		1								--1 Sentinel Freighter per Squadron (Each Freighter comes with it's own set of 2 Squadrons of 2 Interceptors each, so 4 Interceptors per Freighter)
+
+--Adjusts some settings for Planetary Pirate Raids
+RaidSpawnRange =		3200							--800	How far away from the player they will spawn.
+--RaidSpawnTime =			0								--0		Possibly how long between the event starting and the actual ships appearing? No apparent effect
+
+--Adjusts health, damage multipliers, and possible loot for freighter parts in "boss" freighter battles
+BossFreighterPartsChanges =
+{
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/DESTRUCTIBLEPARTS/LARGECANNONTURRET/ENTITIES/LARGECANNONTURRET.ENTITY.MBIN",	--Anti-Freighter Cannons during Pirate Dreadnought battles
+		math.floor(BossFreighterParts*17000*12),	math.floor(BossFreighterPartsPerLevel*56000*12),	"BOSSFREI_HULL",	--17000 Health,		56000 LevelledExtraHealth,		"FREIGHT_HULL" DamageMultiplier
+		"CANNONLOOT" }				--""	Replace with a reward from REWARDTABLE.EXML or leave as "" for no reward
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/DESTRUCTIBLEPARTS/PIRATEFREIGHTERTHRUSTER0/ENTITIES/DATA.ENTITY.MBIN",		--Freighter Warp Drives during Pirate Dreadnought battles
+		math.floor(BossFreighterParts*4100*18),	math.floor(BossFreighterPartsPerLevel*32000*18),	"BOSSFREI_HULL",		--4100 Health,		32000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"WARPLOOT" }				--""	Replace with a reward from REWARDTABLE.EXML or leave as "" for no reward
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/DESTRUCTIBLEPARTS/ANTISHIPTURRET/ENTITIES/ANTISHIPTURRET.ENTITY.MBIN",		--Anti-Ship Turrets during Pirate Dreadnought battles
+		math.floor(BossFreighterParts*4100*2.5),	math.floor(BossFreighterPartsPerLevel*28000*2.5),	"BOSSFREI_HULL",	--4100 Health,		28000 LevelledExtraHealth,		"FREIGHT_HULL" DamageMultiplier
+		"TURRETLOOT" }				--""	Replace with a reward from REWARDTABLE.EXML or leave as "" for no reward
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/DESTRUCTIBLEPARTS/SHIELDGENERATOR0/ENTITIES/SHIELDGENERATOR.ENTITY.MBIN",	--Freighter Shield Generators during Pirate Dreadnought battles
+		math.floor(BossFreighterParts*1500*4),	math.floor(BossFreighterPartsPerLevel*8000*4),	"SHIP_SHIELD",				--1500 Health,		8000 LevelledExtraHealth,		"FREIGHT_HULL" DamageMultiplier
+		"SHIELDGENLOOT" }			--""	Replace with a reward from REWARDTABLE.EXML or leave as "" for no reward
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/DESTRUCTIBLEPARTS/FUELROD/ENTITIES/ROD.ENTITY.MBIN",							--Exposed Fuel Rods during Pirate Dreadnought battles
+		math.floor(BossFreighterParts*2000*8),	math.floor(BossFreighterPartsPerLevel*8000*8),	"BOSSFREI_HULL",			--2000 Health,		8000 LevelledExtraHealth,		"FREIGHT_HULL" DamageMultiplier
+		"FUELRODLOOT" }				--""	Replace with a reward from REWARDTABLE.EXML or leave as "" for no reward
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/PIRATECRUISER/ENTITIES/PIRATECRUISERDATA.ENTITY.MBIN",						--Pirate Frigates during Pirate Dreadnought battles
+		"10",									"0",									"BOSSFREI_HULL",					--10 Health,	0 LevelledExtraHealth,		"SHIP_HULL" DamageMultiplier		This is a placeholder, actual health contrilled by PIRATE_FRIG Definition below
+		"PIRATLTEASY" }				--""	Replace with a reward from REWARDTABLE.EXML or leave as "" for no reward
+	},
+}
+
+--Adjusts health, damage multipliers, and possible loot for various attached and standalone "Cargo Pods" on or near freighters
+CargoPodChanges =
+{
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERA/ENTITIES/CONTAINER_A.ENTITY.MBIN",	--Attached Freighter Cargo Pod type A
+		math.floor(CargoPods*4000*1),	math.floor(CargoPods*16000*1),	"CARGO",						--4000 Health,		16000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERB/ENTITIES/CONTAINER_B.ENTITY.MBIN",	--Attached Freighter Cargo Pod type B
+		math.floor(CargoPods*4000*1),	math.floor(CargoPods*16000*1),	"CARGO",						--4000 Health,		16000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERC/ENTITIES/CONTAINER_C.ENTITY.MBIN",	--Attached Freighter Cargo Pod type C
+		math.floor(CargoPods*2000*2),	math.floor(CargoPods*9000*1.33),"CARGO",						--2000 Health,		9000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERE/ENTITIES/CONTAINER_E.ENTITY.MBIN",	--Attached Freighter Cargo Pod type E
+		math.floor(CargoPods*4000*1),	math.floor(CargoPods*14000*1),	"CARGO",						--4000 Health,		14000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERF/ENTITIES/CONTAINER_F.ENTITY.MBIN",	--Attached Freighter Cargo Pod type F
+		math.floor(CargoPods*4000*1),	math.floor(CargoPods*14000*1),	"CARGO",						--4000 Health,		14000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERG/ENTITIES/CONTAINER_G.ENTITY.MBIN",	--Attached Freighter Cargo Pod type G
+		math.floor(CargoPods*2000*2),	math.floor(CargoPods*9000*1.33),"CARGO",						--2000 Health,		9000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/CONTAINER/CONTAINERH/ENTITIES/CONTAINER_H.ENTITY.MBIN",	--Attached Freighter Cargo Pod type H
+		math.floor(CargoPods*2000*2),	math.floor(CargoPods*9000*1.33),"CARGO",						--2000 Health,		9000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	--The health values for the two standalone Cargo Pods below don't seem to actually be changed by the values set here, nor does adjusting the "CARGO" multiplier in "PTSd Weapons Rebalance.lua" affect them
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/FREIGHTERSMALL_PROC/ENTITIES/SMALLFREIGHTER.ENTITY.MBIN",--Small standalone Cargo Pod near freighters
+		math.floor(CargoPods*4000*1.25),	math.floor(CargoPods*14000*1),	"CARGO",					--4000 Health,		0 LevelledExtraHealth,			"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+	{
+		{ "MODELS/COMMON/SPACECRAFT/INDUSTRIAL/FREIGHTERTINY_PROC/ENTITIES/_TINY_FREIGHTER.ENTITY.MBIN",--Tiny standalone Cargo Pod near freighters
+		math.floor(CargoPods*2000*2.5),		math.floor(CargoPods*14000*1),	"CARGO",					--2000 Health,		14000 LevelledExtraHealth,		"CARGO" DamageMultiplier
+		"FREIGHTERLOOT",		"SMUGGLELOOT"}				--"FREIGHTERLOOT",		"SMUGGLELOOT"		Rewards in Regular, Outlaw systems
+	},
+}
 
 --"Spread" sets how far apart the ships are when they spawn, "Count" sets the minimum & maxmum number of ships which spawn.
 --Currently missing 4 sets of changes to Spread and Count (Seems to just be for Freighters though), as I haven't found a way to target the sections they are in
@@ -138,7 +231,8 @@ LargerBattleChanges =
 				},
 				{
 					{"Spread",	100,		100},	--100,		100
-					{"Count",	1,			3}		--1,		1
+					{"Count",	1,			2},		--1,		1			For each "Count" here, the game appears to randomly spawn 1x~4x actual Pirate Raiders?
+					--{"StartTime",	RaidSpawnTime,	math.floor(RaidSpawnTime+1)}		--0,		0
 				}
 			}
 		}
@@ -403,7 +497,7 @@ LargerBattleChanges =
 	},
 	{
 		{
-			"BattlePirateSpawns"				--These are presumably all related to Pirate Capital battles, as this section was added in the NMS v4.4 update
+			"BattlePirateSpawns"				--These are presumably all related to Pirate Dreadnought battles, as this section was added in the NMS v4.4 update
 		},
 		{
 			{									--Standard (regular starship???)
@@ -412,7 +506,8 @@ LargerBattleChanges =
 				},
 				{
 					{"Spread",	100,		100},	--100,		100
-					{"Count",	0,			0}		--0,		0
+					{"Count",	1,			1},		--0,		0
+					{"StartTime",	0,		1}		--0,		0
 				}
 			},
 			{--1st "ChildSpawns" entry			--Standard (regular starship???)
@@ -421,7 +516,8 @@ LargerBattleChanges =
 				},
 				{
 					{"Spread",	100,		100},	--100,		100
-					{"Count",	0,			0}		--0,		0
+					{"Count",	1,			1},		--0,		0
+					{"StartTime",	0,		1}		--0,		0
 				}
 			},
 			{--2nd "ChildSpawns" entry			--Standard (regular starship???)
@@ -430,7 +526,8 @@ LargerBattleChanges =
 				},
 				{
 					{"Spread",	100,		100},	--100,		100
-					{"Count",	0,			0}		--0,		0
+					{"Count",	1,			1},		--0,		0
+					{"StartTime",	0,		1}		--0,		0
 				}
 			},
 			{--3rd "ChildSpawns" entry			--CapitalFreighter (this is the Pirate Capital Freighter)
@@ -442,13 +539,13 @@ LargerBattleChanges =
 					{"Count",	1,			1}		--1,		1
 				}
 			},
-			{--4th "ChildSpawns" entry			--Frigate	(presumably the pirate torpedo frigates)
+			{--4th "ChildSpawns" entry			--Pirate Frigates
 				{
 					"GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml"
 				},
 				{
 					{"Spread",	1500,		1800},	--1200,		1300
-					{"Count",	6,			9}		--6,		6
+					{"Count",	8,			8}		--6,		6
 				}
 			}
 		}
@@ -630,13 +727,13 @@ LargerBattleChanges =
 			"BattleReinforcingPirateFrigateSpawn"			--(This section added in the NMS v4.4 update)
 		},
 		{
-			{	--Presumably pirate torpedo frigates that reinforce?
+			{	--Pirate Frigates that reinforce each time the remaining Pirate Frigate count drops to the value set in "PTSd Black Hole Distance + Ship Scrapping Items + Misc.lua"
 				{
 					
 				},
 				{
 					{"Spread",	5000,		2000},	--5000,		2000
-					{"Count",	3,			4}		--3,		3
+					{"Count",	1,			1}		--3,		3
 				}
 			}
 		}
@@ -990,9 +1087,14 @@ NMS_MOD_DEFINITION_CONTAINER = {
 	["MBIN_FILE_SOURCE"] 	= {"METADATA\SIMULATION\SCENE\EXPERIENCESPAWNTABLE.MBIN"},
 	["EXML_CHANGE_TABLE"] 	= 
 	{
+		{
+			["PRECEDING_KEY_WORDS"] = {"PlanetaryPirateRaidSpawns"},
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"MinRange", RaidSpawnRange}
+			}
+		},
 		{--Changes HARDBOUNTY2 to use PIRATE_HARD ships instead of PIRATE ships
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["SPECIAL_KEY_WORDS"] = {"Id","HARDBOUNTY2"},
 			["VALUE_CHANGE_TABLE"] 	=
 			{
@@ -1000,8 +1102,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			}
 		},
 		{--Changes the Base Armourer mission to use PIRATE ships instead of PIRATE_EASY ships
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["SPECIAL_KEY_WORDS"] = {"Id","WEAPGUY_BOUNTY"},
 			["VALUE_CHANGE_TABLE"] 	=
 			{
@@ -1009,8 +1109,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			}
 		},
 		{--Was attempting to target lines 945, 946 but this entry targets lines 1051, 1052 instead? The target section has no name, can't target it???
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["PRECEDING_FIRST"] = "True",
 			["PRECEDING_KEY_WORDS"] = {"BattleSpawns","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml"},
 			["SPECIAL_KEY_WORDS"] = {"Spread","Vector2f.xml"},
@@ -1021,8 +1119,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			}
 		},
 		{--Was attempting to target lines 948, 949 but this entry targets lines 1055, 1056 instead? the target section has no name, can't target it???
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["PRECEDING_FIRST"] = "True",
 			["PRECEDING_KEY_WORDS"] = {"BattleSpawns","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml"},
 			["SPECIAL_KEY_WORDS"] = {"Count","Vector2f.xml"},
@@ -1033,8 +1129,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			}
 		},
 		{--Testing out attempts, this entry targets lines 1241, 1242 instead?
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["PRECEDING_FIRST"] = "True",
 			["PRECEDING_KEY_WORDS"] = {"BattleSpawns","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml"},
 			["SPECIAL_KEY_WORDS"] = {"Spread","Vector2f.xml"},
@@ -1045,8 +1139,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			}
 		},
 		{--Testing out attempts, this entry targets lines 1245, 1246 instead?
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["PRECEDING_FIRST"] = "True",
 			["PRECEDING_KEY_WORDS"] = {"BattleSpawns","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml","GcAIShipSpawnData.xml"},
 			["SPECIAL_KEY_WORDS"] = {"Count","Vector2f.xml"},
@@ -1058,8 +1150,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		},
 		--[[	Deprecated as of NMS v3.85
 		{--Edits the ChildSpawns for BOUNTY3 which otherwise gets skipped
-			["MATH_OPERATION"] 		= "",
-			["REPLACE_TYPE"] 		= "",
 			["PRECEDING_FIRST"] = "True",
 			["PRECEDING_KEY_WORDS"] = {"PirateBountySpawns","GcBountySpawnInfo.xml","GcBountySpawnInfo.xml","GcBountySpawnInfo.xml","ChildSpawns"},
 			["SPECIAL_KEY_WORDS"] = {"Count","Vector2f.xml"},
@@ -1351,6 +1441,7 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		{"LevelledExtraHealth", math.floor(ShipHullPerLevel*605000)},	--default 605000
 		{"Shield", "PIRATE_FREIGHT"},			--default "PIRATE_FREIGHT"
 		{"LaserDamageLevel", 2},			--default 1
+		{"DamageMultiplier", "BOSSFREI_HULL"},			--default "FREIGHT_HULL", BOSSFREI_HULL added by PTSd in "PTSd Weapons Rebalance.lua"
 		}},
 	--The following were added in NMS v4.4:
 	{["PRECEDING_KEY_WORDS"] = {"Definitions"},
@@ -1407,7 +1498,7 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		{"Engine", "SPACE_HARD"},		--default "SPACE_HARD"
 		{"PlanetEngine", "PLANET_HARD"},	--default "PLANET_HARD"
 		{"RewardCount", 1},					--default 1
-		{"Reward", ""},						--default ""
+		{"Reward", "PIRATLTEASY"},			--default ""
 		{"Health", math.floor(ShipHull*7000)},					--default 7000
 		{"LevelledExtraHealth", math.floor(ShipHullPerLevel*18000)},	--default 18000
 		{"Shield", ""},				--default ""
@@ -1429,7 +1520,7 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		{"LaserDamageLevel", 2},			--default 1
 		}},
 	{["PRECEDING_KEY_WORDS"] = {"Definitions"},
-	["SPECIAL_KEY_WORDS"] = {"Id","PIRATE_FREIGHT"},					--Pirate Freighters?
+	["SPECIAL_KEY_WORDS"] = {"Id","PIRATE_FREIGHT"},					--Pirate Dreadnought
 	["PRECEDING_FIRST"] = "True",
 	["VALUE_CHANGE_TABLE"] = {
 		{"Behaviour", "SPACE"},	--default "SPACE"
@@ -1438,13 +1529,14 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		{"PlanetEngine", "PLANET_HARD"},	--default "PLANET_HARD"
 		{"RewardCount", 1},					--default 1
 		{"Reward", ""},						--default ""
-		{"Health", math.floor(ShipHull*105000)},					--default 105000
-		{"LevelledExtraHealth", math.floor(ShipHullPerLevel*995000)},	--default 995000
+		{"Health", math.floor(BossFreighterParts*105000*4)},					--default 105000
+		{"LevelledExtraHealth", math.floor(BossFreighterPartsPerLevel*995000*4)},	--default 995000
 		{"Shield", "PIRATE_FREIGHT"},				--default "PIRATE_FREIGHT"
 		{"LaserDamageLevel", 2},			--default 1
+		{"DamageMultiplier", "BOSSFREI_HULL"},			--default "FREIGHT_HULL", BOSSFREI_HULL added by PTSd in "PTSd Weapons Rebalance.lua"
 		}},
 	{["PRECEDING_KEY_WORDS"] = {"Definitions"},
-	["SPECIAL_KEY_WORDS"] = {"Id","PIRATE_FRIG"},					--Pirate Frigates?
+	["SPECIAL_KEY_WORDS"] = {"Id","PIRATE_FRIG"},					--Pirate Frigates
 	["PRECEDING_FIRST"] = "True",
 	["VALUE_CHANGE_TABLE"] = {
 		{"Behaviour", "SPACE"},	--default "SPACE"
@@ -1452,14 +1544,14 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		{"Engine", "SPACE_EASY"},		--default "SPACE_EASY"
 		{"PlanetEngine", "PLANET_EASY"},	--default "PLANET_EASY"
 		{"RewardCount", 1},					--default 1
-		{"Reward", ""},						--default ""
-		{"Health", math.floor(ShipHull*13125)},					--default 13125
-		{"LevelledExtraHealth", math.floor(ShipHullPerLevel*124375)},	--default 124375
+		{"Reward", ""},			--default ""
+		{"Health", math.floor(BossFreighterParts*13125*0.25)},					--default 13125
+		{"LevelledExtraHealth", math.floor(BossFreighterPartsPerLevel*124375*0.25)},	--default 124375
 		{"Shield", ""},				--default ""
 		{"LaserDamageLevel", 2},			--default 1
 		}},
 	{["PRECEDING_KEY_WORDS"] = {"Definitions"},
-	["SPECIAL_KEY_WORDS"] = {"Id","CIV_LEADER"},					--Civilian freighter fighting pirate freighter?
+	["SPECIAL_KEY_WORDS"] = {"Id","CIV_LEADER"},					--Civilian freighter fighting pirate dreadnought?
 	["PRECEDING_FIRST"] = "True",
 	["VALUE_CHANGE_TABLE"] = {
 		{"Behaviour", "SPACE"},	--default "SPACE"
@@ -2099,8 +2191,8 @@ NMS_MOD_DEFINITION_CONTAINER = {
 	["PRECEDING_FIRST"] = "True",
 	--["INTEGER_TO_FLOAT"] = "FORCE",
 	["VALUE_CHANGE_TABLE"] = {
-		{"Health", math.floor(1*25000*1)},								--25000
-		{"LevelledExtraHealth", math.floor(1*120000*1)},					--120000
+		{"Health", math.floor(ShipShield*25000*0.67)},						--25000
+		{"LevelledExtraHealth", math.floor(ShipShield*120000*0.67)},		--120000
 		{"RechargeTime", 0},										--0
 		{"RechargeDelayTime", 0},									--0
 		}},
@@ -2204,7 +2296,82 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		{"RechargeTime", 72},										--Custom	[96]
 		{"RechargeDelayTime", 12},									--Custom	[12]
 		}},
-	}}
+	}},
+--WIP
+--[[
+{	
+	["MBIN_FILE_SOURCE"] 	= {"MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PARTS/BUILDABLEPARTS/UTILITYPARTS/MODULE_TURRET_L/ENTITIES/TURRET_L.ENTITY.MBIN"},
+	["EXML_CHANGE_TABLE"] 	= 
+	{
+		{--Applies health increases to civilian Freighter turrets
+			["MATH_OPERATION"] 		= "*",
+			["REPLACE_TYPE"] 		= "",
+			["INTEGER_TO_FLOAT"] = "PRESERVE",
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"Health", 10 * ShipHull}						--3000
+			}
+		},
+		{--Applies health increases to civilian Freighter turrets
+			["MATH_OPERATION"] 		= "",
+			["REPLACE_TYPE"] 		= "",
+			["INTEGER_TO_FLOAT"] = "PRESERVE",
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"LevelledExtraHealth", math.floor(10 * ShipHullPerLevel * 14000)}				--0
+			}
+		},
+	}
+},
+{	
+	["MBIN_FILE_SOURCE"] 	= {"MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PARTS/BUILDABLEPARTS/UTILITYPARTS/MODULE_TURRET_R/ENTITIES/TURRET_R.ENTITY.MBIN"},
+	["EXML_CHANGE_TABLE"] 	= 
+	{
+		{--Applies health increases to civilian Freighter turrets
+			["MATH_OPERATION"] 		= "*",
+			["REPLACE_TYPE"] 		= "",
+			["INTEGER_TO_FLOAT"] = "PRESERVE",
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"Health", 10 * ShipHull}						--3000
+			}
+		},
+		{--Applies health increases to civilian Freighter turrets
+			["MATH_OPERATION"] 		= "",
+			["REPLACE_TYPE"] 		= "",
+			["INTEGER_TO_FLOAT"] = "PRESERVE",
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"LevelledExtraHealth", math.floor(10 * ShipHullPerLevel * 14000)}				--0
+			}
+		},
+	}
+},
+{	
+	["MBIN_FILE_SOURCE"] 	= {"MODELS/PLANETS/BIOMES/COMMON/BUILDINGS/PARTS/BUILDABLEPARTS/UTILITYPARTS/MODULE_TURRET/ENTITIES/TURRET.ENTITY.MBIN"},
+	["EXML_CHANGE_TABLE"] 	= 
+	{
+		{--Applies health increases to civilian Freighter turrets
+			["MATH_OPERATION"] 		= "*",
+			["REPLACE_TYPE"] 		= "",
+			["INTEGER_TO_FLOAT"] = "PRESERVE",
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"Health", 10 * ShipHull}						--3000
+			}
+		},
+		{--Applies health increases to civilian Freighter turrets
+			["MATH_OPERATION"] 		= "",
+			["REPLACE_TYPE"] 		= "",
+			["INTEGER_TO_FLOAT"] = "PRESERVE",
+			["VALUE_CHANGE_TABLE"] 	=
+			{
+				{"LevelledExtraHealth", math.floor(10 * ShipHullPerLevel * 14000)}				--0
+			}
+		},
+	}
+},
+]]
 }}}}
 
 local ChangesToLargerBattles = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][1]["EXML_CHANGE_TABLE"]
@@ -2257,8 +2424,6 @@ for i = 1, #LargerBattleChanges do
 	
 			ChangesToLargerBattles_temp =
 			{
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] 		= "",
 				["PRECEDING_FIRST"] = "True",
 				["PRECEDING_KEY_WORDS"] = {SceneID,ChildLevel1,ChildLevel2,ChildLevel3,ChildLevel4,ChildLevel5,ChildLevel6,ChildLevel7,ChildLevel8,ChildLevel9,ChildLevel10,ChildLevel11,ChildLevel12,ChildLevel13},
 				--["PRECEDING_KEY_WORDS"] = {ChildLevel},
@@ -2272,4 +2437,62 @@ for i = 1, #LargerBattleChanges do
 			ChangesToLargerBattles[#ChangesToLargerBattles+1] = ChangesToLargerBattles_temp
 		end
 	end
+end
+
+local ChangesToMBINChangeTable = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"]
+
+for i = 1, #BossFreighterPartsChanges do
+	local FilePath = BossFreighterPartsChanges[i][1][1]
+	local Health = BossFreighterPartsChanges[i][1][2]
+	local LevelledExtraHealth = BossFreighterPartsChanges[i][1][3]
+	local DamageMultiplier = BossFreighterPartsChanges[i][1][4]
+	local GivesReward = BossFreighterPartsChanges[i][1][5]
+			
+			ChangesToMBINChangeTable[#ChangesToMBINChangeTable+1] =
+			{
+				["MBIN_FILE_SOURCE"] 	= {FilePath},
+				["EXML_CHANGE_TABLE"] 	= 
+				{
+					{
+						["INTEGER_TO_FLOAT"] = "PRESERVE",
+						["VALUE_CHANGE_TABLE"] 	=
+						{
+							{"Health", 	Health},
+							{"LevelledExtraHealth", 	LevelledExtraHealth},
+							{"DamageMultiplier", 	DamageMultiplier},
+							{"GivesReward", 	GivesReward},
+							{"HideReward", 	"True"},	--"False"
+						}
+					}
+				}
+			}
+end
+
+for i = 1, #CargoPodChanges do
+	local FilePath = CargoPodChanges[i][1][1]
+	local Health = CargoPodChanges[i][1][2]
+	local LevelledExtraHealth = CargoPodChanges[i][1][3]
+	local DamageMultiplier = CargoPodChanges[i][1][4]
+	local GivesReward = CargoPodChanges[i][1][5]
+	local OutLawReward = CargoPodChanges[i][1][6]
+			
+			ChangesToMBINChangeTable[#ChangesToMBINChangeTable+1] =
+			{
+				["MBIN_FILE_SOURCE"] 	= {FilePath},
+				["EXML_CHANGE_TABLE"] 	= 
+				{
+					{
+						["INTEGER_TO_FLOAT"] = "PRESERVE",
+						["VALUE_CHANGE_TABLE"] 	=
+						{
+							{"Health", 	Health},
+							{"LevelledExtraHealth", 	LevelledExtraHealth},
+							{"DamageMultiplier", 	DamageMultiplier},
+							{"GivesReward", 	GivesReward},
+							{"PirateSystemAltReward", 	OutLawReward},
+							{"HideReward", 	"True"},	--"False"
+						}
+					}
+				}
+			}
 end

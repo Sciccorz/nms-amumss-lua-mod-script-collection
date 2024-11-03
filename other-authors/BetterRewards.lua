@@ -4,10 +4,6 @@
 -- Please be aware if you set any of the values below to 0 or NOT integer, you
 -- might break the math used and the .lua won't produce a useable .pak file!
 
-------------------------------------------------------------------------------
-------------------- YOU SHOULD ONLY EDIT THE VALUES BELOW --------------------
-------------------------------------------------------------------------------
-
 UNITS_MULTI				= 5		-- Default value is 1 | Multiplys the amount of units you get
 LOW_UNITS_MULTI			= 10	-- Default value is 1 | Terminals and other unit sources that have really low unit rewards (90 - 2000 units)
 								-- are multiplied by this number on top of the regular unit multiplier (so by default = 5 * 10 = 50x multiplier)
@@ -36,13 +32,13 @@ NEXUS_PROD_MULTI		= 1		-- Default value is 1 | Multiplys the amount of products 
 BOUNTY_UNITS_MULTI		= 5		-- Default value is 1 | Multiplys the amount of units you get from Bounty Board Missions (Pirate or outlaw run Space Stations)
 BOUNTY_NANITES_MULTI	= 5		-- Default value is 1 | Multiplys the amount of nanites you get from Bounty Board Missions (Pirate or outlaw run Space Stations)
 
--- When learning words, you can choose to have a PERCENTAGE(%) chance at learning an Atlas word along with them (default value is 15%)
--- If you wish to learn Atlas words change the value to a number ranging from 1-100 in the following line (line 45): <Property name="PercentageChance" value="15" />
--- Edit the value in the double bracket -> [[ ]] <- section below!! ----> <Property name="PercentageChance" value="15" /> <---- edit this "15", the " " must stay!!
+-- When learning words, you can choose to have a PERCENTAGE(%) chance at learning an Atlas word along with them (default value is 20%)
+-- If you wish to learn Atlas words change the value to a number ranging from 1-100 in the following line (line 45): <Property name="PercentageChance" value="20" />
+-- Edit the value in the double bracket -> [[ ]] <- section below!! ----> <Property name="PercentageChance" value="20" /> <---- edit this "20", the " " must stay!!
 
 ATLAS_WORD = [[
           <Property value="GcRewardTableItem.xml">
-            <Property name="PercentageChance" value="15" />
+            <Property name="PercentageChance" value="20" />
             <Property name="Reward" value="GcRewardTeachWord.xml">
               <Property name="Race" value="GcAlienRace.xml">
                 <Property name="AlienRace" value="Atlas" />
@@ -108,12 +104,13 @@ NMS_MOD_DEFINITION_CONTAINER =
 {
 ["MOD_FILENAME"] 	= "BetterRewards.pak",
 ["MOD_AUTHOR"]		= "MrTrack",
-["NMS_VERSION"]		= "4.62",
+["NMS_VERSION"]		= "5.21",
+["MOD_DESCRIPTION"]	= "Simple multipliers to most reward values",
 ["MODIFICATIONS"] 	=
 	{
 		{
 			["MBIN_CHANGE_TABLE"] 	=
-			{ 
+			{
 				{
 					["MBIN_FILE_SOURCE"] 	= "METADATA\REALITY\TABLES\REWARDTABLE.MBIN",
 					["EXML_CHANGE_TABLE"] 	=
@@ -1033,6 +1030,3 @@ NMS_MOD_DEFINITION_CONTAINER =
 		}
 	}
 }
---NOTE: ANYTHING NOT in table NMS_MOD_DEFINITION_CONTAINER IS IGNORED AFTER THE SCRIPT IS LOADED
---IT IS BETTER TO ADD THINGS AT THE TOP IF YOU NEED TO
---DON'T ADD ANYTHING PAST THIS POINT HERE

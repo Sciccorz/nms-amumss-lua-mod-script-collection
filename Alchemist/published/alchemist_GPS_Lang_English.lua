@@ -5,8 +5,8 @@ BaseDescription = [[Overhaul to Freighter, Ship, and Signal Scanner capabilities
 building by type or planet by biome. Optional costs and tech requirements.
 
 https://www.nexusmods.com/nomanssky/mods/2144]]
-GameVersion = "4-71"
-ModVersion = "2-5-0"
+GameVersion = "5-20"
+ModVersion = "2-6-3"
 
 -- =========
 -- CONSTANTS
@@ -77,7 +77,7 @@ files.
 
 --]]
 
--- Total keys: 262
+-- Total keys: 274
 LANGUAGE_TABLE = {
   --
   ["ALCH_BIOS_FREI_QRY_CFG"] = "Configure Deep Space Scanning...", --
@@ -87,6 +87,7 @@ LANGUAGE_TABLE = {
   ["ALCH_BIOS_FREI_TECH_ERR"] = "Feature Unavailable <HIGHLIGHT>//<> Technology Requirement Unfulfilled <HIGHLIGHT>//<> Interstellar Scanner", --
   ["ALCH_BIOS_PORT_ERR_NEED_PASS"] = "Feature Unavailable <HIGHLIGHT>//<> Technology Requirement Unfulfilled <HIGHLIGHT>//<> Atlas Pass", --
   ["ALCH_BIOS_PORT_MENU_HOME_DESC"] = "<STELLAR>Signal Scanner<> <HIGHLIGHT>//<> Enhanced Scanning Tasks ~ <TRADEABLE>AVAILABLE<> <HIGHLIGHT>//<> Awaiting user task selection...", --
+  ["ALCH_BIOS_SHIP_HOTKEY_ERR"] = "Scanning interface unabailable in current state.", --
   ["ALCH_BIOS_SHIP_MENU_HOME_DESC"] = "<STELLAR>Ship Scanner<> <HIGHLIGHT>//<> Enhanced Scanning Tasks ~ <TRADEABLE>AVAILABLE<> <HIGHLIGHT>//<> Awaiting user task selection...", --
   ["ALCH_BIOS_SHIP_MISSION_DESC"] = "While selected in the <STELLAR>Mission Log<> during <TRADEABLE>flight<>, use scan (<IMG>SCAN<>) to initiate complex <TECHNOLOGY>signal analysis<>.\n\n<TRADEABLE>Atmospheric flight<> may reveal closer sources and enables <TECHNOLOGY>signal sweep mode<> to reveal all targets of a given <SPECIAL>frequency type<>.\n\n<TRADEABLE>Space flight<> enables <TECHNOLOGY>deep space scanning<> allowing the user to locate planets in remote systems that match the given <SPECIAL>query parameters<>.", --
   ["ALCH_BIOS_SHIP_SCAN_OBJ"] = "Initiate Scan", --
@@ -181,6 +182,7 @@ LANGUAGE_TABLE = {
   ["ALCH_SCAN_OC_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_OD_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_OE_SUB_1"] = "Active Deep Space Scan", --
+  ["ALCH_SCAN_OF_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_PIO_GRAVE_TIP"] = "<TITLE>Fallen traveler exosuit signal detected<>\nEcho may have knowledge required for Portal travel", --
   ["ALCH_SCAN_POI_TREA_MENU"] = "Treasure Ruins", --
   ["ALCH_SCAN_POI_UWAB"] = "Submerged Building", --
@@ -212,6 +214,9 @@ LANGUAGE_TABLE = {
   ["ALCH_SCAN_PQ_OE_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> Any Infested Biome ~ Corrupted Sentinel Signals", --
   ["ALCH_SCAN_PQ_OE_MENU"] = "Corrupted Core", --
   ["ALCH_SCAN_PQ_OE_TITLE"] = "Planet Query ~ Corrupted Core", --
+  ["ALCH_SCAN_PQ_OF_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> Lush Biome ~ Floating Islands ~ Passive Sentinels ~ Abundant Fauna", --
+  ["ALCH_SCAN_PQ_OF_MENU"] = "Floating Islands", --
+  ["ALCH_SCAN_PQ_OF_TITLE"] = "Planet Query ~ Floating Islands", --
   ["ALCH_SCAN_PQ_PLANET_OBJ"] = "Travel to Planet", --
   ["ALCH_SCAN_PQ_PLANET_OBJ_TIP"] = "A planet matching the given <SPECIAL>query parameters<> has been identified in the <TRADEABLE>current system<>. Enter the planet's atmosphere to complete the mission.\nHold <IMG>ROLLLEFT<> and <IMG>ROLLRIGHT<> together to engage Pulse Jump.", --
   ["ALCH_SCAN_PQ_PLANET_OBJ_WAIT"] = "<TITLE>Query result located in<> <TRADEABLE>current system<>\nEnter the planet's atmosphere to complete the mission", --
@@ -251,6 +256,9 @@ LANGUAGE_TABLE = {
   ["ALCH_SCAN_PQ_QL_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> Dead Biome", --
   ["ALCH_SCAN_PQ_QL_MENU"] = "Dead", --
   ["ALCH_SCAN_PQ_QL_TITLE"] = "Planet Query ~ Dead", --
+  ["ALCH_SCAN_PQ_QM_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> Glitched Biome", --
+  ["ALCH_SCAN_PQ_QM_MENU"] = "Glitched", --
+  ["ALCH_SCAN_PQ_QM_TITLE"] = "Planet Query ~ Glitched", --
   ["ALCH_SCAN_PQ_RA_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> Ancient Bones", --
   ["ALCH_SCAN_PQ_RA_MENU"] = "Ancient Bones", --
   ["ALCH_SCAN_PQ_RA_TITLE"] = "Planet Query ~ Ancient Bones", --
@@ -280,6 +288,9 @@ LANGUAGE_TABLE = {
   ["ALCH_SCAN_PQ_ZB_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> Unmapped Prime Planet", --
   ["ALCH_SCAN_PQ_ZB_MENU"] = "Unmapped Prime Planet", --
   ["ALCH_SCAN_PQ_ZB_TITLE"] = "Planet Query ~ Unmapped Prime Planet", --
+  ["ALCH_SCAN_PQ_undefined_DESC"] = "<SPECIAL>QUERY PARAMETERS<> <HIGHLIGHT>//<> undefined", --
+  ["ALCH_SCAN_PQ_undefined_MENU"] = "undefined", --
+  ["ALCH_SCAN_PQ_undefined_TITLE"] = "Planet Query ~ undefined", --
   ["ALCH_SCAN_PR_DESC"] = "<TECHNOLOGY>Resource<> Pattern Query <HIGHLIGHT>//<> Immediate results expected <HIGHLIGHT>//<> Consult <STELLAR>Mission Log<> for details", --
   ["ALCH_SCAN_PZ_DESC"] = "<TECHNOLOGY>Generic Planet<> Pattern Query <HIGHLIGHT>//<> Immediate results expected <HIGHLIGHT>//<> Consult <STELLAR>Mission Log<> for details", --
   ["ALCH_SCAN_QA_SUB_1"] = "Active Deep Space Scan", --
@@ -294,6 +305,7 @@ LANGUAGE_TABLE = {
   ["ALCH_SCAN_QJ_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_QK_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_QL_SUB_1"] = "Active Deep Space Scan", --
+  ["ALCH_SCAN_QM_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_RA_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_RB_SUB_1"] = "Active Deep Space Scan", --
   ["ALCH_SCAN_RC_SUB_1"] = "Active Deep Space Scan", --
@@ -448,7 +460,7 @@ end
 local function addChangeTable(lang)
   local langFilename = langFilenameSuffix(lang)
   Ref[#Ref + 1] = {
-    MBIN_FILE_SOURCE = "LANGUAGE\\"..LanguageFilePrefix..langFilename..".MBIN",
+    MBIN_FILE_SOURCE = [[LANGUAGE\\]] .. LanguageFilePrefix .. langFilename .. ".MBIN",
     EXML_CHANGE_TABLE = {
       {
         PRECEDING_KEY_WORDS = {"Table"},
@@ -462,7 +474,7 @@ end
 local function createLanguageFile(lang)
   local langFilename = langFilenameSuffix(lang)
   Ref[#Ref + 1] = {
-    FILE_DESTINATION = "LANGUAGE\\"..Author:upper().."_"..ModName:upper().."_"..langFilename..".EXML",
+    FILE_DESTINATION = [[LANGUAGE\\]] .. Author:upper() .. "_" ..ModName:upper() .. "_" .. langFilename .. ".EXML",
     FILE_CONTENT = [[<Data template="TkLocalisationTable">
   <Property name="Table">
 ]]..buildForLanguage(lang)..[[

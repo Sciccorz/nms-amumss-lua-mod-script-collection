@@ -11,9 +11,8 @@ Weapon_Changes =
 NMS_MOD_DEFINITION_CONTAINER =
 {
 ["MOD_FILENAME"]  = "_Exo's Return of Maglock.pak",
-["MOD_AUTHOR"]    = "Exosolar",
-["LUA_AUTHOR"]    = "Babscoole",
-["NMS_VERSION"]   = "4.71",
+["MOD_AUTHOR"]    = "Exosolar & Babscoole",
+["NMS_VERSION"]   = "5.22",
 ["MODIFICATIONS"] =
     {
         {

@@ -1,5 +1,5 @@
 ModName = "PTSd Tech + Upgrade + Recipe + Blueprint cost Rebalance"
-GameVersion = "4_71"
+GameVersion = "5_12"
 --Currently balancing around Survival Mode
 
 --Procedural Upgrade Module multipliers to the "BaseValue" cost
@@ -11,13 +11,13 @@ UpgradeAMult	=		1.8							--Vanilla cost is	300
 UpgradeABaseMarkup	=	1.25						--0.2
 UpgradeSMult	=		2.4							--Vanilla cost is	480
 UpgradeSBaseMarkup	=	2.375						--0.2
-UpgradeXMult	=		1.8							--Vanilla cost is	280, 320, 600	(depends of which tech it upgrades)
-UpgradeXBaseMarkup	=	0.2							--0.2
+UpgradeXMult	=		0.9							--Vanilla cost is	280, 320, 600	(depends of which tech it upgrades)
+UpgradeXBaseMarkup	=	1.4							--0.2
 
 RegUpgradeSpaceStationMarkup = 0					--0						Doesn't seem to apply to regular upgrades.	Affects the buying AND selling price when using space station trade terminals or item vendors on outlaw stations ON TOP OF other values, e.g. a value of 0.5 means space stations charge & pay +50% more than other sources
-SusUpgradeSpaceStationMarkup = 1					--0						For suspicious upgrades in Outlaw stations.
+SusUpgradeSpaceStationMarkup = 1					--0						To make suspicious upgrades in Outlaw stations cost more than buying from planetary smugglers. Side effect doubles value when selling in any space station, which is why UpgradeXMult is so low to compensate.
 
-UpgradeScannerMult	=	1							--Additional multiplier to apply to BaseValue of all Scanner upgrades (including X class) on top of the above multipliers
+UpgradeScannerMult	=	1.2							--Additional multiplier to apply to BaseValue of C, B, A, & S Class Scanner upgrades (not X or 0 Class) on top of the above multipliers
 
 --Global Tech cost multipliers		(Currently also affects the price of Technology purchased from other places like Minor Settlements also. )
 TechCostMult = 			20							--Multiplier applies to the "FragmentCost" of the technology items with costs greater than or equal to 50, which are all probably techs the Anomaly is selling for 50~460 Nanites?	(Nautilon High-Power Sonar is 10, though)
@@ -32,7 +32,8 @@ ValuableCraftsMult	=				10			--Multiplier applied to default cost of 250 Nanites
 
 --Blueprint cost multipliers
 ExoCraftBuildingsMult	=			7.5			--Multiplier applied to default cost of 4, 8, or 10 Salvaged Data
-ColossusBuildingsMult	=			3.75		--Multiplier applied to default cost of 8
+ColossusBuildingsMult	=			3.75		--Multiplier applied to default cost of 8 Salvaged Data
+NautilonBuildingsMult	=			4			--Multiplier applied to default cost of 10 Salvaged Data
 ExoCraftSummonBuildingsMult	=		2			--Multiplier applied to default cost of 12 Salvaged Data
 FarmingBlueprintsMult	=			8			--Multiplier applied to default cost of 3 Salvaged Data 
 LargePlanterBlueprintMult	=		0.5			--Multiplier applied to default cost of 10 Salvaged Data 
@@ -48,6 +49,7 @@ StorageContainers678Mult	=		3			--Multiplier applied to default cost of 5 Salvag
 StorageContainer9Mult	=			4			--Multiplier applied to default cost of 5 Salvaged Data for Container 9
 FabricatorsMult	=					10			--Multiplier applied to default cost of 1 Salvaged Data (These are the Barrel/Crate Fabricators that spawn items)
 WonderProjectorMult	=				0.5			--Multiplier applied to default cost of 12 Salvaged Data
+AutoFishTrapMult	=				6			--Multiplier applied to default cost of 1 Salvaged Data
 
 FreighterDoubleCultivationRoomMult	=	2		--Multiplier applied to default cost of 1 Salvaged Frigate Data
 FreighterScannerRoomMult			=	3		--Multiplier applied to default cost of 1 Salvaged Frigate Data
@@ -79,6 +81,9 @@ TechAdjustments =
 		"MECH_LASER1",	0.7143			--Precision Minotaur Laser				210 Nanites
 	},
 	{
+		"VEHICLE_LASER1",	0.7143		--Advanced Exocraft Laser				210 Nanites
+	},
+	{
 		"MECH_GUN",	0.7143				--Minotaur Cannon						210 Nanites
 	},
 	{
@@ -103,7 +108,7 @@ TechAdjustments =
 		"UT_JUMP",	0.8					--Rocket Boots							200 Nanites
 	},
 	{
-		"UT_PULSEFUEL",	0.2				--Instability Drive
+		"UT_PULSEFUEL",	0.2				--Instability Drive						460 Nanites
 	},
 	{
 		"UT_PULSESPEED",	0.3			--Sub-light amplifier					460 Nanites
@@ -112,7 +117,10 @@ TechAdjustments =
 		"UT_QUICKWARP",	0.2				--Emergency Warp						240 Nanites
 	},
 	{
-		"UT_LAUNCHCHARGE",	0.4			--Launch Auto-Charger					460 Nanites
+		"SHIP_TELEPORT",	1			--Teleport Receiver						150 Nanites
+	},
+	{
+		"UT_LAUNCHCHARGE",	0.5			--Launch Auto-Charger					460 Nanites
 	},
 	{
 		"EXO_RECHARGE",	1.5				--Icarus Fuel System					120 Nanites
@@ -121,10 +129,10 @@ TechAdjustments =
 		"SUB_RECHARGE",	0.3				--Osmotic Generator						350 Nanites		(doesn't actually recharge, just gives a discount)
 	},
 	{
-		"SUB_LASER",	0.5				--Tethys Beam							450 Nanites
+		"SUB_LASER",	0.3				--Tethys Beam							450 Nanites
 	},
 	{
-		"SUB_GUN",	0.5					--Nautilon Cannon						250 Nanites
+		"SUB_GUN",	0.4					--Nautilon Cannon						250 Nanites
 	},
 	{
 		"SUB_BINOCS",	12				--Basic Sonar 							10 Nanites
@@ -204,6 +212,15 @@ TechAdjustments =
 	{
 		"UT_ROCKETS",	3				--Large Rocket Tubes					50 Nanites
 	},
+	{
+		"WATER_LANDER",	0.75			--Aqua-Jets								240 Nanites
+	},
+	{
+		"FISH_SKIFF",	1				--Exo-Skiff								90 Nanites
+	},
+	{
+		"FISHLASER",	50				--Fishing Rig							1 Nanite
+	},
 }
 
 --Weapon Tech Adjustment Multipliers	(stacks multiplicatively with the TechCostMult)
@@ -239,13 +256,13 @@ TechRarityChanges =
 		"SHIPSCAN_ECON",		"Rare",						--Economy Scanner		"Normal"
 	},
 	{
-		"SHIPSCAN_COMBAT",		"Rare",						--Conflict Scanner		"Normal"
+		"SHIPSCAN_COMBAT",		"VeryRare",					--Conflict Scanner		"Normal"
 	},
 	{
-		"F_HDRIVEBOOST1",		"Impossible",				--Warp Core Resonator	"Rare"
+		"SHIP_TELEPORT",		"VeryRare",					--Teleport Receiver		"VeryRare"
 	},
 	{
-		"F_HDRIVEBOOST2",		"Impossible",				--Plasmatic Warp Injector	"VeryRare"
+		"WATER_LANDER",			"Impossible",				--Aqua-Jets	"VeryRare"
 	},
 	{
 		"T_SHIPJUMP",			"Normal",					--Procedural Pulse Engine Upgrades	"Rare"
@@ -261,6 +278,16 @@ TechRarityChanges =
 	},
 	{
 		"T_SHIPGUN",			"Normal",					--Procedural Photon Cannon Upgrades	"Normal"
+	},
+--Freighter techs
+	{
+		"F_HDRIVEBOOST1",		"VeryRare",					--Warp Core Resonator	"Rare"
+	},
+	{
+		"F_HDRIVEBOOST2",		"Impossible",				--Plasmatic Warp Injector	"VeryRare"
+	},
+	{
+		"F_SCANNER",			"VeryRare",					--Interstellar Scanner	"VeryRare"
 	},
 --Multi-Tool techs
 	{
@@ -323,10 +350,16 @@ AddItems =
 		"POWERGLOVE",			"RED2",				50,		"Substance",
 	},
 	{	--Advanced Exocraft Laser 
-		"VEHICLE_LASER1",		"RED2",				50,		"Substance",
+		"VEHICLE_LASER1",		"ATLAS_SEED_2",		1,		"Product",
 	},
 	{	--Precision Minotaur Laser 
-		"MECH_LASER1",			"RED2",				50,		"Substance",
+		"MECH_LASER1",			"ATLAS_SEED_4",		1,		"Product",
+	},
+	{	--Mech Liquidator Left Arm 
+		"MECH_ARMY_L_ARM",		"MECH_PROD",		1,		"Product",
+	},
+	{	--Mech Liquidator Legs 
+		"MECH_ARMY_LEGS",		"MECH_PROD",		1,		"Product",
 	},
 	--The following "techs" are actually damaged slots in crashed starships / broken Multi-Tools, repairing them costs half the component cost
 	{	--Hull Fracture			
@@ -474,6 +507,69 @@ ReplaceItems =
 	{	--Polyphonic Core
 		"UT_BUI_SCAN2",			"RED2",				160,	"Substance",	"COMPUTER",
 	},
+	{	--Mech Liquidator Stun Cannon
+		"MECH_ARMY_L_ARM",		"ILLEGAL_PROD7",	4,		"Product",		"POWERCELL",
+	},
+	{	--Mech Liquidator Stun Cannon
+		"MECH_ARMY_L_ARM",		"SALVAGE_TECH7",	2,		"Product",		"CASING",
+	},
+	{	--Mech Liquidator Flamethrower
+		"MECH_ARMY_R_ARM",		"MECH_PROD",		1,		"Product",		"FUEL2",
+	},
+	{	--Mech Liquidator Flamethrower
+		"MECH_ARMY_R_ARM",		"FARMPROD7",		4,		"Product",		"GRENFUEL1",
+	},
+	{	--Mech Liquidator Flamethrower
+		"MECH_ARMY_R_ARM",		"SALVAGE_TECH7",	2,		"Product",		"TECH_COMP",
+	},
+	{	--Mech Liquidator Legs
+		"MECH_ARMY_LEGS",		"QUAD_PROD",		2,		"Product",		"QUAD_PROD",
+	},
+	{	--Mech Liquidator Legs
+		"MECH_ARMY_LEGS",		"SALVAGE_TECH7",	2,		"Product",		"HYDRALIC",
+	},
+	{	--Mech Liquidator Head
+		"MECH_ARMY_HEAD",		"MECH_PROD",		1,		"Product",		"COMPUTER",
+	},
+	{	--Mech Liquidator Head
+		"MECH_ARMY_HEAD",		"WALKER_PROD",		2,		"Product",		"WALKER_PROD",
+	},
+	{	--Mech Liquidator Head
+		"MECH_ARMY_HEAD",		"SALVAGE_TECH7",	4,		"Product",		"TECH_COMP",
+	},
+	{	--Aqua-Jets
+		"WATER_LANDER",			"ATLAS_SEED_6",		1,		"Product",		"ANTIMATTER",
+	},
+	{	--Aqua-Jets
+		"WATER_LANDER",			"VENTGEM",			16,		"Product",		"VENTGEM",
+	},
+	{	--Exo-Skiff
+		"FISH_SKIFF",			"RED2",				100,	"Substance",	"LAND3",
+	},
+	{	--Exo-Skiff
+		"FISH_SKIFF",			"WATER1",			90,		"Substance",	"WATER1",
+	},
+	{	--Exo-Skiff
+		"FISH_SKIFF",			"VENTGEM",			16,		"Product",		"VENTGEM",
+	},
+	{	--Procedural Starship Pulse Engine Upgrades (Used for repairing / dismantling them)
+		"T_SHIPJUMP",			"STELLAR2",			150,	"Substance",	"RED2",
+	},
+	{	--Procedural Starship Photon Cannon Upgrades (Used for repairing / dismantling them)
+		"T_SHIPGUN",			"STELLAR2",			250,	"Substance",	"RED2",
+	},
+	{	--Procedural Starship Phase Beam Upgrades (Used for repairing / dismantling them)
+		"T_SHIPLAS",			"STELLAR2",			250,	"Substance",	"RED2",
+	},
+	{	--Procedural Starship Positron Ejector Upgrades (Used for repairing / dismantling them)
+		"T_SHIPSHOT",			"STELLAR2",			250,	"Substance",	"RED2",
+	},
+	{	--Procedural Starship Infraknife Accelerator Upgrades (Used for repairing / dismantling them)
+		"T_SHIPMINI",			"STELLAR2",			250,	"Substance",	"RED2",
+	},
+	{	--Procedural Starship Cyclotron Ballista Upgrades (Used for repairing / dismantling them)
+		"T_SHIPBLOB",			"STELLAR2",			250,	"Substance",	"RED2",
+	},
 	--The following "techs" are actually damaged slots in crashed starships / broken Multi-Tools, repairing them costs half the component cost
 	{	--Containment Failure
 		"SHIPSLOT_DMG5",		"GREEN2",			240,	"Substance",	"STELLAR2",			--Was 120 Chromatic Metal in Vanilla
@@ -536,9 +632,12 @@ InterceptBrain = 1						--1 Harmonic Brain
 InterceptAIValves = 4					--0 Starship AI Valves		(Technically added as a new custom separate tech to repair, not part of the Pilot Interface)
 
 --Added item costs for repairing all broken slots on Sentinel Multi-Tools
-SemiconductorAmount = 1								--0		Semiconductor
-RecycledCircuitAmount = 1							--0		Recycled Circuitry ( x2 )
+SemiconductorAmount = 1					--0		Semiconductor
+RecycledCircuitAmount = 1				--0		Recycled Circuitry ( x2 )
 	--Note, there are 2 "slots" which each require the "RecycledCircuitAmount" amount of Recycled Circuitry
+
+--Changes the amount of Atlantideum needed to charge the 3 glyph slots on Discordant Interface terminals at Korvax Monoliths. Should be paired with an edit in "PTSd More Expensive Pilots + Receivers + Ship&Tool slots etc.lua"
+DiscordantInterfaceCost =	36			--19
 
 --New recipe for installing Minotaur AI Pilot in Exomech
 AIPilotComputer = 8						--1 Quantum Computer
@@ -570,9 +669,11 @@ MinotaurBoreChargeCostMult = 2				--			Multiplier to apply to the cost of rechar
 --Changes how much substances it costs to refill the Biofuel Reactor for a set amount of time (the max size of the fuel tank is controlled in "gBase Items BasicX.lua")
 BiofuelRefillCostMult = 2					--1			In vanilla it takes 50 Carbon / 17 Cond. Carbon / 25 Oxygen for 25 hours worth of charge, so a "2" here means it would take 100 Carbon / 34 Cond. Carbon / 50 Oxygen to fill it for 25 hours worth of charge
 
---Changes the cost of using & recharging the Trade Rocket (fuel usage altered in PTSD Black Hole Distance + Ship Scrapping Items + Misc.lua)
+--Changes the cost of using & recharging the Trade Rocket 
+	--Note: Fuel usage altered in "PTSD Black Hole Distance + Ship Scrapping Items + Misc.lua"
+	--Note: Tritium ChargeValue altered in "PTSd Starship And Living Ship Tech + Speed Changes.lua"
 RocketChargeAmount = 50						--50	The "tank size" of how much "charge"/"fuel" it can hold
-RocketChargeCost = 8						--Multiplier to apply to the cost of recharging the Trade Rocket. E.G. a value of 2 means it costs twice as much to recharge the same size "tank" as vanilla
+RocketChargeCost = 16						--Multiplier to apply to the cost of recharging the Trade Rocket. E.G. a value of 2 means it costs twice as much to recharge the same size "tank" as vanilla if using the vanilla ChargeValue for Tritium
 
 --Everything below this point doesn't need to be changed, all the values can be edited in the sections above
 
@@ -664,7 +765,6 @@ RecipeChanges	=
 		"GARAGE_S",				--8			(Nomad)
 		"GARAGE_M",				--4			(Roamer)
 		"GARAGE_B",				--10		(Pilgrim)
-		"GARAGE_SUB",			--10		(Nautilon)
 		"GARAGE_MECH"			--10		(Minotaur)
 	}
 },
@@ -674,6 +774,14 @@ RecipeChanges	=
 	},
 	{
 		"GARAGE_L",				--8			(Colossus)
+	}
+},
+{
+	{
+		NautilonBuildingsMult				-- Keep in mind the roamer (base cost 4 Salvage) needs to be unlocked first to unlock others...
+	},
+	{
+		"GARAGE_SUB",			--10		(Nautilon)
 	}
 },
 {
@@ -826,6 +934,14 @@ RecipeChanges	=
 	},
 	{
 		"HOLO_DISCO_0"					--12	Wonder Projector
+	}
+},
+{
+	{
+		AutoFishTrapMult
+	},
+	{
+		"BUILDSEAHARVEST"				--1	Automated Trap
 	}
 },
 {
@@ -1121,9 +1237,6 @@ UpgradeScannerChanges =
 	},
 	{
 		"U_SCANNER4",	UpgradeScannerMult
-	},
-	{
-		"U_SCANNERX",	UpgradeScannerMult
 	}
 }
 
@@ -1310,6 +1423,7 @@ NewInterceptorTechRepairSlot =
           <Property name="AmountEmptyTimePeriod" value="0" />
           <Property name="HideWhenComplete" value="False" />
           <Property name="BlockDiscardWhenAllowedForParent" value="False" />
+		  <Property name="LocatorOverride" value="" />
           <Property name="UpdateType" value="UpdatesAlways" />
           <Property name="DamagedAfterTimePeriodMin" value="0" />
           <Property name="DamagedAfterTimePeriodMax" value="0" />
@@ -1465,6 +1579,12 @@ AddNewGrantine =
                         <Property name="Children" />
                       </Property>]]
 
+AddFishTree =
+[[<Property value="GcUnlockableItemTreeNode.xml">
+                    <Property name="Unlockable" value="FISHLASER" />
+                    <Property name="Children" />
+                  </Property>]]
+
 
 function Invert (value)
     return
@@ -1498,7 +1618,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 					["EXML_CHANGE_TABLE"] 	= 
 					{
 						{
-							["PRECEDING_KEY_WORDS"] = "",				-- what key words must occur in lines prior your desired value you want to change
+						
 							["MATH_OPERATION"] 		= "*", 				-- "*", "+", "-", "/" or leave empty for normal replacement
 							["REPLACE_TYPE"] 		= "ALL",			  -- "ALL" to change every matching values or leave empty for single replacement
 							["VALUE_MATCH"] 		= "49", 			  -- only change value(s) that match this value
@@ -1510,9 +1630,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
 							["MATH_OPERATION"] 		= "*", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "SUB_BINOCS"},
 							["INTEGER_TO_FLOAT"] = "PRESERVE",
 							["VALUE_CHANGE_TABLE"] 	= 
@@ -1521,9 +1639,15 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+							["MATH_OPERATION"] 		= "*", 
+							["SPECIAL_KEY_WORDS"] = {"ID", "FISHLASER"},
+							["INTEGER_TO_FLOAT"] = "PRESERVE",
+							["VALUE_CHANGE_TABLE"] 	= 
+							{
+								{"FragmentCost",	TechCostMult},						--Special case for Fishing Rig since it's Nanite cost is not greater than or equal to 50 (1)
+							}
+						},
+						{
 							["SPECIAL_KEY_WORDS"] = {"ID", "UT_ENERGY",	"ID", "OXYGEN"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1531,10 +1655,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						--[[
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_TELEPORT",	"ID", "ANTIMATTER"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1543,10 +1664,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						]]
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_TELEPORT",	"ID", "MAGNET"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1554,10 +1672,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 								{"ID",	"FREI_INV_TOKEN"},
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_TELEPORT",	"ID", "TECH_COMP"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1565,10 +1680,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 								{"ID",	"SHIP_INV_TOKEN"},
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_SCANNER",	"ID", "STELLAR2"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1577,8 +1689,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["REPLACE_TYPE"] 		= "",
-							["MATH_OPERATION"] 		= "",
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_SCANNER",		"ID", "WALKER_PROD"},
 							["VALUE_MATCH"] 	= "Substance",
 							["VALUE_CHANGE_TABLE"] 	=
@@ -1587,9 +1697,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_SCANNER",	"ID", "LAND3"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1598,8 +1705,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["REPLACE_TYPE"] 		= "",
-							["MATH_OPERATION"] 		= "",
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_SCANNER",		"ID", "MECH_PROD"},
 							["VALUE_MATCH"] 	= "Substance",
 							["VALUE_CHANGE_TABLE"] 	=
@@ -1607,40 +1712,28 @@ NMS_MOD_DEFINITION_CONTAINER =
 								{"InventoryType", "Product"}
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "F_SCANNER",	"ID", "TECH_COMP"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
 								{"Amount",	IntScannerWireLoom},
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "LIFESUP_ROBO",	"ID", "DRONE_SHARD"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
 								{"Amount",	InterceptShards},
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "LIFESUP_ROBO",	"ID", "DRONE_SALVAGE"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
 								{"Amount",	InterceptMirror},
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "LIFESUP_ROBO",	"ID", "SHIPBRAIN_CLEAN"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1650,31 +1743,36 @@ NMS_MOD_DEFINITION_CONTAINER =
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID", "WEAPSENT_DMG1"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 							["ADD"] = AddedSentToolRepairCost
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID", "WEAPSENT_DMG2"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 							["ADD"] = AddedSentToolRepairCost
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID", "WEAPSENT_DMG3"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 							["ADD"] = AddedSentToolRepairCost
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID", "WEAPSENT_DMG4"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 							["ADD"] = AddedSentToolRepairCost
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+							["SPECIAL_KEY_WORDS"] = {"ID", "MAINT_MONONUB%d"},
+							["REPLACE_TYPE"] = "ALL",
+							["VALUE_CHANGE_TABLE"] 	= 
+							{
+								{"ChargeAmount",	DiscordantInterfaceCost},
+							}
+						},
+						{
 							["SPECIAL_KEY_WORDS"] = {"ID", "MECH_PILOT",	"ID", "COMPUTER"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1682,9 +1780,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "MECH_PILOT",	"ID", "ANTIMATTER"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1692,10 +1787,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 								{"ID",	"TRA_TECH4"},
 							}
 						},
-						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
+						{ 
 							["SPECIAL_KEY_WORDS"] = {"ID", "MECH_PILOT",	"ID", "TECH_COMP"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1718,37 +1810,37 @@ NMS_MOD_DEFINITION_CONTAINER =
 							["SPECIAL_KEY_WORDS"] = {"ID","UT_ENERGY"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 							["ADD"] = AddedItemCost ("CARBON_SEAL", ORHermSeal, "Product"),
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID","UT_ENERGY"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 							["ADD"] = AddedItemCost ("POWERCELL", ORIonBatt, "Product"),
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID","MECH_SENT_L_ARM"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 							["ADD"] = MechPart,
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID","MECH_SENT_R_ARM"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 							["ADD"] = MechPart,
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID","MECH_SENT_LEGS"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 							["ADD"] = QuadParts,
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID","MECH_SENT_HEAD"},
 							["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 							["ADD"] = MechPart,
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["SPECIAL_KEY_WORDS"] = {"ID","MECH_ENGINE",	"StatsType","Vehicle_EngineFuelUse"},
@@ -1759,9 +1851,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "MECH_MINER"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1769,9 +1858,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
 							["MATH_OPERATION"] 		= "*", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "MECH_MINER"},
 							["INTEGER_TO_FLOAT"] = "FORCE",
 							["VALUE_CHANGE_TABLE"] 	= 
@@ -1780,9 +1867,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
 							["MATH_OPERATION"] 		= "*", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "MAINT_BURNER"},
 							["INTEGER_TO_FLOAT"] = "FORCE",
 							["VALUE_CHANGE_TABLE"] 	= 
@@ -1791,9 +1876,6 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
-							["MATH_OPERATION"] 		= "", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "SUIT_ROCKET"},
 							["VALUE_CHANGE_TABLE"] 	= 
 							{
@@ -1801,9 +1883,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 							}
 						},
 						{
-							["PRECEDING_KEY_WORDS"] = "",
 							["MATH_OPERATION"] 		= "*", 
-							["REPLACE_TYPE"] 		= "",	 
 							["SPECIAL_KEY_WORDS"] = {"ID", "SUIT_ROCKET"},
 							["INTEGER_TO_FLOAT"] = "FORCE",
 							["VALUE_CHANGE_TABLE"] 	= 
@@ -1813,7 +1893,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 						},
 						{
 							["PRECEDING_KEY_WORDS"] = {"GcTechnology.xml"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 							["ADD"] = NewInterceptorRepairTech
 						},
 					}
@@ -1823,11 +1903,9 @@ NMS_MOD_DEFINITION_CONTAINER =
 					["EXML_CHANGE_TABLE"]     = 
                     {
                         {
-                            ["PRECEDING_KEY_WORDS"] = "",
 							["SPECIAL_KEY_WORDS"] = {"ID","FACT_TOKEN"}, 
                             ["MATH_OPERATION"]         = "*",  
                             ["REPLACE_TYPE"]         = "ALL",  
-                            ["VALUE_MATCH"]         = "", 
 							["INTEGER_TO_FLOAT"] = "PRESERVE",
                             ["VALUE_CHANGE_TABLE"]     = 
                             {
@@ -1848,6 +1926,15 @@ NMS_MOD_DEFINITION_CONTAINER =
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title","UI_EXOCRAFT_TREE",		"Unlockable","SUMMON_GARAGE"},
                             ["ADD"] = TextA
+                        },
+						{
+							["SPECIAL_KEY_WORDS"] = {"Unlockable","FISHLASER"}, 
+                            ["REMOVE"] = "SECTION"
+                        },
+						{
+							["SPECIAL_KEY_WORDS"] = {"Title","UI_WEAP_TECH_TREE",		"Unlockable","STRONGLASER"},
+                            ["ADD_OPTION"]  = "ADDbeforeSECTION",
+							["ADD"] = AddFishTree
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Unlockable","F_SCANNER"}, 		--Swaps position of Matter Beam and Interstellar Scanner in freighter unlock tree
@@ -1897,7 +1984,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title", "UI_S9_BASEPARTS_TREE",		"Unlockable", "BUILDANTIMATTER"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddRefinerRoom
                         },
 						{
@@ -1907,7 +1994,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title", "UI_PURCHASABLE_BASEPARTS_TREE",		"Unlockable", "BUILDANTIMATTER"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddRefinerRoom
                         },
 						{
@@ -1932,7 +2019,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title", "UI_PURCHASABLE_BASEPARTS_TREE",		"Unlockable", "BUILDLANDINGPAD"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddTradeRoom
                         },
 						{
@@ -1941,22 +2028,22 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title", "UI_S9_BASEPARTS_TREE",		"Unlockable", "DRESSING_TABLE"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddTradeRoom
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Unlockable", "PLANTERMEGA"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddCultRoom
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title", "UI_PURCHASABLE_BASICTECH_TREE",		"Unlockable", "BUILDBEACON"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddSavePoint
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Title", "UI_PURCHASABLE_BASICPARTS_TREE",		"Unlockable", "BUILDBEACON"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddSavePoint
                         },
 						--These 4 edits move the recipe for Geodesite to be below Herox instead of Grantine
@@ -1966,7 +2053,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Unlockable", "ALLOY2"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddNewHerox
                         },
 						{
@@ -1975,7 +2062,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
 						{
 							["SPECIAL_KEY_WORDS"] = {"Unlockable", "ALLOY5"},
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
                             ["ADD"] = AddNewGrantine
                         },
                     }
@@ -1987,7 +2074,7 @@ NMS_MOD_DEFINITION_CONTAINER =
 						{
 							["PRECEDING_KEY_WORDS"] = {"GcMaintenanceElement.xml"},
 							["ADD"] = NewInterceptorTechRepairSlot,
-							["REPLACE_TYPE"] = "ADDAFTERSECTION",
+							["ADD_OPTION"]  = "ADDafterSECTION",
 						},
 						{
 							["REPLACE_TYPE"] = "",
@@ -2069,7 +2156,7 @@ for i = 1, #AddItems do
 				["SPECIAL_KEY_WORDS"] = {"ID",TechIDNum},
 				["PRECEDING_KEY_WORDS"] = {"GcTechnologyRequirement.xml"},
 				["ADD"] = AddedItemCost (AddItemID, AddItemAmount, AddItemType),
-				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+				["ADD_OPTION"]  = "ADDafterSECTION",
 			}
 end
 for i = 1, #ReplaceItems do
@@ -2080,10 +2167,7 @@ for i = 1, #ReplaceItems do
 	local OldCompID = ReplaceItems[i][5]
 		
 			ChangesToTechTable[#ChangesToTechTable+1] =
-			{
-				["PRECEDING_KEY_WORDS"] = "",
-				["MATH_OPERATION"] 		= "", 
-				["REPLACE_TYPE"] 		= "",	 
+			{ 
 				["SPECIAL_KEY_WORDS"] = {"ID", TechIDNum,	"ID", OldCompID},
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
@@ -2106,7 +2190,6 @@ for i = 1, #RecipeChanges do
 			RecipeID = RecipeIDs[j]
 			ChangesToProductTable[#ChangesToProductTable+1] =
 			{
-				["PRECEDING_KEY_WORDS"] = "",
 				["MATH_OPERATION"] 		= "*",
 				["REPLACE_TYPE"] 		= "ALL",
 				["SPECIAL_KEY_WORDS"] = {"ID", RecipeID},
@@ -2130,10 +2213,8 @@ for i = 1, #UpgradeChanges do
 		ItemID = ItemIDs[j]
 			ChangesToProductTable[#ChangesToProductTable+1] =
 			{
-				["PRECEDING_KEY_WORDS"] = "",				-- what key words must occur in lines prior your desired value you want to change
 				["SPECIAL_KEY_WORDS"] = {"ID", ItemID},  
 				["MATH_OPERATION"] 		= "*", 				-- "*", "+", "-", "/" or leave empty for normal replacement
-				["REPLACE_TYPE"] 		= "",			  -- "ALL" to change every matching values or leave empty for single replacement
 				["INTEGER_TO_FLOAT"] = "PRESERVE",
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2143,10 +2224,7 @@ for i = 1, #UpgradeChanges do
 			
 			ChangesToProductTable[#ChangesToProductTable+1] =
 			{
-				["PRECEDING_KEY_WORDS"] = "",				-- what key words must occur in lines prior your desired value you want to change
 				["SPECIAL_KEY_WORDS"] = {"ID", ItemID},  
-				["MATH_OPERATION"] 		= "", 				-- "*", "+", "-", "/" or leave empty for normal replacement
-				["REPLACE_TYPE"] 		= "",			  -- "ALL" to change every matching values or leave empty for single replacement
 				["INTEGER_TO_FLOAT"] = "FORCE",
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2163,10 +2241,8 @@ for i = 1, #UpgradeScannerChanges do
 		Multiplier = UpgradeScannerChanges[i][2]
 			ChangesToProductTable[#ChangesToProductTable+1] =
 			{
-				["PRECEDING_KEY_WORDS"] = "",				-- what key words must occur in lines prior your desired value you want to change
 				["SPECIAL_KEY_WORDS"] = {"ID", ScannerID},  
 				["MATH_OPERATION"] 		= "*", 				-- "*", "+", "-", "/" or leave empty for normal replacement
-				["REPLACE_TYPE"] 		= "",			  -- "ALL" to change every matching values or leave empty for single replacement
 				["INTEGER_TO_FLOAT"] = "PRESERVE",
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2174,7 +2250,3 @@ for i = 1, #UpgradeScannerChanges do
 				}
 			}
 end
-
---NOTE: ANYTHING NOT in table NMS_MOD_DEFINITION_CONTAINER IS IGNORED AFTER THE SCRIPT IS LOADED
---IT IS BETTER TO ADD THINGS AT THE TOP IF YOU NEED TO
---DON'T ADD ANYTHING PASS THIS POINT HERE

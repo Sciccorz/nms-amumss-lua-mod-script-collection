@@ -1,13 +1,15 @@
-ModName = "PTSD Other Difficulty Settings"
-GameVersion = "452"
+ModName = "PTSd Other Difficulty Settings"
+GameVersion = "5_12"
 Description = "Affects most of the Difficulty Setting menu options, except for Stack Sizes"
+
+DisablePlanetaryPirateRaids				=false								--false		Set true to disable any planetary pirate raids
 
 --Controls whether you can both increase and decrease the Stack Size limit from the options menu after starting a game
 StackLimitSettings =			"FullyEditable"							--"DecreaseOnly"		(Options are "FullyEditable", "DecreaseOnly", "LockedHidden")
 
 --NOTE: Many of the features controlled by the settings below have changes to them made by other parts of PTSd, e.g. Enemy health, Damage received, and hazard strength, among other things, are already substantially increased compared to vanilla.
 
---Multipliers for the "Damage Received" difficulty settings 		(Set by the "Damage Levels" setting)
+--Multipliers for the "Damage Levels" difficulty settings 		(Set by the "Damage Levels" setting)
 	--These multipliers are presumably applied to the base damage values set in DAMAGETABLE.MBIN, modified by "gDamageX.lua"
 DRNone =						0										--0
 DRLow =							0.5										--0.2
@@ -15,17 +17,17 @@ DRNormal =						1										--1
 DRHigh =						1.33									--1.5
 	--These are presumably how many hits before the Minotaur takes damage to installed tech when under AI autopilot (possibly overwrites the similar parameter in GCVEHICLEGLOBALS.GLOBAL.MBIN )
 DRMNone =						0										--0
-DRMLow =						48										--32
-DRMNormal =						24										--16
-DRMHigh =						12										--8
+DRMLow =						56										--32
+DRMNormal =						28										--16
+DRMHigh =						14										--8
 
---Multipliers for the "Damage Given" difficulty settings
+--Multipliers for the "Enemy Strength" difficulty settings
 	--These presumably apply to the base health values for enemies set in GCROBOTGLOBALS.MBIN and AISPACESHIPATTACKDATATABLE.MBIN, modified by "_Extra Savage Sentinels by ExosolarX.lua" and "Space Combat+Larger Space BattlesX.lua"
 DGHigh =						2										--2.5
 DGNormal =						1										--1
 DGLow =							0.5										--0.66
 
---Multipliers for the "Hazard Drain" difficulty 				(Set by the "Survival Difficulty" setting)
+--Multipliers for the "Survival Difficulty" difficulty 				(Set by the "Survival Difficulty" setting)
 	--These are applied to the base Hazard timers set in GCPLAYERGLOBALS.GLOBAL, modified by "PTSd Stronger Environmental Hazards.lua"
 HDSlow =						2.2										--0.35
 HDNormal =						6.6										--1.1
@@ -77,7 +79,7 @@ LFHigh =						1.5										--1.2
 LFHighShipSummon =				3										--4
 
 --Multipliers for the "Currency Cost" difficulty settings
---Unclear what "Specials" is, is not salvaged data / salvaged frigate modules.
+--Unclear what "Specials" is, is not salvaged data / salvaged frigate modules. Perhaps Quicksilver shop?
 --The Units/Nanites/Specials settings below don't apply to generic substances/products in shop/vendor lists, but to prices when selecting an option from a menu/dialogue tree, such as purchasing an inventory upgrade on a Space Station, etc.
 	--The Units multipliers appear to also apply to the purchase, trade-in, & scan value of starships, but not the salvage value.
 --The "BuyPriceMarkup" settings below apply a multiplier to the existing "BuyBaseMarkup" attribute for most items in shop/vendor lists. "BuyBaseMarkup" controls how much higher an item's purchase price is compared to its base value/selling price.
@@ -114,7 +116,7 @@ RGNormal =						1										--1
 RGSlow =						0.5										--1
 
 --Multipliers for the "Space Combat" difficulty						(Set by the "Space Combat" setting)
-	--These multipliers applied to the "SpacePirateTimers" (& likely PlanetPirateTimers or other similar timers) below which control how long until the next "countdown to space encounter" begins (doesn't change how long the ~20 second countdown lasts)
+	--These multipliers applied to the "SpacePirateTimers" below which control how long until the next "countdown to space encounter" begins (doesn't change how long the ~20 second countdown lasts)
 SCMOff =						0										--0
 SCMSlow =						3										--5
 SCMNormal =						1										--1
@@ -130,10 +132,11 @@ SCMFastDiff =					0.2										--1.2
 --Multipliers for the "Ground Combat" difficulty					(Set by the "On-Foot Combat" setting)
 	--Selecting the "Hostile" setting also makes more planets have Aggressive Sentinels regardless of values here, particularly Lush/Paradise planets
 	--These multiplers apply to the "SentinelTimers" below, which affect how soon after loading the game that Sentinels spawn nearby, not sure what else.
+	--Also seems to apply to the "PlanetPirateTimers" below, which affect how long between Planetary Pirate Raids
 GCMOff =						0										--0			
-GCMSlow =						1.66									--1.66
+GCMSlow =						1.67									--1.66
 GCMNormal =						1										--1
-GCMFast =						0.33									--0.33
+GCMFast =						0.5										--0.33
 --Multipliers for the "Ground Combat Sentinel Timers" difficulty	(Set by the "On-Foot Combat" setting)
 	--These multipliers are intended to affect how long sentinels will continue to search for you once out of sight, based on the time set in GCPLAYERGLOBALS.GLOBAL.MBIN
 	--However in practice they are purely cosmetic as they only affect the displayed timer on the UI, not the actual time that Sentinels will search for you
@@ -147,15 +150,15 @@ SOFree =						0										--0
 SOLow =							0.4										--0.4
 SOFull =						1										--1
 
---Multipliers for the "Breaking Tech" difficulty settings
+--Multipliers for the "Breaking Tech" difficulty settings. These appear to somehow determine the "base chance" for tech breakage / tech damage when taking a hit
 BTNone =						0										--0
 BTLow =							0.2										--0.33
 BTHigh =						1.3										--2.5
 
---Base chances to be used for Breaking Tech when taking damage (unclear exactly how these are used)
-TechDamageChanceShieldedMax =		0.5									--0.5			(Maybe an additional multiplier to tech breakage chance when at full shields?)
-TechDamageChanceShieldLevelMin =	0.01								--0.01			(Maybe the base chance for tech to break when shields are almost full?)
-TechDamageChanceShieldLevelMax =	0.75								--0.75			(Maybe the base chance for tech to break when shields are almost empty?)
+--These appear to be further multipliers applied to the "base chance" of tech breakage set above
+TechDamageChanceShieldedMax =		0.33								--0.5			This appears to be a flat multiplier applied to tech breakage chances that remains in effect as long as your shield is still active. Appears to stack multiplicatively with the "sliding scale" multiplier below
+TechDamageChanceShieldLevelMin =	0.001								--0.01			This appears to set the lower bound for a "sliding scale" multiplier applied to tech breakage chances depending on how full your shield is (This presumably sets the value of the multiplier when you shield is full)
+TechDamageChanceShieldLevelMax =	0.75								--0.75			This appears to set the upper bound for a "sliding scale" multiplier applied to tech breakage chances depending on how full your shield is (This presumably sets the value of the multiplier when you shield is at the lowest possible value before breaking)
 TechDamageChanceToSelectPrimary =	0.1									--0.1			(Maybe the chance that a primary tech is chosen instead of a secondary tech or upgrade whenever tech breaks?)
 
 --Alters some base values for Multi-Tool mining and Scan Pulses, mainly to be equal to their survival mode level for pre-4.0 NMS
@@ -165,6 +168,12 @@ OverheatDecay =					3.8										--8		(was 3.8 for survival mode)		Contrary to t
 ScannerRange =					150										--200	(was 150 for survival mode)		Radius of Multitool scanner pulse
 ScannerRecharge =				90										--30	(was 90 for survival mode)		Cooldown in seconds for Multitool scanner pulse
 ShipScanRecharge =				16										--10		Cooldown in seconds for starship scanner pulse
+
+--Multipliers for the "Fishing Timing" settings, which appear to multiply the base FishCatchAfterBiteTime window in GCFISHINGGLOBALS.GLOBAL.MBIN
+AutoCatch =						3										--2
+LongCatchWindow =				3										--2
+NormalCatchWindow =				1										--1
+ShortCatchWindow =				0.67									--0.67
 
 --Changes to Interest levels and sentinel timers to set their values closer to the old Survival mode values
 InterestLevelChanges =
@@ -187,19 +196,18 @@ InterestLevelChanges =
 	},
 }
 
---These timers are modified by the "SCMSlow", "SCMNormal", & "SCMFast" multipliers above
 PirateTimersChanges =
 {
-	{
+	{--These timers seem to be modified by the "GCMSlow", "GCMNormal", & "GCMFast" multipliers above
 		{"PlanetPirateTimers"},		--Probably how long until the next "planetary Pirate raid" begins
 		{	--Type			X		Y		(I believe X & Y set the "range" of possible times to use, probably in seconds)
-			{"High",		500,	700},							--800,	1000	Conflict level 3 systems
-			{"Normal",		800,	1000},							--1000,	1400	Conflict level 2 systems
+			{"High",		620,	820},							--800,	1000	Conflict level 3 systems
+			{"Normal",		1240,	1640},							--1000,	1400	Conflict level 2 systems
 			{"Low",			0,		0},								--0,	0		Conflict level 1 systems	(No planetary pirate raids)
 
 		}
 	},
-	{
+	{--These timers are modified by the "SCMSlow", "SCMNormal", & "SCMFast" multipliers above
 		{"SpacePirateTimers"},		--How long until the next "countdown to space encounter" begins (doesn't change how long the ~20 second countdown lasts)
 		{	--Type			X		Y		(I believe X & Y set the "range" of possible times to use, probably in seconds)
 			{"High",		120,	180},							--300,	300		Conflict level 3 systems
@@ -337,6 +345,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"FullEcosystem"},			--FullEcosystem		(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Full"},					--Full				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"Low"},						--Low				(options are None, Low, High)
+			{"FishingDifficulty",				"NormalCatchWindow"},		--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Normal"},--Space			--Normal			(options are Off, Slow, Normal, Fast)
@@ -372,6 +381,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"FullEcosystem"},			--FullEcosystem		(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Full"},					--Full				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"Low"},						--Low				(options are None, Low, High)
+			{"FishingDifficulty",				"NormalCatchWindow"},		--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Normal"},--Space			--Normal			(options are Off, Slow, Normal, Fast)
@@ -407,6 +417,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"NeverAttack"},				--NeverAttack		(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Free"},					--Free				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"None"},					--None				(options are None, Low, High)
+			{"FishingDifficulty",				"NormalCatchWindow"},		--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Off"},--Space				--Off				(options are Off, Slow, Normal, Fast)
@@ -442,6 +453,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"AttackIfProvoked"},		--AttackIfProvoked	(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Low"},						--Low				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"None"},					--None				(options are None, Low, High)
+			{"FishingDifficulty",				"LongCatchWindow"},			--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Slow"},--Space				--Slow				(options are Off, Slow, Normal, Fast)
@@ -477,6 +489,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"FullEcosystem"},			--FullEcosystem		(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Full"},					--Full				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"High"},					--High				(options are None, Low, High)
+			{"FishingDifficulty",				"NormalCatchWindow"},		--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Normal"},--Space			--Fast				(options are Off, Slow, Normal, Fast)
@@ -512,6 +525,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"FullEcosystem"},			--FullEcosystem		(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Full"},					--Full				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"High"},					--High				(options are None, Low, High)
+			{"FishingDifficulty",				"NormalCatchWindow"},		--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Normal"},--Space			--Fast				(options are Off, Slow, Normal, Fast)
@@ -547,6 +561,7 @@ Presets =
 			{"CreatureHostilityDifficulty",		"FullEcosystem"},			--FullEcosystem		(options are NeverAttack, AttackIfProvoked, FullEcosystem)
 			{"SprintingCostDifficulty",			"Low"},						--Low				(options are Free, Low, Full)
 			{"BreakTechOnDamageProbability",	"Low"},						--Low				(options are None, Low, High)
+			{"FishingDifficulty",				"LongCatchWindow"},			--NormalCatchWindow	(options are AutoCatch, LongCatchWindow, NormalCatchWindow, ShortCatchWindow)
 		},
 		{
 			{"CombatTimerDifficultyOption",		"Off"},--Space				--Off				(options are Off, Slow, Normal, Fast)
@@ -886,6 +901,16 @@ NMS_MOD_DEFINITION_CONTAINER = {
 				}
 			},
 			{
+				["PRECEDING_KEY_WORDS"] = "FishingCatchWindowMultipliers",
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"AutoCatch", AutoCatch},
+					{"LongCatchWindow", LongCatchWindow},
+					{"NormalCatchWindow", NormalCatchWindow},
+					{"ShortCatchWindow", ShortCatchWindow}
+				}
+			},
+			{
 				["SPECIAL_KEY_WORDS"] = {"Normal","GcItemShopAvailabilityDifficultyOptionData.xml"},
 				["PRECEDING_KEY_WORDS"] = "NeverSoldItems",
 				--["LINE_OFFSET"] = "+2",
@@ -983,6 +1008,18 @@ for i = 1, #PirateTimersChanges do
 				}
 			}
 	end
+end
+if DisablePlanetaryPirateRaids then
+			ChangesToGameplayGlobals[#ChangesToGameplayGlobals+1] = 
+			{
+				["SPECIAL_KEY_WORDS"] = {"PlanetPirateTimers", "GcExperienceTimers.xml"},
+				["REPLACE_TYPE"] = "ALL",
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"x",	"0"},
+					{"y",	"0"}
+				}
+			}
 end
 
 local ChangesToDifficulty = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"][3]["EXML_CHANGE_TABLE"]

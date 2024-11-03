@@ -15,7 +15,7 @@ SubstanceOrProduct = { ["Substance"] = "Substance", ["Product"] =  "Product"}
 -- TLDR: --
 -- Speed is in SECONDS and MUST be a negative value, THE LOWER THE VALUE, THE FASTER THE EXTRACTOR FILLS
 --Storage is self explanatory lol
-gExtrSpeed =  -3600 -- 1hr
+gExtrSpeed =  -86400 -- 24hrs -3600 --1hr
 gExtrCap = 9999 -- max cap
 
 gExtrConfTable =
@@ -390,21 +390,21 @@ AddNewSnapPTSpignFace =
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ModName 						= "Moar Stellar Extractors "
-Author								= "EchoTree"
-LuaAuthor							= "EchoTree & Jackty89"
-ModDescription				=	"Adds 4 new Stellar Extractor rooms to the game. Adds 20 New Files, Modifies METADATA/REALITY DEFAULTSAVEDATA.MBIN, DEFAULTSAVEDATACREATIVE.MBIN, /TABLES BASEBUILDINGOBJECTSTABLE.MBIN, BASEBUILDINGPARTSTABLE.MBIN, BASEBUILDINGPARTSNAVDATATABLE.MBIN, NMS_REALITY_GCPRODUCTTABLE.MBIN, and all of the PLACEMENTDATA.ENTITY.MBINS for the Industrial Rooms."
-GameVersion					=	"v4.2.3"
-Build									= ".1"
-CustomLanguageTag		= "NMSMSE"
+Author							= "EchoTree"
+LuaAuthor						= "EchoTree & Jackty89"
+ModDescription					= "Adds 4 new Stellar Extractor rooms to the game. Adds 20 New Files, Modifies METADATA/REALITY DEFAULTSAVEDATA.MBIN, DEFAULTSAVEDATACREATIVE.MBIN, /TABLES BASEBUILDINGOBJECTSTABLE.MBIN, BASEBUILDINGPARTSTABLE.MBIN, BASEBUILDINGPARTSNAVDATATABLE.MBIN, NMS_REALITY_GCPRODUCTTABLE.MBIN, and all of the PLACEMENTDATA.ENTITY.MBINS for the Industrial Rooms."
+GameVersion						= "v5.03.0"
+Build							= ".1"
+CustomLanguageTag				= "NMSMSE"
 
 NMS_MOD_DEFINITION_CONTAINER = 
 {
 	["MOD_FILENAME"] 			= Author.."'s "..ModName..GameVersion..Build..".pak",
-	["MOD_DESCRIPTION"]      = ModDescription.."Compatible with NMS"..GameVersion,
+	["MOD_DESCRIPTION"]   	    = ModDescription.."Compatible with NMS"..GameVersion,
 	["MOD_AUTHOR"]				= Author,
-	["LUA_AUTHOR"]					= LuaAuthor,
+	["LUA_AUTHOR"]				= LuaAuthor,
 	["NMS_VERSION"]				= GameVersion,
-	["ADD_FILES"]           			=
+	["ADD_FILES"]      			=
 	{
 	},
 	["MODIFICATIONS"] 			= 
@@ -1059,11 +1059,9 @@ function CreateNewProduct(NewProductID, NewProductName, NewProductNameLc, NewPro
       <Property name="ID" value="]]..NewProductID..[[" />
       <Property name="Name" value="]]..NewProductName..[[" />
       <Property name="NameLower" value="]]..NewProductNameLc..[[" />
-      <Property name="Subtitle" value="VariableSizeString.xml">
-        <Property name="Value" value="]]..NewProductSub..[[" />
+      <Property name="Subtitle" value="]]..NewProductSub..[[">
       </Property>
-      <Property name="Description" value="VariableSizeString.xml">
-        <Property name="Value" value="]]..NewProductDesc..[[" />
+      <Property name="Description" value="]]..NewProductDesc..[[">
       </Property>
       <Property name="Hint" value="" />
       <Property name="GroupID" value="" />
@@ -1893,9 +1891,9 @@ end
 function NewLanguageEntry(Language, NewDescription)
     return
     [[
-        <Property name="]]..Language..[[" value="VariableSizeString.xml">
-            <Property name="Value" value="]]..NewDescription..[[" />
+        <Property name="]]..Language..[[" value="]]..NewDescription..[[">
         </Property>
+		
     ]]
 end
 
@@ -1922,7 +1920,7 @@ function FillCustomlangFile(Data)
 
         local LanguagesData = Data[i]["Languages"]
 
-        local NameID = ProductID.."_NAME"
+        local NameID = "BLD_"..ProductID.."_NAME"
         local NameLCID = "BLD_"..ProductID.."_NAME_L"
         local SubID = "BLD_"..ProductID.."_SUB"
         local DescID = "BLD_"..ProductID.."_DESC"

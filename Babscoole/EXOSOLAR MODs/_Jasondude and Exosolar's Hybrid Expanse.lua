@@ -3168,19 +3168,17 @@ DataTable =
             {"0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","0","0.031","0.196","0.267","1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1","0","0","0","1"},
             {"0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","0","0.698","0.224","0.059","1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1","0","0","0","1"},
             {"0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","0","0.047","0.443","0.176","1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1","0","0","0","1"},
-            {"0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","0","1","0.682","0.255","1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1","0","0","0","1"},            
+            {"0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","1","0","0","0","0","1","0.682","0.255","1","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","1","0","0","0","1"},
         }
     },
 }
 
 NMS_MOD_DEFINITION_CONTAINER =
 {
-["MOD_FILENAME"]    = "_Jasondude and Exosolar's Hybrid Expanse.pak",
-["MOD_AUTHOR"]      = "Exosolar",
-["LUA_AUTHOR"]      = "Jackty89, WinderTP, and Babscoole",
-["MOD_MAINTENANCE"] = "Babscoole",
-["NMS_VERSION"]     = "4.71",
-["MODIFICATIONS"]   =
+["MOD_FILENAME"]  = "_Jasondude and Exosolar's Hybrid Expanse.pak",
+["MOD_AUTHOR"]    = "Exosolar & Babscoole",
+["NMS_VERSION"]   = "5.22",
+["MODIFICATIONS"] =
     {
         {
             ["MBIN_CHANGE_TABLE"] =
@@ -3341,7 +3339,7 @@ end
 local BaseColourPalettesTable = NMS_MOD_DEFINITION_CONTAINER["MODIFICATIONS"][1]["MBIN_CHANGE_TABLE"]
 for i = 1, #DataTable do
     local Palette = DataTable[i]["PALETTE"]
-    local FileSource = "METADATA\SIMULATION\SOLARSYSTEM\WEATHER\SKYSETTINGS\"..string.upper(Palette).."SKYCOLOURS.MBIN"
+    local FileSource = [[METADATA\SIMULATION\SOLARSYSTEM\WEATHER\SKYSETTINGS\]]..string.upper(Palette).."SKYCOLOURS.MBIN"
     local PaletteColours = DataTable[i]["COLOURS"]
 
     BaseColourPalettesTable[#BaseColourPalettesTable +1] =

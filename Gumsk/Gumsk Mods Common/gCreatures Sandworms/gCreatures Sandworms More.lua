@@ -2,7 +2,7 @@ Author = "Gumsk"
 ModName = "gCreatures Sandworms"
 ModNameSub = "More"
 BaseDescription = "More Sandworms"
-GameVersion = "470"
+GameVersion = "5.2.0.0"
 ModVersion = "a"
 FileSource1 = "METADATA\SIMULATION\ECOSYSTEM\CREATUREGENERATIONDATA.MBIN"
 FileSource2 = "GCCREATUREGLOBALS.MBIN"
@@ -39,7 +39,7 @@ MODIFICATIONS	= {
 			EXML_CHANGE_TABLE = {
 				{
 					PRECEDING_KEY_WORDS = {"SandwormPresenceChance"},
-					["INTEGER_TO_FLOAT"] = "FORCE",
+					INTEGER_TO_FLOAT = "FORCE",
 					VALUE_CHANGE_TABLE = {
 						{"Lush", SandwormPresenceChance},			--0.1
 						{"Toxic", SandwormPresenceChance},			--0.25

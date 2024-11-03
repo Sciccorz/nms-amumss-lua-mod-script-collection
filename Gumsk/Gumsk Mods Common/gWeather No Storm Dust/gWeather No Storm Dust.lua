@@ -2,7 +2,7 @@ Author = "Gumsk"
 ModName = "gWeather"
 ModNameSub = "No Storm Dust"
 BaseDescription = "Removes storm dust"
-GameVersion = "470"
+GameVersion = "5.2.0.0"
 ModVersion = "a"
 
 NMS_MOD_DEFINITION_CONTAINER = {
@@ -35,8 +35,8 @@ MODIFICATIONS   = {{
             },
             EXML_CHANGE_TABLE = {
                 {
-                    PRECEDING_KEY_WORDS = {"HeavyAir", "NMSString0x80.xml"},
-                    ["SECTION_ACTIVE"]      = {1,},
+                    PRECEDING_KEY_WORDS = {"HeavyAir", "VariableSizeString.xml"},
+                    SECTION_ACTIVE      = {1,},
                     VALUE_CHANGE_TABLE  = {
                         {"Value",           ""},
                     },
@@ -63,7 +63,7 @@ MODIFICATIONS   = {{
                 {
                     PRECEDING_KEY_WORDS = {"GcScreenFilters.xml"},
                     REPLACE_TYPE        = "ALL",
-                    ["REMOVE"]              = "SECTION",
+                    REMOVE              = "SECTION",
                 },
             }
         },

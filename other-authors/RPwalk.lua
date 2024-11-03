@@ -3,7 +3,7 @@ NMS_MOD_DEFINITION_CONTAINER	=
   ["MOD_FILENAME"]	= "RPwalk.pak",
   ["MOD_DESCRIPTION"]	= "Realistic Walking for Immersion",
   ["MOD_AUTHOR"]	= "earlyPlanet",
-  ["NMS_VERSION"]	= "4.70",
+  ["NMS_VERSION"]	= "5.21",
   ["MODIFICATIONS"]	=	
 	{
 		{
@@ -16,12 +16,17 @@ NMS_MOD_DEFINITION_CONTAINER	=
 						{
 							["VALUE_CHANGE_TABLE"]	=
 							{
-								{"GroundWalkSpeed",	"2.2",},
-								{"GroundRunSpeed","6",}
+	{"GroundWalkSpeed",	"2.2",},
+	{"GroundRunSpeed",	"7",}
 							}	
 						},
 					}
 				},
+			}
+		},
+		{
+			["MBIN_CHANGE_TABLE"]	=
+			{ 
 				{
 					["MBIN_FILE_SOURCE"]	=	"GCCAMERAGLOBALS.GLOBAL.MBIN",
 					["EXML_CHANGE_TABLE"]	= 
@@ -29,13 +34,13 @@ NMS_MOD_DEFINITION_CONTAINER	=
 						{
 							["VALUE_CHANGE_TABLE"]	=
 							{
-								{"BobAmount","0.11",},
-								{"BobFactor","0.35",}
+	{"BobAmount",	"0.11",},
+	{"BobFactor",	"0.35",}
 							}	
 						},
 					}
-				}
+				},
 			}
-		},
+		}
 	}
 }

@@ -1,5 +1,5 @@
 ModName = "PTSd Weapons Rebalance"
-GameVersion = "4_63"
+GameVersion = "5_12"
 Description = "Changes various properties of some player or NPC weapons to be more balanced"
 
 RevertMiningLaserOverheatChanges = false				--false		If set to true, reverts the cooldown timer after overheating for Mining/Hijacked/Runic Laser etc. back to vanilla values, and will match up with the UI overheat overlay again.
@@ -8,6 +8,12 @@ RevertMiningLaserOverheatChanges = false				--false		If set to true, reverts the
 	--This includes the stats which are made worse when larger (ie, when supercharged), such as Reload time (except on Boltcaster), Recoil, Weapon charge time, Dispersion
 	--Blaze Javelin exempted since it barely benefits from supercharging, Cyclotron Ballista & Neutron Cannon only partially "un-supercharged" since they benefit more from supercharging upgrades rather than the core tech.
 USCMult =					1.2							-- Use "1" to instead have weapon techs start at full strength, and then get huge, uneven bonuses when supercharged
+
+--Adjusts the damage that Pirate Frigate Torpedos and Dreadnought Anti-Freighter Cannons deal to the lead civilian freighter (default shields & hull both are ~5,000,000) during Dreadnought battles
+DreadCannonDamage =			1920						--2150
+TorpedoDamage =				500000						--650000
+DreadCannonShieldMult =		1							--1		Damage Multiplier for Dreadnought Anti-Freighter Cannons vs. Freighter Shields
+TorpedoShieldMult =			1							--1		Damage Multiplier for Pirate Frigate Torpedos vs. Freighter Shields
 
 --Global Damage multipliers for convenience to apply to all player weapons of that category (stacks multiplicatively with the individual weapons adjustments below)
 GMD = 						1							--1		For all player Multi-Tool weapon damage	(Except for Mining Laser, as changing those values will affect mining speed)
@@ -23,8 +29,15 @@ ExplosionObjectMult = 0									--1
 LaserCritMult = 2										--4		How much the damage of the mining laser is multiplied on a critical hit (typically on the head / eye)
 LaserCreatureMult = 1									--1		Lowering this value appears to disable the critical weak points on creatures with the mining laser
 VehicleLaserCreatureMult = 0.2							--1
-LaserSentinelMult = 0.75									--0.6
+LaserSentinelMult = 0.8									--0.6
 VehicleLaserSentinelMult = 0.2							--0.2
+ShipWeaponSentinelMult = 0.02							--0.2
+ShipWeaponSentinelShieldMult = 0.01						--0.1
+ShipWeaponFiendMult = 0.01								--0.1	Vs. Biological Horrors
+
+--Default and starship damage multiplier against Walking Buildings (new custom type added by PTSd used in gCreatures Predators Danger DangerousX.lua)
+WalkingBuildingMult = 0.15								--In vanilla is a CREATURE type
+ShipWeaponWalkingBuildingMult = 0.02					--0.1
 
 --Damage multipliers against DOORs and DEPOTs
 ShipWeaponDoorMult = 0.02								--1
@@ -38,29 +51,36 @@ VehicleGunDepotMult = 0.05								--1
 VehicleLaserDepotMult = 0								--1		To match regular Laser damage = 0
 DefaultDepotMult = 	0.33								--1		Multiplier for most other damage against DEPOTs
 
---Damage multiplier against CARGO (cargo pods on space freighters???)
-ShipWeaponsCargoMult = 0.2								--1		(0.2)
+--Default damage multiplier against CARGO. Applies to the Cargo Pods attached to freighters (standalone Cargo Pods unaffected for some reason), in vanilla also applies to Freighter Shield Generators & Dreadnought Warp Drives.
+CargoDamageMult = 0.2									--1		(0.2)
 
---How many shots you get before needing to recharge with Unstable Plasma
+--How many shots you get before needing to recharge/refuel (e.g. with Unstable Plasma, Carbon, etc.)
 PlasmaLauncherCharge =						16					--20
 GeologyCannonCharge =						10					--20
 ParalysisMortarCharge =						8					--20
-MechStunWeaponCharge =						30					--400			(Amount of charge for the recharge bar of the Mech Sentinel Right Arm which stuns)
-MechStunWeaponChargeMultiplier =			0.1					--1				How effective substances are at recharging the charge bar
-
---How many shots you get before needing to recharge with Carbon/Condensed Carbon/Oxygen
 NeutronCannonCharge =						250					--500			(Amount of charge for the recharge bar of the Neutron Cannon)
 NeutronCannonChargeMultiplier =				0.5					--1				How effective substances are at recharging the charge bar
+
+MechStunWeaponCharge =						30					--400			(Amount of charge for the recharge bar of the Mech Sentinel Right Arm or Liquidator Left Arm which stuns)
+MechStunWeaponChargeMultiplier =			0.1					--1				How effective substances are at recharging the charge bar
+MechFlameCharge =							400					--400			(Amount of charge for the recharge bar of the Mech Liquidator Flamethrower)
+MechFlameChargeMultiplier =					1					--1				How effective substances are at recharging the charge bar
+
+ExocraftCannonCharge =						400					--200			(Amount of charge for the recharge bar of the Exocraft Cannon)
+ExocraftCannonChargeMultiplier =			2					--1				How effective substances are at recharging the charge bar
+NautilonCannonCharge =						400					--200			(Amount of charge for the recharge bar of the Nautilon Cannon)
+NautilonCannonChargeMultiplier =			2					--1				How effective substances are at recharging the charge bar
 
 --Misc Weapon adjustments
 MechStunWeaponRadius =						4					--5				AOE Radius of minotaur stun weapon shots
 MechStunWeaponDuration =					3					--3				Duration in seconds of minotaur stun weapon effect
 MechStunWeaponFireDOT =						80					--80			Fire DOT of minotaur stun weapon
 MechStunWeaponFireDuration =				3					--3				Duration in seconds of minotaur stun weapon Fire DOT
+MechFlameUpgradesDMGMult =					0.185				--				Multiplier to apply to the bonus damage for Flamethrower upgrades (1 ~ 2 for Class B ~ S, increased to 1 ~ 6 for Class B ~ S by !PTSd Procedural Upgrade Adjustment.lua)
 
-PhaseBeamLeechAmountMult =					0.5					--0.2 & 0.1		Multiplier to apply to the Shield Leech amount for Phase Beam, and the bonus from Fourier De-Limiter (0.2 and 0.1 in vanilla)
-LivingShipBeamLeechMult = 					0.5					--0.1			Multiplier to apply to the Shield Leech amount for Gazing Eyes (0.1 in vanilla)
-LivingShipBeamLeechUpgradeMult = 			0.1					--0.05~0.3		Multiplier to apply to the Shield Leech amount bonus for upgrades to Gazing Eyes (0.05 ~ 0.3 each in vanilla, up to 6x per ship)
+PhaseBeamLeechAmountMult =					0.5*0.8				--0.2 & 0.1		Multiplier to apply to the Shield Leech amount for Phase Beam, and the bonus from Fourier De-Limiter (0.2 and 0.1 in vanilla)
+LivingShipBeamLeechMult = 					0.5*0.8				--0.1			Multiplier to apply to the Shield Leech amount for Gazing Eyes (0.1 in vanilla)
+LivingShipBeamLeechUpgradeMult = 			0.1*0.8				--0.05~0.3		Multiplier to apply to the Shield Leech amount bonus for upgrades to Gazing Eyes (0.05 ~ 0.3 each in vanilla, up to 6x per ship)
 
 --Multipliers for certain bonuses from Starship weapon procedural upgrade modules
 PhaseBeamUpgradesHeatMult =					0.25				--				Multiplier to apply to the bonus heat time for Phase Beam upgrades (1.1 ~ 2 for Class C ~ X)
@@ -82,6 +102,8 @@ LSPhotonUpgradesDMGMult =					1.1					--				Multiplier to apply to the bonus dam
 PositronUpgradesDMGMult =					1.25*3				--				Multiplier to apply to the bonus damage for Positron upgrades (2 ~ 12 for Class C ~ X)
 InfraKnifeUpgradesDMGMult =					0.7					--				Multiplier to apply to the bonus damage for Infra-Knife upgrades (2 ~ 14 for Class C ~ X)
 CyclotronUpgradesDMGMult =					1.1*10				--				Multiplier to apply to the bonus damage for Cyclotron upgrades (2 ~ 14 for Class C ~ X)
+
+RocketsUpgradeDMG =							2.0					--				Multiplier to apply to the bonus damage for the "Large Rocket Tubes" tech (3,250, half of the base Rocket damage of 6,500)
 
 --Multipliers for certain bonuses from Multi-Tool weapon procedural upgrade modules
 MTUAddMult =								0.5					--				Multiplier to apply to the strength of all additive bonuses (like damage) from all procedural Multi-Tool weapon upgrades. (This is to compensate for going from 3x upgrades to 5x upgrades)
@@ -133,45 +155,48 @@ BlazeJavelinDMG =							2.071				--1500			(500 theoretical sustained DPS)					(l
 PlasmaLauncherDMG =							1.45				--500
 GeologyCannonDMG =							1.21				--1000
 
-ExocraftCannonDMG =							1.0					--320			(160 theoretical sustained DPS, plus explosions with AOE???)
-NautilonCannonDMG =							1.0					--220			(110 theoretical sustained DPS, plus explosions with AOE???)
-MinotaurCannonDMG =							1.0					--420			(147 theoretical sustained DPS, plus explosions with AOE???)
+ExocraftCannonDMG =							0.85				--340			(680 theoretical sustained DPS, plus explosions with AOE???)
+NautilonCannonDMG =							1.0					--220			(440 theoretical sustained DPS, plus explosions with AOE???)
+MinotaurCannonDMG =							0.85				--420			(1200 theoretical sustained DPS, plus explosions with AOE???)
+MechFlameDMG =								16.0				--3				NOTE: Even ignoring the Fire DOT, this value only controls a very small portion (less than 4%) of the actual base damage of the flamethrower
 
 PhaseBeamDMG =								1.4					--250
 LivingShipBeamDMG =							1.1					--280
 PhotonCannonDMG =							0.9*1.667			--320			(2,400 theoretical burst DPS)	Multiplied by 1.667 to balance out the 40% lower fire rate I added
 LivingShipCannonDMG =						0.9*1.667			--340			(3,400 theoretical burst DPS)	Multiplied by 1.667 to balance out the 40% lower fire rate I added
 SentinelCannonDMG =							0.75*1.667			--220			(2,420 theoretical burst DPS)	Multiplied by 1.667 to balance out the 40% lower fire rate I added. 	Uses a lower mult than Photon Cannon since it gains more relative benefit from the set damage of photon cannon upgrade modules with its higher fire rate
-RocketsDMG =								1.5					--6500
+RocketsDMG =								1.25				--6500
 PositronEjectorDMG =						1.05*0.667			--280 x 14		(7,840 theoretical burst DPS)	Multiplied by 0.667 to balance out the 50% more projectiles I added
 InfraKnifeDMG =								1.0*0.75			--160 x 1		(1,845 theoretical burst DPS)	Multiplied by 0.75 to balance out the 33% faster fire rate I added
 CyclotronDMG =								0.9*5				--600 x 2		(3,600 theoretical burst DPS)	Multiplied by 5 to balance out the 80% slower fire rate I added
 
 --Damage multipliers for starship weapons against shields, hulls, etc.
 ShipWeaponEffectiveness =
-{	--Weapontype		vs. ship Hull	vs. Shield	vs. Torpedo	vs. Freighter Hull
-	{"ShipGun",				1,			1,			1,			1},			--1,			1,			1,			1
-	{"ShipLaser",			0.8,		1.2,		0.8,		0.8},		--1,			1,			1,			1
-	{"ShipShotgun",			1,			0.33,		1,			0.6},		--1,			0.33,		1,			0.4
-	{"ShipMinigun",			1.2,		0.4,		1.2,		1.2},		--1.5,			1,			1.5,		1
-	{"ShipRockets",			1.2,		0.6,		1.2,		1.2},		--1.5,			0.2,		1.5,		1.5
-	{"ShipPlasma",			0.6,		1.4,		0.6,		0.6},		--0.2,			1.6,		0.2,		1
+{	--Weapontype	vs. ship Hull	Shield	Torpedo	Freighter Hull 	Boss Freighter Hull(Dreadnoughts & Sentinel Freighters)
+	{"ShipGun",			1,			1,		1,		1,				1},		--1,		1,		1,		1,			1
+	{"ShipLaser",		0.8,		1.2,	0.8,	0.8,			0.9},	--1,		1,		1,		1,			1
+	{"ShipShotgun",		1,			0.33,	1,		0.7,			0.7},	--1,		0.33,	1,		0.4,		0.4
+	{"ShipMinigun",		1.2,		0.4,	1.2,	1.2,			1.1},	--1.5,		1,		1.5,	1,			1
+	{"ShipRockets",		1.2,		0.6,	1.2,	1.2,			1.2},	--1.5,		0.2,	1.5,	1.5,		1.5
+	{"ShipPlasma",		0.6,		1.4,	0.6,	0.6,			0.8},	--0.2,		1.6,	0.2,	1,			1
 }
 
 --Multipliers to apply to the base damage for various player mining lasers. Note that higher damage means objects get mined faster
 MiningLaserDMG =							1.0					--20
-HijackedLaserDMG =							6.0					--20
-RunicLensDMG =								0.7					--20
+HijackedLaserDMG =							9.33				--20
+RunicLensDMG =								0.73				--20
 AnimusBeamDMG =								1.0					--40
 ExocraftLaserDMG =							1.0					--80
 NautilonLaserDMG =							1.0					--240
 MinotaurLaserDMG =							1.0					--100
 
 --Some properties of various types of multi-tool mining lasers
-MiningOverheatMult =						10					--		Multiplier to apply to the time the Mining Laser & Anumius Beam is disabled after starting the "overheat" animation
-RunicLensOverheatMult =						10					--		Multiplier to apply to the time the RunicLens is disabled after starting the "overheat" animation
-HijackMiningOverheatMult =					5					--		Multiplier to apply to the time the Hijacked Laser is disabled after starting the "overheat" animation
-HijackChargeMultiplier =					1					--2		Replacer for how effective substances are at recharging the Hijacked Laser
+MiningOverheatMult =						10					--0.6	Multiplier to apply to the time the Mining Laser & Anumius Beam is disabled after starting the "overheat" animation
+RunicLensOverheatMult =						10					--0.6	Multiplier to apply to the time the RunicLens is disabled after starting the "overheat" animation
+HijackMiningOverheatMult =					5					--0.6	Multiplier to apply to the time the Hijacked Laser is disabled after starting the "overheat" animation
+HijackYieldMult =							0.3					--1		Multiplier to apply to the Hijacked Laser's substance yield
+HijackFuelRateMult =						3					--		Multiplier to apply to how quickly the Hijacked Laser consumes fuel while operating
+HijackChargeMultiplier =					2					--		Multipleir to apply to the cost to fully recharge the Hijacked Laser
 
 --Multipliers to apply to other stats for various weapons
 	--"PRESERVE" is for values which must remain as integers (whole numbers like 5), "FORCE" for all others to allow them to become floats (decimal numbers like 5.2)
@@ -195,7 +220,7 @@ WeaponStatChanges =
 				"Weapon_FireDOT_Duration",	1/USCMult,	"FORCE"					--5
 			},
 			{
-				"Weapon_FireDOT_DPS",		1/USCMult,	"FORCE"					--50
+				"Weapon_FireDOT_DPS",		1/USCMult,	"PRESERVE"				--50
 			}
 		}
 	},
@@ -243,7 +268,7 @@ WeaponStatChanges =
 				"Weapon_Laser_HeatTime",	1,	"FORCE"				--0.2
 			},
 			{
-				"Weapon_Laser_Drain",	1,	"FORCE"					--2
+				"Weapon_Laser_Drain",	1,	"FORCE"					--2				Controls how quickly the laser consumes fuel while active (lower value consumes fuel faster)
 			},
 			{
 				"Weapon_Laser_Recoil",	1,	"PRESERVE"					--20
@@ -416,7 +441,7 @@ WeaponStatChanges =
 		},
 		{
 			{
-				"Vehicle_GunDamage",	ExocraftCannonDMG*GXD/USCMult,	"FORCE"	--320		(160 theoretical sustained DPS, plus explosions with AOE???)
+				"Vehicle_GunDamage",	ExocraftCannonDMG*GXD/USCMult,	"FORCE"	--320		(640 theoretical sustained DPS, plus explosions with AOE???)
 			},
 			{
 				"Vehicle_GunRate",	1/USCMult,	"FORCE"							--0.5		
@@ -432,7 +457,7 @@ WeaponStatChanges =
 		},
 		{
 			{
-				"Vehicle_GunDamage",	NautilonCannonDMG*GXD/USCMult,	"FORCE"	--220		(110 theoretical sustained DPS, plus explosions with AOE???)
+				"Vehicle_GunDamage",	NautilonCannonDMG*GXD/USCMult,	"FORCE"	--220		(440 theoretical sustained DPS, plus explosions with AOE???)
 			},
 			{
 				"Vehicle_GunRate",	1/USCMult,	"FORCE"							--0.5		
@@ -460,11 +485,33 @@ WeaponStatChanges =
 	},
 	{
 		{
+			"MECH_ARMY_R_ARM"			--Liquidator Mech Flamethrower
+		},
+		{
+			{
+				"Vehicle_GunDamage",	MechFlameDMG*GXD/USCMult,	"FORCE"		--3			Even ignoring the Fire DOT, this value only controls a very small portion (less than 4%) of the actual base damage of the flamethrower
+			},
+			{
+				"Vehicle_GunRate",	1/USCMult,	"FORCE"							--0.08		
+			},
+			{
+				"Vehicle_GunHeatTime",	1,	"FORCE"								--0.75		This is actually the fuel efficiency of the flamethrower
+			},
+			{
+				"Weapon_FireDOT_Duration",	1/USCMult,	"FORCE"					--3	
+			},
+			{
+				"Weapon_FireDOT_DPS",	10/USCMult,	"PRESERVE"					--25	
+			}
+		}
+	},
+	{
+		{
 			"LASER"			--Mining Laser
 		},
 		{
 			{
-				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage, lower values ticks faster. Set less than 1 so that supercharging it makes it faster instead of slower
+				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage when mining Objects (not when damaging creatures/robots), lower values ticks faster. Set less than 1 so that supercharging it makes it faster instead of slower
 			},
 			{
 				"Weapon_Laser_HeatTime",	1/USCMult,	"FORCE"				--8
@@ -474,6 +521,9 @@ WeaponStatChanges =
 			},
 			{
 				"Weapon_Laser_ReloadTime",	MiningOverheatMult,	"FORCE"				--0.6
+			},
+			{
+				"Weapon_Laser_Drain",	1.01/USCMult,	"FORCE"					--1.2				Controls how quickly the laser consumes fuel while active (lower value consumes fuel faster)
 			}
 		}
 	},
@@ -483,7 +533,7 @@ WeaponStatChanges =
 		},
 		{
 			{
-				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage, lower values ticks faster
+				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage when mining Objects (not when damaging creatures/robots), lower values ticks faster
 			},
 			{
 				"Weapon_Laser_HeatTime",	0.5/USCMult,	"FORCE"				--8
@@ -495,10 +545,10 @@ WeaponStatChanges =
 				"Weapon_Laser_ReloadTime",	HijackMiningOverheatMult,	"FORCE"				--0.6
 			},
 			{
-				"Weapon_Laser_Drain",	0.333,	"FORCE"				--1.2				Controls how quickly the laser consumes fuel while active
+				"Weapon_Laser_Drain",	(1/HijackFuelRateMult)*USCMult,	"FORCE"				--1.2				Controls how quickly the laser consumes fuel while active (lower value consumes fuel faster)
 			},
 			{
-				"Weapon_Laser_MiningBonus",	0.2,	"FORCE"			--1
+				"Weapon_Laser_MiningBonus",	HijackYieldMult,	"FORCE"			--1
 			}
 		}
 	},
@@ -508,7 +558,7 @@ WeaponStatChanges =
 		},
 		{
 			{
-				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage, lower values ticks faster
+				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage when mining Objects (not when damaging creatures/robots), lower values ticks faster
 			},
 			{
 				"Weapon_Laser_HeatTime",	1/USCMult,	"FORCE"				--12
@@ -520,10 +570,10 @@ WeaponStatChanges =
 				"Weapon_Laser_ReloadTime",	RunicLensOverheatMult,	"FORCE"				--0.6
 			},
 			{
-				"Weapon_Laser_Drain",	1,	"FORCE"					--1.2				Controls how quickly the laser consumes fuel while active
+				"Weapon_Laser_Drain",	1.01/USCMult,	"FORCE"					--1.2				Controls how quickly the laser consumes fuel while active (lower value consumes fuel faster)
 			},
 			{
-				"Weapon_Laser_MiningBonus",	1.14,	"FORCE"				--1.1
+				"Weapon_Laser_MiningBonus",	1.41,	"FORCE"				--1.1
 			},
 			{
 				"Weapon_Stealth",	1,	"FORCE"						--1					Related to cloaking ability, unsure the effect
@@ -539,11 +589,17 @@ WeaponStatChanges =
 				"Weapon_Laser_Damage",	AnimusBeamDMG*GMD/(USCMult*USCMult),	"FORCE"				--40				Controls how much damage the laser does per tick
 			},
 			{
-				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage, lower values ticks faster. Set less than 1 so that supercharging it makes it faster instead of slower
+				"Weapon_Laser_Mining_Speed",	0.999,	"FORCE"				--1			Controls how often the laser ticks for damage when mining Objects (not when damaging creatures/robots), lower values ticks faster. Set less than 1 so that supercharging it makes it faster instead of slower
 			},
 			{
 				"Weapon_Laser_ReloadTime",	MiningOverheatMult,	"FORCE"				--0.6
-			}
+			},
+			{
+				"Weapon_Laser_Drain",	1.01/USCMult,	"FORCE"					--1.2				Controls how quickly the laser consumes fuel while active (lower value consumes fuel faster)
+			},
+			{
+				"Weapon_Laser_MiningBonus",	USCMult,	"FORCE"				--0.1
+			},
 		}
 	},
 	{
@@ -617,28 +673,28 @@ WeaponStatChanges =
 				"Ship_Weapons_Guns_Damage",	PhotonCannonDMG*GSD/USCMult,	"FORCE"	--320		(2,400 theoretical burst DPS)
 			},
 			{
-				"Ship_Weapons_Guns_Rate",	0.6/USCMult,	"FORCE"					--7.5
+				"Ship_Weapons_Guns_Rate",	0.6/USCMult,	"FORCE"					--7.5		controls how rapidly the weapon fires
 			},
 			{
-				"Ship_Weapons_Guns_Range",	1/USCMult,	"PRESERVE"					--1500
+				"Ship_Weapons_Guns_Range",	1/USCMult,	"PRESERVE"					--1500		controls how far away targets can be and still get hit / take full damage
 			},
 			{
-				"Ship_Weapons_Guns_Dispersion",	1/USCMult,	"FORCE"				--0
+				"Ship_Weapons_Guns_Dispersion",	1/USCMult,	"FORCE"				--0		controls how spread out projectiles are from your crosshairs, ie making this value larger makes the weapon less accurate / have more bullet spread
 			},
 			{
-				"Ship_Weapons_Guns_BulletsPerShot",	1,	"PRESERVE"				--1
+				"Ship_Weapons_Guns_BulletsPerShot",	1,	"PRESERVE"				--1		control the number of projectiles
 			},
 			{
-				"Ship_Weapons_Guns_HeatTime",	0.8/USCMult,	"FORCE"				--7.5
+				"Ship_Weapons_Guns_HeatTime",	0.8/USCMult,	"FORCE"				--7.5		controls how quickly it builds up heat
 			},
 			{
-				"Ship_Weapons_Guns_CoolTime",	1,	"FORCE"				--1
+				"Ship_Weapons_Guns_CoolTime",	1,	"FORCE"				--1		controls how quickly the weapon loses heat when not firing
 			},
 			{
-				"Ship_Weapons_Guns_Scale",	1/USCMult,	"FORCE"				--6
+				"Ship_Weapons_Guns_Scale",	1/USCMult,	"FORCE"				--6		controls the size of the projectiles
 			},
 			{
-				"Ship_Weapons_Guns_Damage_Radius",	1/USCMult,	"FORCE"				--2
+				"Ship_Weapons_Guns_Damage_Radius",	1/USCMult,	"FORCE"				--2		 I believe this controls the size of the AOE damage on projectile impact?
 			}
 		}
 	},
@@ -925,7 +981,7 @@ WeaponSecondaryTechChanges =
 				"Ship_Weapons_Guns_CoolTime",	1,	"FORCE"				--0.8
 			},
 			{
-				"Ship_Weapons_Guns_Damage",	RocketsDMG*GSD,	"FORCE"		--3250
+				"Ship_Weapons_Guns_Damage",	RocketsDMG*RocketsUpgradeDMG*GSD,	"FORCE"		--3250		(Added by PTSd, 0 in vanilla)
 			},
 		}
 	},
@@ -963,7 +1019,7 @@ WeaponCoolAim =
 		"SHIPPLASMAGUN",			4,			15,				3,			0.3		--5,	15,			1.5,	0.4			[1.5,	0.2]
 	},
 	{--Rockets
-		"SHIPROCKET",				5,			15,				12,			0.2		--5,	15,			5,		0.2			[5,	0.2]
+		"SHIPROCKET",				5,			15,				16,			0.2		--5,	15,			5,		0.2			[5,	0.2]
 	},
 }
 
@@ -981,7 +1037,7 @@ NPCStarshipDamageMults =
 	--{"BOUNTYGUN3",			2},									--800	DefaultDamage		Removed in NMS v3.85
 	{"BASE_TURRET_M",		2},									--200	DefaultDamage
 	{"PIRATERAIDGUN",		10},								--15	DefaultDamage		(Maybe pirates attacking buildings ???)
-	{"SQUADGUN",			4.5},								--40	DefaultDamage		(Maybe your wingmen ???)
+	{"SQUADGUN",			4.5},								--40	DefaultDamage		(Your Squadron Wingmen allies)
 	
 	--Space Laser Beams
 	{"AI_SHIP",				10},								--9		DefaultDamage		(Most NPC Starships)
@@ -1016,6 +1072,19 @@ WeaponProjChanges =
 		{
 			{
 				"CriticalHitModifier",	0.87		--1.5
+			},
+		}
+	},
+	{
+		{
+			"VEHICLEGUN"							--Exocraft / Minotaur Cannon
+		},
+		{
+			{
+				"DroneImpulse",	0.15				--5		How far it knocks back sentinel drones on hit
+			},
+			{
+				"CriticalHitModifier",	0.73		--1.5
 			},
 		}
 	},
@@ -1148,7 +1217,7 @@ UpgradeDamageChanges =
 	},
 	{
 		{"Weapon_Projectile_Damage",	BoltcasterUpgradesDMGMult*BoltcasterDMG*MTUAddMult*GMD},				--Boltcaster		
-		{"UP_BOLT1", "UP_BOLT2", "UP_BOLT3", "UP_BOLT4", "UP_BOLTX"}
+		{"UP_BOLT0", "UP_BOLT1", "UP_BOLT2", "UP_BOLT3", "UP_BOLT4", "UP_BOLTX"}
 	},
 	{
 		{"Weapon_Projectile_Damage",	SentWpnDMGMult*MTUAddMult*GMD},				--Sentinel Weapon Upgrade (only works for Boltcaster?)		
@@ -1179,6 +1248,10 @@ UpgradeDamageChanges =
 		{"UP_MCGUN2", "UP_MCGUN3", "UP_MCGUN4"}
 	},
 	{
+		{"Vehicle_GunDamage",	MechFlameDMG*MechFlameUpgradesDMGMult*GXD},						--Mech Liquidator Flamethrower		
+		{"UP_MFIRE2", "UP_MFIRE3", "UP_MFIRE4"}
+	},
+	{
 		{"Ship_Weapons_Lasers_Damage",	PhaseBeamDMG*PhaseBeamUpgradesDMGMult*GSD},			--Phase Beam		
 		{"UP_SLASR1", "UP_SLASR2", "UP_SLASR3", "UP_SLASR4", "UP_SLASRX"}
 	},
@@ -1188,7 +1261,7 @@ UpgradeDamageChanges =
 	},
 	{
 		{"Ship_Weapons_Guns_Damage",	PhotonCannonDMG*PhotonUpgradesDMGMult*GSD},			--Photon Cannon		
-		{"UP_SGUN1", "UP_SGUN2", "UP_SGUN3", "UP_SGUN4", "UP_SGUNX"}
+		{"UP_SGUN0", "UP_SGUN1", "UP_SGUN2", "UP_SGUN3", "UP_SGUN4", "UP_SGUNX"}
 	},
 	{
 		{"Ship_Weapons_Guns_Damage",	LivingShipCannonDMG*LSPhotonUpgradesDMGMult*GSD},	--Spewing Vents
@@ -1213,7 +1286,7 @@ UpgradeDamageChanges =
 	},
 	{
 		{"Weapon_Projectile_BurstCap",	BoltUpgradeBurstCapMult*MTUAddMult},				--Boltcaster
-		{"UP_BOLT1", "UP_BOLT2", "UP_BOLT3", "UP_BOLT4", "UP_BOLTX"}
+		{"UP_BOLT0", "UP_BOLT1", "UP_BOLT2", "UP_BOLT3", "UP_BOLT4", "UP_BOLTX"}
 	},
 	{
 		{"Weapon_Projectile_BurstCap",	ScatterUpgradeBurstCapMult*MTUAddMult},				--Scatter Blaster
@@ -1235,6 +1308,9 @@ UpgradeOtherChanges =
 		{"Ship_Weapons_Guns_Rate",	PhotonUpgradesFireRateMult},		--Applies multiplier to all upgrades for this weapon
 		{
 			{--	Upgrade			Min		Max
+				"UP_SGUN0",	1.001,	1.003								--1.001,	1.003
+			},
+			{
 				"UP_SGUN1",	1.001,	1.011								--1.001,	1.011
 			},
 			{
@@ -1445,6 +1521,9 @@ UpgradeOtherChanges =
 		{"Weapon_Projectile_ReloadTime",	BoltUpgradeReloadMult*MTUMultMult},		--Applies multiplier to all upgrades for this weapon
 		{
 			{--	Upgrade			Min		Max
+				"UP_BOLT0",		0.96,	0.99							--0.96,	0.99
+			},
+			{--	Upgrade			Min		Max
 				"UP_BOLT1",		0.9,	0.95							--0.9,	0.95
 			},
 			{--	Upgrade			Min		Max
@@ -1465,6 +1544,9 @@ UpgradeOtherChanges =
 		{"Weapon_Projectile_Rate",	BoltUpgradeFireRateMult*MTUMultMult},		--Applies multiplier to all upgrades for this weapon
 		{
 			{--	Upgrade			Min		Max
+				"UP_BOLT0",		1.01,	1.02							--1.01,	1.02
+			},
+			{--	Upgrade			Min		Max
 				"UP_BOLT1",		1.01,	1.1								--1.01,	1.1
 			},
 			{--	Upgrade			Min		Max
@@ -1484,6 +1566,9 @@ UpgradeOtherChanges =
 	{	--Boltcaster
 		{"Weapon_Projectile_BurstCooldown",	BoltUpgradeBurstCoolMult*MTUMultMult},		--Applies multiplier to all upgrades for this weapon
 		{
+			{--	Upgrade			Min		Max
+				"UP_BOLT0",		0.99,	0.98							--0.99,	0.98
+			},
 			{--	Upgrade			Min		Max
 				"UP_BOLT1",		0.99,	0.95							--0.99,	0.95
 			},
@@ -1681,6 +1766,9 @@ UpgradeOtherChangesInt =
 		{"Weapon_Projectile_ClipSize",	BoltUpgradeClipMult*MTUAddMult},		--Applies multiplier to all upgrades for this weapon
 		{
 			{--	Upgrade			Min		Max
+				"UP_BOLT0",		1,		1								--1,	1
+			},
+			{--	Upgrade			Min		Max
 				"UP_BOLT1",		2,		2								--2,	2
 			},
 			{--	Upgrade			Min		Max
@@ -1822,17 +1910,6 @@ function BonusMult (base, mult)
     (base-1)*mult+1
 end
 
-function AddShieldLeech (LeechAmount)
-    return
-[[<Property value="GcStatsBonus.xml">
-          <Property name="Stat" value="GcStatsTypes.xml">
-            <Property name="StatsType" value="Ship_Weapons_ShieldLeech" />
-          </Property>
-          <Property name="Bonus" value="]]..LeechAmount..[[" />
-          <Property name="Level" value="1" />
-        </Property>]]
-end
-
 function DamageMult (Damagetype,	Mult)
     return
 [[<Property value="GcDamageMultiplier.xml">
@@ -1883,47 +1960,20 @@ function ShipDamageMult (Mult)
         </Property>]]
 end
 
-function ShipCargoDamageMult (Mult)
+function AddNewTargetType (Name, DefMult, FirstDam)
     return
-[[
-	<Property name="Multipliers">
-		<Property value="GcDamageMultiplier.xml">
+[[<Property value="GcDamageMultiplierLookup.xml">
+      <Property name="Id" value="]]..Name..[[" />
+      <Property name="Default" value="]]..DefMult..[[" />
+      <Property name="Multipliers">
+        <Property value="GcDamageMultiplier.xml">
           <Property name="Type" value="GcDamageType.xml">
-            <Property name="DamageType" value="ShipGun" />
+            <Property name="DamageType" value="]]..FirstDam..[[" />
           </Property>
-          <Property name="Multiplier" value="]]..Mult..[[" />
+          <Property name="Multiplier" value="]]..DefMult..[[" />
         </Property>
-		<Property value="GcDamageMultiplier.xml">
-          <Property name="Type" value="GcDamageType.xml">
-            <Property name="DamageType" value="ShipLaser" />
-          </Property>
-          <Property name="Multiplier" value="]]..Mult..[[" />
-        </Property>
-		<Property value="GcDamageMultiplier.xml">
-          <Property name="Type" value="GcDamageType.xml">
-            <Property name="DamageType" value="ShipShotgun" />
-          </Property>
-          <Property name="Multiplier" value="]]..Mult..[[" />
-        </Property>
-		<Property value="GcDamageMultiplier.xml">
-          <Property name="Type" value="GcDamageType.xml">
-            <Property name="DamageType" value="ShipMinigun" />
-          </Property>
-          <Property name="Multiplier" value="]]..Mult..[[" />
-        </Property>
-		<Property value="GcDamageMultiplier.xml">
-          <Property name="Type" value="GcDamageType.xml">
-            <Property name="DamageType" value="ShipRockets" />
-          </Property>
-          <Property name="Multiplier" value="]]..Mult..[[" />
-        </Property>
-		<Property value="GcDamageMultiplier.xml">
-          <Property name="Type" value="GcDamageType.xml">
-            <Property name="DamageType" value="ShipPlasma" />
-          </Property>
-          <Property name="Multiplier" value="]]..Mult..[[" />
-        </Property>
-	</Property>]]
+      </Property>
+    </Property>]]
 end
 
 AddRocketDamage = 
@@ -1980,34 +2030,35 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		["EXML_CHANGE_TABLE"] 	= 
 		{
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				--["PRECEDING_KEY_WORDS"] = {"GcLaserBeamData.xml"},
+				["SPECIAL_KEY_WORDS"] = {"Id", "TORPEDO"},
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"DefaultDamage",	TorpedoDamage}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "PI_FRE_LARG"},
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"DefaultDamage",	DreadCannonDamage}
+				}
+			},
+			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "PLAYER"},
-				--["SECTION_UP"] = 1,
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"CriticalHitModifier",	LaserCritMult}
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"Id", "VEHICLESTUNGUN"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
 					{"Radius", MechStunWeaponRadius}
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"Id", "VEHICLESTUNGUN",	"CombatEffectType", "Stun"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
 				["SECTION_UP"] = 1,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2015,11 +2066,7 @@ NMS_MOD_DEFINITION_CONTAINER = {
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"Id", "VEHICLESTUNGUN",	"CombatEffectType", "Fire"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
 				["SECTION_UP"] = 1,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2034,12 +2081,24 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		["EXML_CHANGE_TABLE"] 	= 
 		{
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				--["PRECEDING_KEY_WORDS"] = {"GcShootableComponentData.xml"},
+				["SPECIAL_KEY_WORDS"] = {"Id", "FREIGHT_SHIELD",	"DamageType", "FreighterLaser"},
+				["SECTION_UP"] = 1,
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Multiplier",	DreadCannonShieldMult}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "FREIGHT_SHIELD",	"DamageType", "FreighterTorpedo"},
+				["SECTION_UP"] = 1,
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Multiplier",	TorpedoShieldMult}
+				}
+			},
+			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "OBJECT",	"DamageType", "Explosion"},
 				["SECTION_UP"] = 1,
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Multiplier",	ExplosionObjectMult}
@@ -2053,8 +2112,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "DOOR"},
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["INTEGER_TO_FLOAT"] = "FORCE",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
@@ -2064,8 +2121,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "DOOR",	"DamageType", "Laser"},
 				["SECTION_UP"] = 1,
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Multiplier",	LaserDoorMult}
@@ -2073,8 +2128,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "DEPOT"},
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["INTEGER_TO_FLOAT"] = "FORCE",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
@@ -2124,17 +2177,37 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "CARGO"},
-				["LINE_OFFSET"] = "1",
-				["REPLACE_TYPE"] = "",
-				["ADD"] = ShipCargoDamageMult (ShipWeaponsCargoMult)
+				["INTEGER_TO_FLOAT"] = "FORCE",
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Default",	CargoDamageMult}
+				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				--["PRECEDING_KEY_WORDS"] = {"GcShootableComponentData.xml"},
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplierLookup.xml"},
+				["ADD_OPTION"]  = "ADDbeforeSECTION",  
+				["ADD"] = AddNewTargetType ("WALKINGBUILDING", WalkingBuildingMult, "Melee")
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "WALKINGBUILDING"},
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplier.xml"},
+				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+				["ADD"] = ShipDamageMult(ShipWeaponWalkingBuildingMult)
+			},
+			{
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplierLookup.xml"},
+				["ADD_OPTION"]  = "ADDbeforeSECTION",  
+				["ADD"] = AddNewTargetType ("BOSSFREI_HULL", "1", "FreighterLaser")
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "BOSSFREI_HULL"},
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplier.xml"},
+				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+				["ADD"] = ShipDamageMult("1")
+			},
+			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "CREATURE",	"DamageType", "Laser"},
 				["SECTION_UP"] = 1,
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Multiplier",	LaserCreatureMult}
@@ -2143,8 +2216,6 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "ROBOT",	"DamageType", "Laser"},
 				["SECTION_UP"] = 1,
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Multiplier",	LaserSentinelMult}
@@ -2153,12 +2224,52 @@ NMS_MOD_DEFINITION_CONTAINER = {
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "ROBOT",	"DamageType", "VehicleLaser"},
 				["SECTION_UP"] = 1,
-				["MATH_OPERATION"] 		= "",
-				["REPLACE_TYPE"] = "",
 				["VALUE_CHANGE_TABLE"] 	= 
 				{
 					{"Multiplier",	VehicleLaserSentinelMult}
 				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "ROBOT",	"DamageType", "ShipWeapons"},
+				["SECTION_UP"] = 1,
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Multiplier",	ShipWeaponSentinelMult}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "ROBOT"},
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplier.xml"},
+				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+				["ADD"] = ShipDamageMult(ShipWeaponSentinelMult)
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "ROBOT_SHIELD",	"DamageType", "ShipWeapons"},
+				["SECTION_UP"] = 1,
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Multiplier",	ShipWeaponSentinelShieldMult}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "ROBOT_SHIELD"},
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplier.xml"},
+				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+				["ADD"] = ShipDamageMult(ShipWeaponSentinelShieldMult)
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "FIEND",	"DamageType", "ShipWeapons"},
+				["SECTION_UP"] = 1,
+				["VALUE_CHANGE_TABLE"] 	= 
+				{
+					{"Multiplier",	ShipWeaponSentinelShieldMult}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"Id", "FIEND"},
+				["PRECEDING_KEY_WORDS"] = {"GcDamageMultiplier.xml"},
+				["REPLACE_TYPE"] = "ADDAFTERSECTION",
+				["ADD"] = ShipDamageMult(ShipWeaponFiendMult)
 			},
 			{
 				["SPECIAL_KEY_WORDS"] = {"Id", "SHIP_HULL"},
@@ -2252,48 +2363,28 @@ NMS_MOD_DEFINITION_CONTAINER = {
 		["EXML_CHANGE_TABLE"] 	= 
 		{
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"ID", "GRENADE"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
 					{"ChargeAmount", PlasmaLauncherCharge}
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"ID", "TERRAIN_GREN"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
 					{"ChargeAmount", GeologyCannonCharge}
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"ID", "STUN_GREN"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
 				["VALUE_CHANGE_TABLE"] 	=
 				{
 					{"ChargeAmount", ParalysisMortarCharge}
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"ID", "MECH_SENT_R_ARM"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
 				["INTEGER_TO_FLOAT"] = "FORCE",
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2302,12 +2393,25 @@ NMS_MOD_DEFINITION_CONTAINER = {
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
+				["SPECIAL_KEY_WORDS"] = {"ID", "MECH_ARMY_L_ARM"},
+				["INTEGER_TO_FLOAT"] = "FORCE",
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"ChargeAmount", MechStunWeaponCharge},
+					{"ChargeMultiplier", MechStunWeaponChargeMultiplier}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"ID", "MECH_ARMY_R_ARM"},
+				["INTEGER_TO_FLOAT"] = "FORCE",
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"ChargeAmount", MechFlameCharge},
+					{"ChargeMultiplier", MechFlameChargeMultiplier}
+				}
+			},
+			{
 				["SPECIAL_KEY_WORDS"] = {"ID", "CANNON"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
 				["INTEGER_TO_FLOAT"] = "FORCE",
 				["VALUE_CHANGE_TABLE"] 	=
 				{
@@ -2316,16 +2420,30 @@ NMS_MOD_DEFINITION_CONTAINER = {
 				}
 			},
 			{
-				--["PRECEDING_FIRST"] = "TRUE",
-				["REPLACE_TYPE"] 		= "",
-				["MATH_OPERATION"] 		= "",
 				["SPECIAL_KEY_WORDS"] = {"ID", "SENT_LASER"},
-				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
-				--["SECTION_UP"] = 1,
+				["MATH_OPERATION"] 		= "/",
 				["INTEGER_TO_FLOAT"] = "FORCE",
 				["VALUE_CHANGE_TABLE"] 	=
 				{
-					{"ChargeMultiplier", HijackChargeMultiplier}
+					{"ChargeMultiplier", HijackChargeMultiplier}		--2
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"ID", "VEHICLE_GUN"},
+				["INTEGER_TO_FLOAT"] = "FORCE",
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"ChargeAmount", ExocraftCannonCharge},
+					{"ChargeMultiplier", ExocraftCannonChargeMultiplier}
+				}
+			},
+			{
+				["SPECIAL_KEY_WORDS"] = {"ID", "SUB_GUN"},
+				["INTEGER_TO_FLOAT"] = "FORCE",
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"ChargeAmount", NautilonCannonCharge},
+					{"ChargeMultiplier", NautilonCannonChargeMultiplier}
 				}
 			},
 			
@@ -2582,6 +2700,7 @@ for i = 1, #ShipWeaponEffectiveness do
 	local ShieldMult = ShipWeaponEffectiveness[i][3]
 	local TorpMult = ShipWeaponEffectiveness[i][4]
 	local FrHullMult = ShipWeaponEffectiveness[i][5]
+	local BossFrHullMult = ShipWeaponEffectiveness[i][6]
 
 			ChangesToDefaultReality[#ChangesToDefaultReality+1] =
 			{
@@ -2640,6 +2759,21 @@ for i = 1, #ShipWeaponEffectiveness do
 				["VALUE_CHANGE_TABLE"] 	=
 				{
 					{"Multiplier", FrHullMult}
+				}
+			}
+			
+			ChangesToDefaultReality[#ChangesToDefaultReality+1] =
+			{
+				--["PRECEDING_FIRST"] = "TRUE",
+				["REPLACE_TYPE"] 		= "",
+				["MATH_OPERATION"] 		= "",
+				["SPECIAL_KEY_WORDS"] = {"Id", "BOSSFREI_HULL", "DamageType", DamageType},
+				--["PRECEDING_KEY_WORDS"] = {"StatBonuses"},
+				["SECTION_UP"] = 1,
+				["INTEGER_TO_FLOAT"] = "FORCE",
+				["VALUE_CHANGE_TABLE"] 	=
+				{
+					{"Multiplier", BossFrHullMult}
 				}
 			}
 end

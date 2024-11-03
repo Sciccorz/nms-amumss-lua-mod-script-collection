@@ -5,7 +5,7 @@ METADATA_MOD_NAME       = "ProjectApollo"
 METADATA_MOD_AUTHOR     = "FriendlyFirePL"
 METADATA_LUA_AUTHOR     = "FriendlyFirePL"
 METADATA_MOD_MODULE     = "LANGUAGE"
-METADATA_NMS_VERSION    = "472"
+METADATA_NMS_VERSION    = "DEV8"
 METADATA_MOD_DESC       = "Project Apollo: Lost in Time. Module for custom localization file. Modifies GCDEBUGOPTIONS.GLOBAL.MBIN."
 
 
@@ -14,8 +14,8 @@ METADATA_MOD_DESC       = "Project Apollo: Lost in Time. Module for custom local
 -- languange entries: missions
 ----------------------------------------------------------------------------------------------------
 
-GAME_VERSION = "4.72"
-GAME_UPDATE = "Adrift"
+GAME_VERSION = "5.22"
+GAME_UPDATE = "Cursed"
 
 --------------------------------------------------
 -- main mission misc + tooltips
@@ -184,7 +184,7 @@ TEXT_MAIN_STAGE2_OBJ = "Find info about the Traveller"
 
 TEXT_MAIN_STAGE2_DESC = 
 [[
-Scanner needs to be tuned to Traveller's &lt;VISOR&gt;unique energy signature&lt;&gt;.&#xA;
+Scanner needs to be tuned to Traveller's &lt;SPECIAL&gt;unique energy signature&lt;&gt;.&#xA;
 Launch into space and activate the &lt;TECHNOLOGY&gt;starship scanner&lt;&gt;.
 ]]
 
@@ -194,14 +194,20 @@ TEXT_MAIN_SCAN2_TARGET = "[ Temporal signature located ]"
 TEXT_MAIN_SCAN2_MARKER = "Temporal Signature"
 TEXT_MAIN_SCAN2_SYSTEM = "TEMPORAL RESONANCE IN ANOTHER SYSTEM &lt;IMG&gt;SLASH&lt;&gt; CONSULT GALAXY MAP"
 
+TEXT_MAIN_STAGE2_TIP0 = 
+[[
+The Impossible Fabricator requires a powerful energy source&#xA;
+Charge up the bespoke scanner with a &lt;VISOR&gt;Storm Crystal&lt;&gt;&#xA;
+Collect crystals from &lt;STELLAR&gt;extreme weather planets&lt;&gt; during storms
+]]
 TEXT_MAIN_STAGE2_TIP1 = 
 [[
-Scanner needs to be tuned to Traveller's &lt;VISOR&gt;unique energy signature&lt;&gt;&#xA;
+Scanner needs to be tuned to Traveller's &lt;SPECIAL&gt;unique energy signature&lt;&gt;&#xA;
 Launch into space and activate the &lt;TECHNOLOGY&gt;starship scanner&lt;&gt; (&lt;IMG&gt;SCAN&lt;&gt;)
 ]]
 TEXT_MAIN_STAGE2_TIP2 = 
 [[
-Scanner needs to be tuned to Traveller's &lt;VISOR&gt;unique energy signature&lt;&gt;&#xA;
+Scanner needs to be tuned to Traveller's &lt;SPECIAL&gt;unique energy signature&lt;&gt;&#xA;
 Chart a path to the target system using Galaxy Map (&lt;IMG&gt;QUICK_MENU&lt;&gt;)
 ]]
 TEXT_MAIN_STAGE2_TIP3 = 
@@ -1285,16 +1291,6 @@ Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to 
 -- bobblehead models
 --------------------------------------------------
 
-TEXT_BOBBLE_GLOBE_N = "PLANETARY GLOBE STATUE"
-TEXT_BOBBLE_GLOBE_L = "Planetary Globe Statue"
-TEXT_BOBBLE_GLOBE_S = "Dashboard Adornment"
-TEXT_BOBBLE_GLOBE_D = 
-[[
-An intricate dashboard gadget representing a globe found in &lt;STELLAR&gt;planetary settlements&lt;&gt;. The combination of mechanical workings and inner holographic display serves as a proof of the maker's craftsmanship.&#xA;&#xA;
-
-Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to decorate your ship's interior. Note that this element is purely decorative and it does not provide any stat bonuses.
-]]
-
 TEXT_BOBBLE_BLOB_N = "HOLOGRAPHIC BLOB FAUNA"
 TEXT_BOBBLE_BLOB_L = "Holographic Blob Fauna"
 TEXT_BOBBLE_BLOB_S = "Projected Dashboard Adornment"
@@ -1357,7 +1353,7 @@ Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to 
 
 TEXT_BOBBLE_STONE_N = "KNOWLEDGE STONE MODEL"
 TEXT_BOBBLE_STONE_L = "Knowledge Stone Model"
-TEXT_BOBBLE_STONE_S = "Planetary Marker Replica"
+TEXT_BOBBLE_STONE_S = "Planetary Feature Replica"
 TEXT_BOBBLE_STONE_D = 
 [[
 An intricate dashboard gadget featuring a scaled-down model of an &lt;RARE&gt;ancient Knowledge Stone&lt;&gt;. Highly prized among all types of interstellar travellers, this miniature landmark brings visions of home planet and fills the cockpit with a comfortable aura.&#xA;&#xA;
@@ -1367,7 +1363,7 @@ Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to 
 
 TEXT_BOBBLE_AQUATIC_N = "AQUATIC CRYSTAL MODEL"
 TEXT_BOBBLE_AQUATIC_L = "Aquatic Crystal Model"
-TEXT_BOBBLE_AQUATIC_S = "Planetary Marker Replica"
+TEXT_BOBBLE_AQUATIC_S = "Planetary Feature Replica"
 TEXT_BOBBLE_AQUATIC_D = 
 [[
 An intricate dashboard gadget featuring a scaled-down model of an &lt;VISOR&gt;underwater crystal formation&lt;&gt;. Its cold surface emanates a serene energy, invoking visions of endless waves travelling over oceanic depths. It invites you. It calls you home.&#xA;&#xA;
@@ -1377,7 +1373,7 @@ Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to 
 
 TEXT_BOBBLE_GRAVE_N = "TRAVELLER GRAVE MODEL"
 TEXT_BOBBLE_GRAVE_L = "Traveller Grave Model"
-TEXT_BOBBLE_GRAVE_S = "Planetary Marker Replica"
+TEXT_BOBBLE_GRAVE_S = "Planetary Feature Replica"
 TEXT_BOBBLE_GRAVE_D = 
 [[
 An intricate dashboard gadget featuring a scaled-down model of a &lt;VAL_ON&gt;Traveller grave&lt;&gt;. This memento serves as a reminder of the dangers lurking in the never-ending quest of discovery.&#xA;&#xA;
@@ -1441,6 +1437,16 @@ TEXT_BOBBLE_SHARD_S = "Decorative Reality Glitch"
 TEXT_BOBBLE_SHARD_D =
 [[
 A stabilized instance of a &lt;PET5&gt;separator glitch&lt;&gt;, found exclusively on columned planets. Those spawns of otherworldly glass-like substrate bend the light rays in anomalous ways, causing some interstellar travellers to experience visions of a world of glass.&#xA;&#xA;
+
+Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to decorate your ship's interior. Note that this element is purely decorative and it does not provide any stat bonuses.
+]]
+
+TEXT_BOBBLE_GLOBE_N = "PLANETARY GLOBE STATUE"
+TEXT_BOBBLE_GLOBE_L = "Planetary Globe Statue"
+TEXT_BOBBLE_GLOBE_S = "Dashboard Adornment"
+TEXT_BOBBLE_GLOBE_D = 
+[[
+An intricate dashboard gadget representing a globe found in &lt;STELLAR&gt;planetary settlements&lt;&gt;. The combination of mechanical workings and inner holographic display serves as a proof of the maker's craftsmanship.&#xA;&#xA;
 
 Install this module in a &lt;TECHNOLOGY&gt;technology inventory slot&lt;&gt; to decorate your ship's interior. Note that this element is purely decorative and it does not provide any stat bonuses.
 ]]
@@ -1759,7 +1765,7 @@ https://www.nexusmods.com/nomanssky/mods/2864
 
 &lt;VAL_ON&gt;Debugging / Restoring items:&lt;&gt;&#xA;
 If you have issues collecting the 3 crafting components for Impossible Fabricator Multi-tool technology from their dedicated missions or you managed to remove them from your inventories after completing said missions, you can use the new options in &lt;TRADE&gt;Quick Menu - Gestures&lt;&gt; to add these items to your inventory.&#xA;
-Warning: those special emotes were added as a debugging tool only and should not be used for regular quest progression!
+&lt;FUEL&gt;Warning:&lt;&gt; those special emotes were added as a debugging tool only and should not be used for regular quest progression!
 ]]
 
 --------------------------------------------------
@@ -2149,6 +2155,7 @@ LIST =
     TEXT_MAIN_STAGE2_OBJ                = TEXT_MAIN_STAGE2_OBJ,
     TEXT_MAIN_STAGE2_OSD                = TEXT_MAIN_STAGE2_OSD,
     TEXT_MAIN_STAGE2_DESC               = TEXT_MAIN_STAGE2_DESC,
+    TEXT_MAIN_STAGE2_TIP0               = TEXT_MAIN_STAGE2_TIP0,
     TEXT_MAIN_STAGE2_TIP1               = TEXT_MAIN_STAGE2_TIP1,
     TEXT_MAIN_STAGE2_TIP2               = TEXT_MAIN_STAGE2_TIP2,
     TEXT_MAIN_STAGE2_TIP3               = TEXT_MAIN_STAGE2_TIP3,
@@ -2636,6 +2643,9 @@ LIST =
     TEXT_TREE_WARNING                   = TEXT_TREE_WARNING,
     TEXT_DIALOGUE_MEMORY                = TEXT_DIALOGUE_MEMORY,
     TEXT_REACTION_MEMORY                = TEXT_REACTION_MEMORY,
+    TEXT_EMOTE_PLATING                  = TEXT_EMOTE_PLATING,
+    TEXT_EMOTE_FRAGMENT                 = TEXT_EMOTE_FRAGMENT,
+    TEXT_EMOTE_CIRCUIT                  = TEXT_EMOTE_CIRCUIT,
 
     -- player titles
     TEXT_TITLE_UNLOCK                   = TEXT_TITLE_UNLOCK,
@@ -2649,11 +2659,6 @@ LIST =
     TEXT_TITLE_OWNED_3                  = TEXT_TITLE_OWNED_3,
     TEXT_TITLE_OWNED_4                  = TEXT_TITLE_OWNED_4,
     TEXT_TITLE_OWNED_5                  = TEXT_TITLE_OWNED_5,
-
-    -- debug emotes
-    TEXT_EMOTE_PLATING                  = TEXT_EMOTE_PLATING,
-    TEXT_EMOTE_FRAGMENT                 = TEXT_EMOTE_FRAGMENT,
-    TEXT_EMOTE_CIRCUIT                  = TEXT_EMOTE_CIRCUIT,
 
     -- wiki - navigation and credits
     TEXT_WIKI_BUTTON_MAIN               = TEXT_WIKI_BUTTON_MAIN,
@@ -2727,11 +2732,11 @@ PROPERTY_DEBUG_LOCFILE =
 ]]
 
 -- path to custom localization file
-FILE_LANG_APOLLO = "LANGUAGE\\" .. PREFIX .. "_" .. SUFFIX .. ".EXML"
+FILE_LANG_APOLLO = [[LANGUAGE\]] .. PREFIX .. "_" .. SUFFIX .. ".EXML"
 
 -- fix for typo in LAS localization file name
 if SUFFIX == "LatinAmericanSpanish" then
-FILE_LANG_APOLLO = "LANGUAGE\\" .. PREFIX .. "_LATINAMERAICANSPANISH.EXML"
+FILE_LANG_APOLLO = [[LANGUAGE\]] .. PREFIX .. "_LATINAMERAICANSPANISH.EXML"
 end
 
 --------------------------------------------------

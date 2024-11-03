@@ -17,7 +17,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                     {
                         {
                             ["PRECEDING_KEY_WORDS"] = {"Low", "RegionLODRadius"},
-                            ["LINE_OFFSET"] = "+1",
+                            ["REPLACE_TYPE"] = "ONCEINSIDE",
                             ["VALUE_CHANGE_TABLE"] =
                             {
                                 {"IGNORE", "5"},
@@ -30,7 +30,7 @@ NMS_MOD_DEFINITION_CONTAINER =
                         },
                         {
                             ["PRECEDING_KEY_WORDS"] = {"Ultra", "LODAdjust"},
-                            ["LINE_OFFSET"] = "+1",
+                            ["REPLACE_TYPE"] = "ONCEINSIDE",
                             ["VALUE_CHANGE_TABLE"] =
                             {
                                 {"IGNORE", "3"},
@@ -107,8 +107,6 @@ NMS_MOD_DEFINITION_CONTAINER =
                             ["VALUE_CHANGE_TABLE"] =
                             {
                                 {"DayLength",                           "7200"},
-                                {"SafeSkyMaxIndex",                     "342"},
-                                {"FrozenSkyMaxIndex",                   "342"},
                                 {"StormScreenFilterFadeTime",           "2"},
                                 {"MaxTimeBetweenStormsLow",             "27000"},
                                 {"MinTimeBetweenStormsHigh",            "900"},
